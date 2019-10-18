@@ -1,9 +1,12 @@
 package main.java.quemepongo2;
 
+import java.sql.Types;
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.hibernate.dialect.SQLServerDialect;
+import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +23,27 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = { "classpath:main/java/quemepongo2/application.properties" })
-public class HibernateConfiguration {
+public class HibernateConfiguration extends SQLServerDialect {
+	
+	public HibernateConfiguration() {
+		super();
+		registerColumnType(Types.CHAR, "nchar(1)");
+        registerColumnType(Types.LONGVARCHAR, "nvarchar(max)" );
+        registerColumnType(Types.VARCHAR, 4000, "nvarchar($l)");
+        registerColumnType(Types.VARCHAR, "nvarchar(max)");
+        registerColumnType(Types.CLOB, "nvarchar(max)" );
+
+        registerColumnType(Types.NCHAR, "nchar(1)");
+        registerColumnType(Types.LONGNVARCHAR, "nvarchar(max)");
+        registerColumnType(Types.NVARCHAR, 4000, "nvarchar($l)");
+        registerColumnType(Types.NVARCHAR, "nvarchar(max)");
+        registerColumnType(Types.NCLOB, "nvarchar(max)");
+
+        registerHibernateType(Types.NCHAR, StandardBasicTypes.CHARACTER.getName());
+        registerHibernateType(Types.LONGNVARCHAR, StandardBasicTypes.TEXT.getName());
+        registerHibernateType(Types.NVARCHAR, StandardBasicTypes.STRING.getName());
+        registerHibernateType(Types.NCLOB, StandardBasicTypes.CLOB.getName() );
+	}
 
 	@Autowired
 	private Environment environment;
@@ -51,7 +74,7 @@ public class HibernateConfiguration {
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+		properties.put("hibernate.dialect", this.getClass().getName());
 		properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
 		properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
 		properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
