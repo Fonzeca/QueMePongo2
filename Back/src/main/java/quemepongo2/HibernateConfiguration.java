@@ -39,6 +39,8 @@ public class HibernateConfiguration extends SQLServerDialect {
         registerColumnType(Types.NVARCHAR, "nvarchar(max)");
         registerColumnType(Types.NCLOB, "nvarchar(max)");
 
+        registerColumnType(Types.NUMERIC, "decimal"); // Tratar de borrar
+        
         registerHibernateType(Types.NCHAR, StandardBasicTypes.CHARACTER.getName());
         registerHibernateType(Types.LONGNVARCHAR, StandardBasicTypes.TEXT.getName());
         registerHibernateType(Types.NVARCHAR, StandardBasicTypes.STRING.getName());
