@@ -1,9 +1,17 @@
 package main.java.quemepongo2.model;
-// Generated 16-oct-2019 12:54:32 by Hibernate Tools 4.3.5.Final
+// Generated 23-oct-2019 23:34:42 by Hibernate Tools 4.3.5.Final
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -16,8 +24,10 @@ public class Ciudad implements java.io.Serializable {
 	private int id;
 	private String nombre;
 	private String pais;
-	private Double longitud;
-	private Double latitud;
+	private BigDecimal latitud;
+	private BigDecimal longitud;
+	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+	private Set<ReporteDelClima> reporteDelClimas = new HashSet<ReporteDelClima>(0);
 
 	public Ciudad() {
 	}
@@ -28,12 +38,15 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	public Ciudad(int id, String nombre, String pais, Double longitud, Double latitud) {
+	public Ciudad(int id, String nombre, String pais, BigDecimal latitud, BigDecimal longitud, Set<Usuario> usuarios,
+			Set<ReporteDelClima> reporteDelClimas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
-		this.longitud = longitud;
 		this.latitud = latitud;
+		this.longitud = longitud;
+		this.usuarios = usuarios;
+		this.reporteDelClimas = reporteDelClimas;
 	}
 
 	@Id
@@ -65,22 +78,43 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	@Column(name = "Longitud", precision = 53, scale = 0)
-	public Double getLongitud() {
-		return this.longitud;
-	}
-
-	public void setLongitud(Double longitud) {
-		this.longitud = longitud;
-	}
-
-	@Column(name = "Latitud", precision = 53, scale = 0)
-	public Double getLatitud() {
+	@Column(name = "Latitud", precision = 9, scale = 6)
+	public BigDecimal getLatitud() {
 		return this.latitud;
 	}
 
-	public void setLatitud(Double latitud) {
+	public void setLatitud(BigDecimal latitud) {
 		this.latitud = latitud;
+	}
+
+	@Column(name = "Longitud", precision = 9, scale = 6)
+	public BigDecimal getLongitud() {
+		return this.longitud;
+	}
+
+	public void setLongitud(BigDecimal longitud) {
+		this.longitud = longitud;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
+			@JoinColumn(name = "CiudadId", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) })
+	public Set<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")
+	public Set<ReporteDelClima> getReporteDelClimas() {
+		return this.reporteDelClimas;
+	}
+
+	public void setReporteDelClimas(Set<ReporteDelClima> reporteDelClimas) {
+		this.reporteDelClimas = reporteDelClimas;
 	}
 
 }

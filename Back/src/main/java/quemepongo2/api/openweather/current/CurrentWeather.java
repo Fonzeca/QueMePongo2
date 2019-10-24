@@ -1,4 +1,4 @@
-package main.java.quemepongo2.api.pojo.current;
+package main.java.quemepongo2.api.openweather.current;
 
 import java.util.ArrayList;
 
@@ -15,6 +15,7 @@ public class CurrentWeather {
 	private CloudsWeather clouds;
 	private int dt;
 	private SysWeather sys;
+	private String timezone;
 	private int id;
 	private String name;
 	private int cod;
@@ -90,5 +91,11 @@ public class CurrentWeather {
 	}
 	public void setCod(int cod) {
 		this.cod = cod;
+	}
+	public String getTimezone() {
+		return timezone;
+	}
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
 	}
 }

@@ -1,4 +1,4 @@
-package main.java.quemepongo2.api.pojo.current;
+package main.java.quemepongo2.api.openweather.current;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

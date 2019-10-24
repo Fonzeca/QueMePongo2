@@ -1,8 +1,8 @@
-package main.java.quemepongo2.api.pojo.forecast;
+package main.java.quemepongo2.api.openweather.forecast;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import main.java.quemepongo2.api.pojo.current.CoordWeather;
+import main.java.quemepongo2.api.openweather.current.CoordWeather;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class City {

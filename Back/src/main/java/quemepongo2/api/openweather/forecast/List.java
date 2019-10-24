@@ -1,14 +1,14 @@
-package main.java.quemepongo2.api.pojo.forecast;
+package main.java.quemepongo2.api.openweather.forecast;
 
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import main.java.quemepongo2.api.pojo.current.CloudsWeather;
-import main.java.quemepongo2.api.pojo.current.MainWeather;
-import main.java.quemepongo2.api.pojo.current.SysWeather;
-import main.java.quemepongo2.api.pojo.current.Weather;
-import main.java.quemepongo2.api.pojo.current.WindWeather;
+import main.java.quemepongo2.api.openweather.current.CloudsWeather;
+import main.java.quemepongo2.api.openweather.current.MainWeather;
+import main.java.quemepongo2.api.openweather.current.SysWeather;
+import main.java.quemepongo2.api.openweather.current.Weather;
+import main.java.quemepongo2.api.openweather.current.WindWeather;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class List {

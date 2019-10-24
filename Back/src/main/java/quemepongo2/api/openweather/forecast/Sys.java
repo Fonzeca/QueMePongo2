@@ -1,4 +1,4 @@
-package main.java.quemepongo2.api.pojo.forecast;
+package main.java.quemepongo2.api.openweather.forecast;
 
 public class Sys {
 	private String pod;

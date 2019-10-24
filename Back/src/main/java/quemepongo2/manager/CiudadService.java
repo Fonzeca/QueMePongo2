@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 
-import main.java.quemepongo2.api.pojo.forecast.City;
+import main.java.quemepongo2.api.openweather.forecast.City;
 import main.java.quemepongo2.model.Ciudad;
 import main.java.quemepongo2.persistence.CiudadRepository;
 import main.java.quemepongo2.persistence.IDaoInterface;

@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 16-oct-2019 12:54:32 by Hibernate Tools 4.3.5.Final
+// Generated 23-oct-2019 23:34:42 by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,9 +25,8 @@ public class Usuario implements java.io.Serializable {
 	private Integer id;
 	private String clave;
 	private String usuario;
-	private Double latitud;
-	private Double longitud;
 	private Set<Preferencias> preferenciases = new HashSet<Preferencias>(0);
+	private Set<Ciudad> ciudads = new HashSet<Ciudad>(0);
 
 	public Usuario() {
 	}
@@ -34,12 +36,11 @@ public class Usuario implements java.io.Serializable {
 		this.usuario = usuario;
 	}
 
-	public Usuario(String clave, String usuario, Double latitud, Double longitud, Set<Preferencias> preferenciases) {
+	public Usuario(String clave, String usuario, Set<Preferencias> preferenciases, Set<Ciudad> ciudads) {
 		this.clave = clave;
 		this.usuario = usuario;
-		this.latitud = latitud;
-		this.longitud = longitud;
 		this.preferenciases = preferenciases;
+		this.ciudads = ciudads;
 	}
 
 	@Id
@@ -72,24 +73,6 @@ public class Usuario implements java.io.Serializable {
 		this.usuario = usuario;
 	}
 
-	@Column(name = "Latitud", precision = 53, scale = 0)
-	public Double getLatitud() {
-		return this.latitud;
-	}
-
-	public void setLatitud(Double latitud) {
-		this.latitud = latitud;
-	}
-
-	@Column(name = "Longitud", precision = 53, scale = 0)
-	public Double getLongitud() {
-		return this.longitud;
-	}
-
-	public void setLongitud(Double longitud) {
-		this.longitud = longitud;
-	}
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
 	public Set<Preferencias> getPreferenciases() {
 		return this.preferenciases;
@@ -97,6 +80,18 @@ public class Usuario implements java.io.Serializable {
 
 	public void setPreferenciases(Set<Preferencias> preferenciases) {
 		this.preferenciases = preferenciases;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
+			@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "CiudadId", nullable = false, updatable = false) })
+	public Set<Ciudad> getCiudads() {
+		return this.ciudads;
+	}
+
+	public void setCiudads(Set<Ciudad> ciudads) {
+		this.ciudads = ciudads;
 	}
 
 }
