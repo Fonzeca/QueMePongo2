@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.s21.quemepongo2front.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:name="com.s21.quemepongo2front.ui.agregar_usuario.UsuarioFragment"
+        android:label="@string/menu_agregar_usuario"
+        tools:layout="@layout/fragment_agregar_usuario" />
 </navigation>

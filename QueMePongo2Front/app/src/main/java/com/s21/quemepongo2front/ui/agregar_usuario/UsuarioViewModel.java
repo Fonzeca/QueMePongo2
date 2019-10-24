@@ -1,16 +1,16 @@
-package com.s21.quemepongo2front.ui.send;
+package com.s21.quemepongo2front.ui.agregar_usuario;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SendViewModel extends ViewModel {
+public class UsuarioViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SendViewModel() {
+    public UsuarioViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is send fragment");
+        mText.setValue("este es el Menu para agregar usuario");
     }
 
     public LiveData<String> getText() {

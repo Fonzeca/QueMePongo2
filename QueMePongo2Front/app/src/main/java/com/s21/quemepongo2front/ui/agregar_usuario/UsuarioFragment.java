@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.send;
+package com.s21.quemepongo2front.ui.agregar_usuario;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,18 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.s21.quemepongo2front.R;
 
-public class SendFragment extends Fragment {
+public class UsuarioFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private UsuarioViewModel usuarioViewModel
+            ;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        usuarioViewModel =
+                ViewModelProviders.of(this).get(UsuarioViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_agregar_usuario, container, false);
+        final TextView textView = root.findViewById(R.id.textView2);
+        usuarioViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
