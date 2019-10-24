@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.slideshow;
+package com.s21.quemepongo2front.ui.objetos_personales;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.s21.quemepongo2front.R;
 
-public class SlideshowFragment extends Fragment {
+public class ObjetosPersonalesFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private ObjetosViewModel objetosViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(this, new Observer<String>() {
+        objetosViewModel =
+                ViewModelProviders.of(this).get(ObjetosViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_objetos, container, false);
+        final TextView textView = root.findViewById(R.id.text_gallery);
+        objetosViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

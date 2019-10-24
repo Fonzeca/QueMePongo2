@@ -12,16 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.s21.quemepongo2front.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.s21.quemepongo2front.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_objetos_personales"
+        android:name="com.s21.quemepongo2front.ui.objetos_personales.ObjetosPersonalesFragment"
+        android:label="@string/menu_objetos_personales"
+        tools:layout="@layout/fragment_objetos" />
 
     <fragment
         android:id="@+id/nav_tools"
