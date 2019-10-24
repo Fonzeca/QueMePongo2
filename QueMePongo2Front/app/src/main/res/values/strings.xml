@@ -17,5 +17,4 @@
     <string name="txt_agregar_usuario">Bienvenido presiona el boton para agregar un usuario</string>
     <string name="title_activity_usuariologin">usuario inicio</string>
     <string name="txt_usuario">Usuario</string>
-    <string name="campoPassword">Constraseña</string>
 </resources>
