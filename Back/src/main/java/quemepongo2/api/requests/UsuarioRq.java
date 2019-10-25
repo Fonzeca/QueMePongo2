@@ -1,6 +1,6 @@
 package main.java.quemepongo2.api.requests;
 
-public class UsuarioModel{
+public class UsuarioRq{
 	private String usuario, clave;
 
 	public String getUsuario() {
@@ -18,4 +18,5 @@ public class UsuarioModel{
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
+	
 }

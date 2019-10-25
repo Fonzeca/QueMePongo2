@@ -1,6 +1,6 @@
 package main.java.quemepongo2.api.requests;
 
-public class LoginModel {
+public class LoginRq {
 	private String usuario,clave;
 
 	public String getUsuario() {
