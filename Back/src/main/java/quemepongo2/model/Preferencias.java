@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 23-oct-2019 23:34:42 by Hibernate Tools 4.3.5.Final
+// Generated 24-oct-2019 23:31:54 by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

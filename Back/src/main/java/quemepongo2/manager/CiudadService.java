@@ -27,4 +27,9 @@ public class CiudadService implements IDaoInterface<Ciudad>{
 		return repo.getOne(id);
 	}
 	
+//	public List<Ciudad> getByLikeNombre(String q){
+//		repo.
+//		
+//	}
+//	
 }

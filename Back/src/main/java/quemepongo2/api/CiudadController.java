@@ -14,10 +14,19 @@ public class CiudadController {
 	@Autowired
 	private CiudadService repo;
 	
-	@GetMapping("/getCiudadById")
+	@GetMapping("/ObtenerCiudad")
 	public String getCiduadById(@RequestParam int id) {
 		Ciudad c = repo.getById(id);
 		
 		return c.getNombre() + " " + c.getPais() + " " + c.getLatitud() + " " + c.getLongitud();
 	}
+	
+	
+//	@GetMapping("/ObtenerCiudad")
+//	public CiudadRs getCiudadByName(@RequestParam String q) {
+//		repo.
+//		
+//		return null;
+//	}
+	
 }
