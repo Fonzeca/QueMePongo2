@@ -1,10 +1,12 @@
 package main.java.quemepongo2.manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.java.quemepongo2.api.responses.CiudadRs;
 import main.java.quemepongo2.model.Ciudad;
 import main.java.quemepongo2.persistence.CiudadRepository;
 import main.java.quemepongo2.persistence.IDaoInterface;
@@ -27,9 +29,16 @@ public class CiudadService implements IDaoInterface<Ciudad>{
 		return repo.getOne(id);
 	}
 	
-//	public List<Ciudad> getByLikeNombre(String q){
-//		repo.
-//		
-//	}
-//	
+	public List<CiudadRs> getByLikeNombre(String q){
+		List<CiudadRs> ciudadesRs = new ArrayList<>();
+		
+		List<Ciudad> ciudades = repo.searchCiudadLikeName(q); 
+		
+		for (Ciudad ciudad : ciudades) {
+			ciudadesRs.add(new CiudadRs(ciudad));
+		}
+		
+		return ciudadesRs;
+	}
+	
 }
