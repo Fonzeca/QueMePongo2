@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3728cda0-4eca-4b8c-9b9c-d009f45d10a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/androidTest/java/com/s21/quemepongo2/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/gallery/GalleryFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/gallery/GalleryViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/home/HomeFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/home/HomeViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/share/ShareFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/share/ShareViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/slideshow/SlideshowFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/slideshow/SlideshowViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/tools/ToolsFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/java/com/s21/quemepongo2/ui/tools/ToolsViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_menu_camera.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_menu_gallery.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_menu_manage.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_menu_share.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_menu_slideshow.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_qmp.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_ropa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/ic_temp.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/drawable/side_nav_bar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/content_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/fragment_gallery.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/fragment_home.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/fragment_send.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/fragment_share.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/fragment_slideshow.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/fragment_tools.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/menu/main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/values-v21/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/app/src/test/java/com/s21/quemepongo2/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quemepongo2_front/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="1400" />
+    <option name="height" value="997" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="QueMePongo2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QueMePongo2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QueMePongo2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QueMePongo2" type="462c0819:PsiDirectoryNode" />
+              <item name="QueMePongo2Front" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/QueMePongo2Front" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Jere\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3728cda0-4eca-4b8c-9b9c-d009f45d10a7" name="Default Changelist" comment="" />
+      <created>1571923178062</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571923178062</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32982087" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+</project>
