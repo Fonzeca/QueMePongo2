@@ -7,14 +7,16 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Inicio</string>
     <string name="menu_objetos_personales">Objetos Personales</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_agregar_usuario">Nuevo usuario</string>
     <string name="communicate">Compartir</string>
-    <string name="txt_agregar_usuario">Bienvenido presiona el boton para agregar un usuario</string>
+    <string name="txt_agregar_usuario">Bienvenido presiona el botón para agregar un usuario</string>
     <string name="title_activity_usuariologin">usuario inicio</string>
     <string name="txt_usuario">Usuario</string>
+    <string name="ipApi">http://181.31.108.164:5599</string>
+    <string name="temperaturaActual"></string>
 </resources>
