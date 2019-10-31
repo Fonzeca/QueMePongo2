@@ -3,7 +3,6 @@ package com.s21.quemepongo2front;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String urlS = getString(R.string.ipApi)+"/Pronostico?IdCiudad=3860259";
+                    String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
                     JSONObject jsonObject= new JSONObject(readUrl(urlS));
 
                     String temp = jsonObject.get("temperatura").toString();
@@ -82,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
                     temp_actual.setText(temperatura+"℃");
                     TextView ubicacion = findViewById(R.id.textViewUbicacion);
                     ubicacion.setText("Ubicacion: "+nombre);
-                    Log.w("temperatura actual>",temperatura);
-                    Log.w("CIUDAD ACTUAL",nombre);
-
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

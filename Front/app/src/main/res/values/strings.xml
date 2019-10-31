@@ -19,4 +19,5 @@
     <string name="txt_usuario">Usuario</string>
     <string name="ipApi">http://181.31.108.164:5599</string>
     <string name="temperaturaActual"></string>
+    <string name="json_pronostico">/Pronostico?IdCiudad=3860259</string>
 </resources>
