@@ -1,12 +1,14 @@
 package main.java.quemepongo2.api.responses;
 
 import main.java.quemepongo2.api.openweather.current.CurrentWeather;
+import main.java.quemepongo2.api.openweather.current.WindWeather;
 
 public class ClimaActualRs {
 	
 	private int ciudadId;
 	private String ciudadNombre;
-	private double temperatura;
+	private double temperatura, viento, humedad;
+	
 	
 	public ClimaActualRs() {
 	}
@@ -15,6 +17,8 @@ public class ClimaActualRs {
 		temperatura = weather.getMain().getTemp();
 		ciudadId = weather.getId();
 		ciudadNombre = weather.getName();
+		viento=weather.getWind().getSpeed();
+		humedad=weather.getMain().getHumidity();
 	}
 	
 	
@@ -37,5 +41,21 @@ public class ClimaActualRs {
 
 	public void setTemperatura(double temperatura) {
 		this.temperatura = temperatura;
+	}
+
+	public double getViento() {
+		return viento;
+	}
+
+	public void setViento(double wind) {
+		this.viento = wind;
+	}
+
+	public double getHumedad() {
+		return humedad;
+	}
+
+	public void setHumedad(double humedad) {
+		this.humedad = humedad;
 	}
 }

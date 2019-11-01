@@ -24,10 +24,6 @@ public class UsuarioController {
 	
 	@PostMapping("/Login")
 	public LoginRs login(@RequestBody LoginRq logBody) {
-		int id = repo.validateLogin(logBody);
-		
-		LoginRs rs = new LoginRs(id);
-		
-		return rs;
+		return repo.validateLogin(logBody);
 	}
 }

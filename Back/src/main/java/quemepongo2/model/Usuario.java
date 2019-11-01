@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -28,10 +27,10 @@ public class Usuario implements java.io.Serializable {
 	private Integer id;
 	private String clave;
 	private String usuario;
-	private Set<Preferencias> preferenciases = new HashSet<Preferencias>(0);
+	
 	private Set<Ciudad> ciudads = new HashSet<Ciudad>(0);
 	private Set<Ciudad> ciudads_1 = new HashSet<Ciudad>(0);
-	private Set<Preferencias> preferenciases_1 = new HashSet<Preferencias>(0);
+	private boolean tieneBufanda, tieneLentes,tieneParaguas,tieneProtectorSolar;
 
 	public Usuario() {
 	}
@@ -39,16 +38,6 @@ public class Usuario implements java.io.Serializable {
 	public Usuario(String usuario, String clave) {
 		this.usuario = usuario;
 		this.clave = clave;
-	}
-
-	public Usuario(String clave, String usuario, Set<Preferencias> preferenciases, Set<Ciudad> ciudads,
-			Set<Ciudad> ciudads_1, Set<Preferencias> preferenciases_1) {
-		this.clave = clave;
-		this.usuario = usuario;
-		this.preferenciases = preferenciases;
-		this.ciudads = ciudads;
-		this.ciudads_1 = ciudads_1;
-		this.preferenciases_1 = preferenciases_1;
 	}
 
 	@Id
@@ -80,16 +69,6 @@ public class Usuario implements java.io.Serializable {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<Preferencias> getPreferenciases() {
-		return this.preferenciases;
-	}
-
-	public void setPreferenciases(Set<Preferencias> preferenciases) {
-		this.preferenciases = preferenciases;
-	}
-
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
 			@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) }, inverseJoinColumns = {
@@ -114,13 +93,37 @@ public class Usuario implements java.io.Serializable {
 		this.ciudads_1 = ciudads_1;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<Preferencias> getPreferenciases_1() {
-		return this.preferenciases_1;
+	@Column(name = "TieneBufanda", nullable = false)
+	public boolean getTieneBufanda() {
+		return tieneBufanda;
 	}
 
-	public void setPreferenciases_1(Set<Preferencias> preferenciases_1) {
-		this.preferenciases_1 = preferenciases_1;
+	public void setTieneBufanda(boolean tieneBufanda) {
+		this.tieneBufanda = tieneBufanda;
+	}
+	@Column(name = "TieneLentes", nullable = false)
+	public boolean getTieneLentes() {
+		return tieneLentes;
+	}
+
+	public void setTieneLentes(boolean tieneLentes) {
+		this.tieneLentes = tieneLentes;
+	}
+	@Column(name = "TieneParaguas", nullable = false)
+	public boolean getTieneParaguas() {
+		return tieneParaguas;
+	}
+
+	public void setTieneParaguas(boolean tieneParaguas) {
+		this.tieneParaguas = tieneParaguas;
+	}
+	@Column(name = "TieneProtectorSolar", nullable = false)
+	public boolean getTieneProtectorSolar() {
+		return tieneProtectorSolar;
+	}
+
+	public void setTieneProtectorSolar(boolean tieneProtectorSolar) {
+		this.tieneProtectorSolar = tieneProtectorSolar;
 	}
 
 }
