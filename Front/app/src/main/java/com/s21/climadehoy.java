@@ -3,7 +3,8 @@ package com.s21;
 public class climadehoy {
     private int idCiudad;
     private String ciudadNombre;
-    private float temperatura;
+    private double temperatura, viento, humedad;
+
     public int getIdCiudad() {
         return idCiudad;
     }
@@ -20,7 +21,7 @@ public class climadehoy {
         this.ciudadNombre = ciudadNombre;
     }
 
-    public float getTemperatura() {
+    public double getTemperatura() {
         return temperatura;
     }
 
@@ -29,7 +30,7 @@ public class climadehoy {
     }
 
 
-    public climadehoy(int idCiudad, String ciudadNombre, float temperatura) {
+    public climadehoy(int idCiudad, String ciudadNombre, double temperatura) {
         this.idCiudad = idCiudad;
         this.ciudadNombre
                 =ciudadNombre;

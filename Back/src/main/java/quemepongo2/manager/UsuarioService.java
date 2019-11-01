@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import main.java.quemepongo2.api.requests.LoginRq;
 import main.java.quemepongo2.api.requests.UsuarioRq;
+import main.java.quemepongo2.api.responses.LoginRs;
 import main.java.quemepongo2.model.Usuario;
 import main.java.quemepongo2.persistence.IDaoInterface;
 import main.java.quemepongo2.persistence.UsuarioRepository;
@@ -29,15 +30,14 @@ public class UsuarioService implements IDaoInterface<Usuario>{
 		repo.save(entity);
 	}
 	
-	public int validateLogin(LoginRq loginRq) {
+	public LoginRs validateLogin(LoginRq loginRq) {
 		Usuario user = repo.searchByUsuario(loginRq.getUsuario());
-		
 		if(user == null || !user.getClave().equals(cifrarClave(loginRq.getClave())) ) {
 			throw new RuntimeException("Usuario y/o clave incorrectos.");
 		}
 		
-		
-		return user.getId();
+		LoginRs log = new LoginRs(user);
+		return log;
 	}
 	
 	public void saveNewUser(UsuarioRq userRq) {
