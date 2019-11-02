@@ -28,7 +28,7 @@ public class usuariologin extends AppCompatActivity {
 
     public void agregarusuario(View v){
             Intent gohome = new Intent(this, MainActivity.class);
-        Toast.makeText(this, "Se agrego el usuario a la base de datos", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Se agregó el usuario a la base de datos", Toast.LENGTH_SHORT).show();
         startActivity(gohome);
     }
 }

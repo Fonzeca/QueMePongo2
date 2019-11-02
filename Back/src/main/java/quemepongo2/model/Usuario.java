@@ -30,7 +30,7 @@ public class Usuario implements java.io.Serializable {
 	
 	private Set<Ciudad> ciudads = new HashSet<Ciudad>(0);
 	private Set<Ciudad> ciudads_1 = new HashSet<Ciudad>(0);
-	private boolean tieneBufanda, tieneLentes,tieneParaguas,tieneProtectorSolar;
+	private boolean tieneBufanda, tieneLentes,tieneParaguas,tieneProtectorSolar,tieneGorra;
 
 	public Usuario() {
 	}
@@ -124,6 +124,15 @@ public class Usuario implements java.io.Serializable {
 
 	public void setTieneProtectorSolar(boolean tieneProtectorSolar) {
 		this.tieneProtectorSolar = tieneProtectorSolar;
+	}
+
+	@Column(name="TieneGorra", nullable=false)
+	public boolean getTieneGorra() {
+		return tieneGorra;
+	}
+
+	public void setTieneGorra(boolean tieneGorra) {
+		this.tieneGorra = tieneGorra;
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.s21;
+package com.s21.quemepongo2front;
 
 public class climadehoy {
     private int idCiudad;

@@ -9,7 +9,7 @@ public class LoginRs {
 
 	public LoginRs(Usuario user) {
 		this.id = user.getId();
-		this.preferenciaRs= new PreferenciaRs(user.getTieneBufanda(),user.getTieneLentes(),user.getTieneParaguas(),user.getTieneProtectorSolar());
+		this.preferenciaRs= new PreferenciaRs(user.getTieneBufanda(),user.getTieneLentes(),user.getTieneParaguas(),user.getTieneProtectorSolar(),user.getTieneGorra());
 	}
 
 	public int getId() {
