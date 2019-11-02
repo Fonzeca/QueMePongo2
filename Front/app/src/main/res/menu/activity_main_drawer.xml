@@ -14,7 +14,7 @@
             android:title="@string/menu_objetos_personales" />
         <item
             android:id="@+id/nav_ubicaciones"
-            android:icon="@mipmap/ic_ubicaciones"
+            android:icon="@mipmap/ic_varias_ubicacioens"
             android:title="@string/menu_ubicaciones" />
         <item
             android:id="@+id/nav_nuevo_usuario"
