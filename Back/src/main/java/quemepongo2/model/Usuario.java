@@ -1,15 +1,13 @@
 package main.java.quemepongo2.model;
-// Generated 24-oct-2019 23:31:54 by Hibernate Tools 4.3.5.Final
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated 02-nov-2019 2:10:46 by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -27,17 +25,39 @@ public class Usuario implements java.io.Serializable {
 	private Integer id;
 	private String clave;
 	private String usuario;
-	
+	private boolean tieneBufanda;
+	private boolean tieneLentes;
+	private boolean tieneParaguas;
+	private boolean tieneProtectorSolar;
+	private boolean tieneGorra;
 	private Set<Ciudad> ciudads = new HashSet<Ciudad>(0);
 	private Set<Ciudad> ciudads_1 = new HashSet<Ciudad>(0);
-	private boolean tieneBufanda, tieneLentes,tieneParaguas,tieneProtectorSolar,tieneGorra;
 
 	public Usuario() {
 	}
 
-	public Usuario(String usuario, String clave) {
-		this.usuario = usuario;
+	public Usuario(String clave, String usuario, boolean tieneBufanda, boolean tieneLentes, boolean tieneParaguas,
+			boolean tieneProtectorSolar, boolean tieneGorra) {
 		this.clave = clave;
+		this.usuario = usuario;
+		this.tieneBufanda = tieneBufanda;
+		this.tieneLentes = tieneLentes;
+		this.tieneParaguas = tieneParaguas;
+		this.tieneProtectorSolar = tieneProtectorSolar;
+		this.tieneGorra = tieneGorra;
+	}
+
+	public Usuario(String clave, String usuario, boolean tieneBufanda, boolean tieneLentes, boolean tieneParaguas,
+			boolean tieneProtectorSolar, boolean tieneGorra, Set<Ciudad> ciudads, Set<Ciudad> ciudads_1) {
+		this.clave = clave;
+		this.usuario = usuario;
+		this.tieneBufanda = tieneBufanda;
+		this.tieneLentes = tieneLentes;
+		this.tieneParaguas = tieneParaguas;
+		this.tieneProtectorSolar = tieneProtectorSolar;
+		this.tieneGorra = tieneGorra;
+		this.ciudads = ciudads;
+		this.ciudads_1 = ciudads_1;
 	}
 
 	@Id
@@ -69,6 +89,52 @@ public class Usuario implements java.io.Serializable {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+
+	@Column(name = "TieneBufanda", nullable = false)
+	public boolean isTieneBufanda() {
+		return this.tieneBufanda;
+	}
+
+	public void setTieneBufanda(boolean tieneBufanda) {
+		this.tieneBufanda = tieneBufanda;
+	}
+
+	@Column(name = "TieneLentes", nullable = false)
+	public boolean isTieneLentes() {
+		return this.tieneLentes;
+	}
+
+	public void setTieneLentes(boolean tieneLentes) {
+		this.tieneLentes = tieneLentes;
+	}
+
+	@Column(name = "TieneParaguas", nullable = false)
+	public boolean isTieneParaguas() {
+		return this.tieneParaguas;
+	}
+
+	public void setTieneParaguas(boolean tieneParaguas) {
+		this.tieneParaguas = tieneParaguas;
+	}
+
+	@Column(name = "TieneProtectorSolar", nullable = false)
+	public boolean isTieneProtectorSolar() {
+		return this.tieneProtectorSolar;
+	}
+
+	public void setTieneProtectorSolar(boolean tieneProtectorSolar) {
+		this.tieneProtectorSolar = tieneProtectorSolar;
+	}
+
+	@Column(name = "TieneGorra", nullable = false)
+	public boolean isTieneGorra() {
+		return this.tieneGorra;
+	}
+
+	public void setTieneGorra(boolean tieneGorra) {
+		this.tieneGorra = tieneGorra;
+	}
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
 			@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) }, inverseJoinColumns = {
@@ -91,48 +157,6 @@ public class Usuario implements java.io.Serializable {
 
 	public void setCiudads_1(Set<Ciudad> ciudads_1) {
 		this.ciudads_1 = ciudads_1;
-	}
-
-	@Column(name = "TieneBufanda", nullable = false)
-	public boolean getTieneBufanda() {
-		return tieneBufanda;
-	}
-
-	public void setTieneBufanda(boolean tieneBufanda) {
-		this.tieneBufanda = tieneBufanda;
-	}
-	@Column(name = "TieneLentes", nullable = false)
-	public boolean getTieneLentes() {
-		return tieneLentes;
-	}
-
-	public void setTieneLentes(boolean tieneLentes) {
-		this.tieneLentes = tieneLentes;
-	}
-	@Column(name = "TieneParaguas", nullable = false)
-	public boolean getTieneParaguas() {
-		return tieneParaguas;
-	}
-
-	public void setTieneParaguas(boolean tieneParaguas) {
-		this.tieneParaguas = tieneParaguas;
-	}
-	@Column(name = "TieneProtectorSolar", nullable = false)
-	public boolean getTieneProtectorSolar() {
-		return tieneProtectorSolar;
-	}
-
-	public void setTieneProtectorSolar(boolean tieneProtectorSolar) {
-		this.tieneProtectorSolar = tieneProtectorSolar;
-	}
-
-	@Column(name="TieneGorra", nullable=false)
-	public boolean getTieneGorra() {
-		return tieneGorra;
-	}
-
-	public void setTieneGorra(boolean tieneGorra) {
-		this.tieneGorra = tieneGorra;
 	}
 
 }

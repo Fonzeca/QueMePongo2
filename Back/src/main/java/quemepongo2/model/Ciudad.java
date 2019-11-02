@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 24-oct-2019 23:31:54 by Hibernate Tools 4.3.5.Final
+// Generated 02-nov-2019 2:10:46 by Hibernate Tools 4.3.5.Final
 
 import java.math.BigDecimal;
 import java.util.HashSet;
