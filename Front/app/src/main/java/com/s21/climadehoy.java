@@ -30,10 +30,12 @@ public class climadehoy {
     }
 
 
-    public climadehoy(int idCiudad, String ciudadNombre, double temperatura) {
+    public climadehoy(int idCiudad, String ciudadNombre, double temperatura, double viento, double humedad) {
         this.idCiudad = idCiudad;
         this.ciudadNombre
                 =ciudadNombre;
         this.temperatura=temperatura;
+        this.viento=viento;
+        this.humedad=humedad;
     }
 }
