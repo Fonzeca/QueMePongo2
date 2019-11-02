@@ -1,6 +1,7 @@
 package com.s21.quemepongo2front;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
