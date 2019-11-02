@@ -71,18 +71,18 @@ public class HomeFragment extends Fragment {
 
                     temperatura = jsonObject.get("temperatura").toString();
                     nombre = jsonObject.get("ciudadNombre").toString();
-
-                    // viento= jsonObject.get("viento").toString();
-                    //humedad=jsonObject.get("humedad").toString();
+//                    viento= jsonObject.get("viento").toString();
+//                    humedad=jsonObject.get("humedad").toString();
                     TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
                     temp_actual.setText(temperatura+"℃");
                     TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                    ubicacion.setText("Ubicacion: "+nombre);
-                    // TextView viento =findViewById(R.id.textViento);
-                    // viento.setText("Viento: "+viento+" km/h");
+                    ubicacion.setText(getText(R.string.ubicacion)+nombre);
 
-                    TextView textHumedad=getView().findViewById(R.id.textHumedad);
-                    textHumedad.setText("Humedad: "+humedad+"%");
+//                    TextView viento =getView().findViewById(R.id.textViento);
+//                    viento.setText("Viento: "+viento+" m/s");
+
+//                    TextView textHumedad=getView().findViewById(R.id.textHumedad);
+//                    textHumedad.setText("Humedad: "+humedad+"%");
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

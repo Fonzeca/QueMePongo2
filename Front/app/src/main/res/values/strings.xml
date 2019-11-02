@@ -39,6 +39,6 @@
 
     //main_activity strings
     <string name="temperatura_actual">Temperatura actual</string>
-    <string name="ubicacion_cordoba_centro">Ubicacion: Cordoba, Centro</string>
+    <string name="ubicacion">Ubicacion: </string>
     <string name="txt_temperatura_actual">Temperatura Actual</string>
 </resources>
