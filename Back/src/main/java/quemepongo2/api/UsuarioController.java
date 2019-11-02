@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import main.java.quemepongo2.api.requests.UsuarioModel;
+import main.java.quemepongo2.api.requests.LoginRq;
+import main.java.quemepongo2.api.requests.UsuarioRq;
+import main.java.quemepongo2.api.responses.LoginRs;
 import main.java.quemepongo2.manager.UsuarioService;
-import main.java.quemepongo2.model.Usuario;
 
 @RestController
 public class UsuarioController {
@@ -15,10 +16,14 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService repo;
 	
-	@PostMapping("/usuario")
-	public void createUsuario(@RequestBody UsuarioModel user) {
-		Usuario us = new Usuario(user.getUsuario(), user.getClave());
+	@PostMapping("/CrearUsuario")
+	public void createUsuario(@RequestBody UsuarioRq user){
+		repo.saveNewUser(user);
 		
-		repo.save(us);
+	}
+	
+	@PostMapping("/Login")
+	public LoginRs login(@RequestBody LoginRq logBody) {
+		return repo.validateLogin(logBody);
 	}
 }

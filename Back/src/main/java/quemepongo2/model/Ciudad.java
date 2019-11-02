@@ -1,9 +1,17 @@
 package main.java.quemepongo2.model;
-// Generated 16-oct-2019 12:54:32 by Hibernate Tools 4.3.5.Final
+// Generated 24-oct-2019 23:31:54 by Hibernate Tools 4.3.5.Final
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -16,8 +24,12 @@ public class Ciudad implements java.io.Serializable {
 	private int id;
 	private String nombre;
 	private String pais;
-	private Double longitud;
-	private Double latitud;
+	private BigDecimal latitud;
+	private BigDecimal longitud;
+	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+	private Set<ReporteDelClima> reporteDelClimas = new HashSet<ReporteDelClima>(0);
+	private Set<ReporteDelClima> reporteDelClimas_1 = new HashSet<ReporteDelClima>(0);
+	private Set<Usuario> usuarios_1 = new HashSet<Usuario>(0);
 
 	public Ciudad() {
 	}
@@ -28,12 +40,17 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	public Ciudad(int id, String nombre, String pais, Double longitud, Double latitud) {
+	public Ciudad(int id, String nombre, String pais, BigDecimal latitud, BigDecimal longitud, Set<Usuario> usuarios,
+			Set<ReporteDelClima> reporteDelClimas, Set<ReporteDelClima> reporteDelClimas_1, Set<Usuario> usuarios_1) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
-		this.longitud = longitud;
 		this.latitud = latitud;
+		this.longitud = longitud;
+		this.usuarios = usuarios;
+		this.reporteDelClimas = reporteDelClimas;
+		this.reporteDelClimas_1 = reporteDelClimas_1;
+		this.usuarios_1 = usuarios_1;
 	}
 
 	@Id
@@ -65,22 +82,64 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	@Column(name = "Longitud", precision = 53, scale = 0)
-	public Double getLongitud() {
-		return this.longitud;
-	}
-
-	public void setLongitud(Double longitud) {
-		this.longitud = longitud;
-	}
-
-	@Column(name = "Latitud", precision = 53, scale = 0)
-	public Double getLatitud() {
+	@Column(name = "Latitud", precision = 9, scale = 6)
+	public BigDecimal getLatitud() {
 		return this.latitud;
 	}
 
-	public void setLatitud(Double latitud) {
+	public void setLatitud(BigDecimal latitud) {
 		this.latitud = latitud;
+	}
+
+	@Column(name = "Longitud", precision = 9, scale = 6)
+	public BigDecimal getLongitud() {
+		return this.longitud;
+	}
+
+	public void setLongitud(BigDecimal longitud) {
+		this.longitud = longitud;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
+			@JoinColumn(name = "CiudadId", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) })
+	public Set<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")
+	public Set<ReporteDelClima> getReporteDelClimas() {
+		return this.reporteDelClimas;
+	}
+
+	public void setReporteDelClimas(Set<ReporteDelClima> reporteDelClimas) {
+		this.reporteDelClimas = reporteDelClimas;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")
+	public Set<ReporteDelClima> getReporteDelClimas_1() {
+		return this.reporteDelClimas_1;
+	}
+
+	public void setReporteDelClimas_1(Set<ReporteDelClima> reporteDelClimas_1) {
+		this.reporteDelClimas_1 = reporteDelClimas_1;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
+			@JoinColumn(name = "CiudadId", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) })
+	public Set<Usuario> getUsuarios_1() {
+		return this.usuarios_1;
+	}
+
+	public void setUsuarios_1(Set<Usuario> usuarios_1) {
+		this.usuarios_1 = usuarios_1;
 	}
 
 }

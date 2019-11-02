@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front;
+<package com.s21.quemepongo2front;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -33,14 +33,16 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     Button botonlogin,botonhome;
-    String temperatura;
-    String nombre;
+    String temperatura,  nombre,  viento,humedad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         temperatura=new String();
         nombre=new String();
+        viento=new String();
+        humedad=new String();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+
+
+
+
+
+        //TODO: QUE VERGA ES ESTO JEREMIAS.
+
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -65,7 +77,20 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //TODO: No hardcodear la dirección ip.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -73,14 +98,22 @@ public class MainActivity extends AppCompatActivity {
                     String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
                     JSONObject jsonObject= new JSONObject(readUrl(urlS));
 
-                    String temp = jsonObject.get("temperatura").toString();
-                    String ciudad = jsonObject.get("ciudadNombre").toString();
-                    temperatura=temp;
-                    nombre=ciudad;
+                    temperatura = jsonObject.get("temperatura").toString();
+                    nombre = jsonObject.get("ciudadNombre").toString();
+                    viento= jsonObject.get("viento").toString();
+                    humedad=jsonObject.get("humedad").toString();
+
+
                     TextView temp_actual = findViewById(R.id.temperatura_actual);
                     temp_actual.setText(temperatura+"℃");
                     TextView ubicacion = findViewById(R.id.textViewUbicacion);
                     ubicacion.setText("Ubicacion: "+nombre);
+                    TextView viento =findViewById(R.id.textViento);
+                    //TODO: comprobar  si realmente trae los datos en km/h
+                    viento.setText("Viento: "+viento+" km/h");
+
+                    TextView textHumedad=findViewById(R.id.textHumedad);
+                    textHumedad.setText("Humedad: "+humedad+"%");
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

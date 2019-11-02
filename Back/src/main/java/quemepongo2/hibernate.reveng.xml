@@ -7,13 +7,10 @@
 			hibernate-type='java.lang.String'>
 		</sql-type>
 	</type-mapping>
-	<table-filter match-name="Usuario" match-catalog="QueMePongo2"
-		match-schema="dbo">
+	<table-filter match-catalog="QueMePongo2" match-schema="dbo"
+		match-name=".*">
 	</table-filter>
-	<table-filter match-name="Ciudad" match-catalog="QueMePongo2"
-		match-schema="dbo">
-	</table-filter>
-	<table-filter match-name="Preferencias" match-catalog="QueMePongo2"
-		match-schema="dbo">
+	<table-filter match-name="sysdiagrams" match-catalog="QueMePongo2"
+		match-schema="dbo" exclude="true">
 	</table-filter>
 </hibernate-reverse-engineering>
