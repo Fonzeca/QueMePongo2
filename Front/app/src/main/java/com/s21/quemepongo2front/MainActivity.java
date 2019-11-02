@@ -1,8 +1,9 @@
-<package com.s21.quemepongo2front;
+package com.s21.quemepongo2front;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.s21.quemepongo2front.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,12 +40,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        temperatura=new String();
-        nombre=new String();
-        viento=new String();
-        humedad=new String();
-
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -57,17 +56,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-
-
-
-
-
-        //TODO: QUE VERGA ES ESTO JEREMIAS.
-
-
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        //Inicializar el navigation `
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_objetos_personales,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_nuevo_usuario)
@@ -83,49 +72,41 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-        AsyncTask.execute(new Runnable() {
+        runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 try {
                     String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
                     JSONObject jsonObject= new JSONObject(readUrl(urlS));
 
+
+
                     temperatura = jsonObject.get("temperatura").toString();
                     nombre = jsonObject.get("ciudadNombre").toString();
-                    viento= jsonObject.get("viento").toString();
-                    humedad=jsonObject.get("humedad").toString();
+                   // viento= jsonObject.get("viento").toString();
+                    //humedad=jsonObject.get("humedad").toString();
 
+                    TextView temp = findViewById(R.id.temperatura_actual);
+                    temp.setText(temperatura+" °C");
 
-                    TextView temp_actual = findViewById(R.id.temperatura_actual);
-                    temp_actual.setText(temperatura+"℃");
                     TextView ubicacion = findViewById(R.id.textViewUbicacion);
                     ubicacion.setText("Ubicacion: "+nombre);
+
+
                     TextView viento =findViewById(R.id.textViento);
                     //TODO: comprobar  si realmente trae los datos en km/h
                     viento.setText("Viento: "+viento+" km/h");
 
                     TextView textHumedad=findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+humedad+"%");
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
+
+
 
     }
 
@@ -160,7 +141,9 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    int visivilidad;
+
+    //TODO: subir esta verga, las variables van todas juntas ctm
+    int visibilidad;
     Button botonobjetos;
 
     public void mostrarobjetos(View v){

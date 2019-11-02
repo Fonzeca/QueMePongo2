@@ -2,11 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/temperatura_actual_txt"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    Ubicacion_
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -79,24 +76,24 @@
         app:layout_constraintVertical_bias="0.971" />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="238dp"
-        android:layout_height="37dp"
-        android:text="Temperatura actual"
+        android:id="@+id/temperatura_actual_txt"
+        android:layout_width="288dp"
+        android:layout_height="33dp"
+        android:text="@string/temperatura_actual"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/temperatura_actual"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+        app:layout_constraintVertical_bias="0.728" />
 
     <TextView
         android:id="@+id/textViewUbicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="404dp"
-        android:text="Ubicacion: Cordoba, Centro"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -112,6 +109,7 @@
         android:layout_marginEnd="156dp"
         android:textAlignment="center"
         android:textSize="46sp"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
