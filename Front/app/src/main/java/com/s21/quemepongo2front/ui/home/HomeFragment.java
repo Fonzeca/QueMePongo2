@@ -2,12 +2,18 @@ package com.s21.quemepongo2front.ui.home;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.s21.quemepongo2front.PronosticoRs;
 import com.s21.quemepongo2front.R;
+import com.s21.quemepongo2front.RestClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,10 +30,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    String temperatura, nombre, viento, humedad;
 
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader = null;
@@ -45,6 +56,7 @@ public class HomeFragment extends Fragment {
             if (reader != null)
                 reader.close();
         }
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,29 +72,32 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+        /*
         AsyncTask.execute(new Runnable() {
             @Override
 
             public void run() {
                 try {
+
                     String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
                     JSONObject jsonObject= new JSONObject(readUrl(urlS));
 
-                    temperatura = jsonObject.get("temperatura").toString();
-                    nombre = jsonObject.get("ciudadNombre").toString();
-//                    viento= jsonObject.get("viento").toString();
-//                    humedad=jsonObject.get("humedad").toString();
+                    String temperatura = jsonObject.get("temperatura").toString();
+                    String nombre = jsonObject.get("ciudadNombre").toString();
+                    String viento= jsonObject.get("viento").toString();
+                    String humedad=jsonObject.get("humedad").toString();
                     TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
                     temp_actual.setText(temperatura+"℃");
+
                     TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
                     ubicacion.setText(getText(R.string.ubicacion)+nombre);
 
-//                    TextView viento =getView().findViewById(R.id.textViento);
-//                    viento.setText("Viento: "+viento+" m/s");
+                    TextView vientoView = getView().findViewById(R.id.textViento);
+                    vientoView.setText("Viento: "+viento+" m/s");
 
-//                    TextView textHumedad=getView().findViewById(R.id.textHumedad);
-//                    textHumedad.setText("Humedad: "+humedad+"%");
+                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                    textHumedad.setText("Humedad: "+humedad+"%");
+
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -95,6 +110,51 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        */
+
+        //Creamos la instancia de Retrofit, con el prefix de la URL( http://181.31.108.164:5599/ )
+        //Le seteamos el convertor de JSON a java class3
+        //TODO: Hacer este Retrofit Singleton
+        Retrofit retro = new Retrofit.Builder()
+                .baseUrl(getString(R.string.ipApi))
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //Creamos la clase RestClient ( que la cree yo )
+        //En esta clase tiene los EndPoints de mi API ( sufix ). Como por ejemplo: "Pronostico?IdCiudad=3860259"
+        RestClient restClient = retro.create(RestClient.class);
+
+        //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
+        Call<PronosticoRs> call = restClient.getData();
+
+        //Ejecutamos la llamada en  un thread a parte, el cual si te deja ahcer modificaciones en la view
+        call.enqueue(new Callback<PronosticoRs>() {
+
+            //Este es el metodo en caso que la llamada a la API devuelva algo
+            public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
+                
+                //Obtenemos el body de la llamada, ya parseado a una clase java
+                PronosticoRs data = response.body();
+
+                TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
+                temp_actual.setText(data.getTemperatura()+"℃");
+
+                TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
+                ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
+
+                TextView viento = getView().findViewById(R.id.textViento);
+                viento.setText("Viento: "+data.getViento()+" m/s");
+
+                TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+
+            }
+
+            //Este es el metodo en el caso de que algo falle, como que el celular no tiene internet
+            public void onFailure(Call<PronosticoRs> call, Throwable t) {
+            }
+        });
+
         return root;
     }
 }
