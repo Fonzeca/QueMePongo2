@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
                     temperatura = jsonObject.get("temperatura").toString();
                     nombre = jsonObject.get("ciudadNombre").toString();
-                    viento= jsonObject.get("viento").toString();
-                    humedad=jsonObject.get("humedad").toString();
+                   // viento= jsonObject.get("viento").toString();
+                    //humedad=jsonObject.get("humedad").toString();
 
 
                     TextView temp_actual = findViewById(R.id.temperatura_actual);
