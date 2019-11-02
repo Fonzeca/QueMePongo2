@@ -1,16 +1,16 @@
-package com.s21.quemepongo2front.ui.tools;
+package com.s21.quemepongo2front.ui.ubicaciones;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ToolsViewModel extends ViewModel {
+public class UbicacionesViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ToolsViewModel() {
+    public UbicacionesViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is tools fragment");
+        mText.setValue("Fragmento de ubicaciones");
     }
 
     public LiveData<String> getText() {

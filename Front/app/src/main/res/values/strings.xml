@@ -9,7 +9,7 @@
 
     <string name="menu_home">Inicio</string>
     <string name="menu_objetos_personales">Objetos Personales</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_ubicaciones">Ubicaciones</string>
     <string name="menu_share">Share</string>
     <string name="menu_agregar_usuario">Nuevo usuario</string>
     <string name="communicate">Compartir</string>
@@ -17,11 +17,12 @@
     <string name="title_activity_usuariologin">Usuario inicio</string>
     <string name="txt_usuario">Usuario</string>
     <string name="ipApi">http://181.31.108.164:5599</string>
-    <string name="temperaturaActual">no funciono la appi :c</string>
+    <string name="MostrartemperaturaActual">no funciono la appi :c</string>
     <string name="json_pronostico">/Pronostico?IdCiudad=3860259</string>
     <string name="ubicacion_1">Ubicacion_1</string>
     <string name="ubicacion_2">Ubicacion_2</string>
     <string name="ubicacion_3">Ubicacion_3</string>
     <string name="ubicacion_4">Ubicacion_4</string>
-    <string name="temperatura_actual">Temperatura actual</string>
+    <string name="txt_temperatura_actual">Temperatura Actual</string>
+    <string name="ubicacion_cordoba_centro">Ubicacion: Cordoba, Centro</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.tools;
+package com.s21.quemepongo2front.ui.ubicaciones;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,25 +6,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
+import com.s21.quemepongo2front.R;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.s21.quemepongo2front.R;
+public class ubicacionesFragment extends Fragment {
 
-public class ToolsFragment extends Fragment {
-
-    private ToolsViewModel toolsViewModel;
+    private UbicacionesViewModel ubicacionesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
+        ubicacionesViewModel =
+                ViewModelProviders.of(this).get(UbicacionesViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_ubicaciones, container, false);
         final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        ubicacionesViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

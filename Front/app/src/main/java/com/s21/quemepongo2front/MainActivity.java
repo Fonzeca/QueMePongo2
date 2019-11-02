@@ -34,8 +34,8 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    Button botonlogin,botonhome;
-    String temperatura,  nombre,  viento,humedad;
+    Button botonlogin, botonhome;
+    String temperatura, nombre, viento, humedad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +59,17 @@ public class MainActivity extends AppCompatActivity {
         //Inicializar el navigation `
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_objetos_personales,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_nuevo_usuario)
+                R.id.nav_ubicaciones, R.id.nav_share, R.id.nav_nuevo_usuario)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
-
-
-
-
-
-        runOnUiThread(new Runnable() {
+////TODO: configurar el viento en km/h esta en Metros por segundo
+        AsyncTask.execute(new Runnable() {
             @Override
+
             public void run() {
                 try {
                     String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
@@ -83,19 +79,15 @@ public class MainActivity extends AppCompatActivity {
 
                     temperatura = jsonObject.get("temperatura").toString();
                     nombre = jsonObject.get("ciudadNombre").toString();
-                   // viento= jsonObject.get("viento").toString();
+
+                    // viento= jsonObject.get("viento").toString();
                     //humedad=jsonObject.get("humedad").toString();
-
-                    TextView temp = findViewById(R.id.temperatura_actual);
-                    temp.setText(temperatura+" °C");
-
+                    TextView temp_actual = findViewById(R.id.temperatura_actual);
+                    temp_actual.setText(temperatura+"℃");
                     TextView ubicacion = findViewById(R.id.textViewUbicacion);
                     ubicacion.setText("Ubicacion: "+nombre);
-
-
-                    TextView viento =findViewById(R.id.textViento);
-                    //TODO: comprobar  si realmente trae los datos en km/h
-                    viento.setText("Viento: "+viento+" km/h");
+                    // TextView viento =findViewById(R.id.textViento);
+                    // viento.setText("Viento: "+viento+" km/h");
 
                     TextView textHumedad=findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+humedad+"%");
@@ -107,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
+
 
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader = null;
