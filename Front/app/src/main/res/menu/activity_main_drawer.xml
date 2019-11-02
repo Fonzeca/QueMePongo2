@@ -13,9 +13,9 @@
             android:icon="@mipmap/ic_lentes"
             android:title="@string/menu_objetos_personales" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_ubicaciones"
+            android:icon="@mipmap/ic_ubicaciones"
+            android:title="@string/menu_ubicaciones" />
         <item
             android:id="@+id/nav_nuevo_usuario"
             android:icon="@mipmap/ic_user"
