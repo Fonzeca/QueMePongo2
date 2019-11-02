@@ -1,12 +1,13 @@
 package main.java.quemepongo2.api.responses;
 
 public class PreferenciaRs {
-	private boolean bufanda,  lentes,  paraguas, protectorSolar;
-	public PreferenciaRs(boolean bufanda,boolean lentes,boolean paraguas,boolean protectorSolar) {
+	private boolean bufanda,  lentes,  paraguas, protectorSolar,gorra;
+	public PreferenciaRs(boolean bufanda,boolean lentes,boolean paraguas,boolean protectorSolar,boolean gorra) {
 		this.bufanda=bufanda;
 		this.lentes=lentes;
 		this.paraguas=paraguas;
 		this.protectorSolar=protectorSolar;
+		this.gorra=gorra;
 	}
 
 	public boolean isBufanda() {
@@ -39,6 +40,12 @@ public class PreferenciaRs {
 
 	public void setProtectorSolar(boolean protectorSolar) {
 		this.protectorSolar = protectorSolar;
+	}
+	public boolean isGorra() {
+		return gorra;
+	}
+	public void setGorra(boolean gorra) {
+		this.gorra=gorra;
 	}
 
 }

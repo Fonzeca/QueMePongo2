@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">QueMePongo2</string>
+
+
+    //ip's y direcciones strings.
+
+<!--    <string name="ipApi">http://192.167.0.7:5599</string>//PC DAIKO-->
+    <string name="ipApi">http://181.31.108.164:5599</string>//Server Fonzo
+
+    <string name="json_pronostico">/Pronostico?IdCiudad=3860259</string>//Api pronóstico para Córdoba.
+
+    //navigation strings, Jere
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -7,22 +17,28 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    //menu strings
     <string name="menu_home">Inicio</string>
     <string name="menu_objetos_personales">Objetos Personales</string>
     <string name="menu_ubicaciones">Ubicaciones</string>
     <string name="menu_share">Share</string>
     <string name="menu_agregar_usuario">Nuevo usuario</string>
     <string name="communicate">Compartir</string>
+
+    //login strings
     <string name="txt_agregar_usuario">Bienvenido presiona el botón para agregar un usuario</string>
-    <string name="title_activity_usuariologin">usuario inicio</string>
+    <string name="title_activity_usuariologin">Usuario inicio</string>
     <string name="txt_usuario">Usuario</string>
-    <string name="ipApi">http://181.31.108.164:5599</string>
-    <string name="MostrartemperaturaActual">no funciono la appi :c</string>
-    <string name="json_pronostico">/Pronostico?IdCiudad=3860259</string>
+    <string name="temperaturaActual">no funciono la api :c</string>
+
+    //ubicaciones strings
     <string name="ubicacion_1">Ubicacion_1</string>
     <string name="ubicacion_2">Ubicacion_2</string>
     <string name="ubicacion_3">Ubicacion_3</string>
     <string name="ubicacion_4">Ubicacion_4</string>
+
+    //main_activity strings
+    <string name="temperatura_actual">Temperatura actual</string>
+    <string name="ubicacion_cordoba_centro">Ubicacion: Cordoba, Centro</string>
     <string name="txt_temperatura_actual">Temperatura Actual</string>
-    <string name="ubicacion_cordoba_centro"></string>
 </resources>

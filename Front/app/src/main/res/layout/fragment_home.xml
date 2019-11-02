@@ -80,7 +80,7 @@
         android:id="@+id/txt_temperaturaActual"
         android:layout_width="269dp"
         android:layout_height="40dp"
-        android:text="@string/txt_temperatura_actual"
+        android:text="@string/temperatura_actual"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/temperatura_actual"
         app:layout_constraintEnd_toEndOf="parent"
