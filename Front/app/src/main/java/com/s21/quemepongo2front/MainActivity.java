@@ -40,11 +40,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        temperatura=new String();
-        nombre=new String();
-        viento=new String();
-        humedad=new String();
-
         setContentView(R.layout.activity_main);
 
 
@@ -61,17 +56,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-
-
-
-
-
-        //TODO: QUE VERGA ES ESTO JEREMIAS.
-
-
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        //Inicializar el navigation `
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_objetos_personales,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_nuevo_usuario)
@@ -98,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
                     temperatura = jsonObject.get("temperatura").toString();
                     nombre = jsonObject.get("ciudadNombre").toString();
-                    viento= jsonObject.get("viento").toString();
-                    humedad=jsonObject.get("humedad").toString();
+                   // viento= jsonObject.get("viento").toString();
+                    //humedad=jsonObject.get("humedad").toString();
 
                     TextView temp = findViewById(R.id.temperatura_actual);
                     temp.setText(temperatura+" °C");
