@@ -17,8 +17,14 @@ public class CiudadService implements IDaoInterface<Ciudad>{
 	@Autowired
 	CiudadRepository repo;
 
-	public List<Ciudad> findAll() {
-		return repo.findAll();
+	public List<CiudadRs> findAll() {
+		List <CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
+		List <Ciudad> ciudades=repo.findAll();
+		for (Ciudad ciudad:ciudades) {
+			ciudadesRs.add(new CiudadRs(ciudad));
+		}
+		return ciudadesRs;
+		
 	}
 
 	public void save(Ciudad entity) {
