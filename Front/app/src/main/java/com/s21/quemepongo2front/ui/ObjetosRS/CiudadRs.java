@@ -7,7 +7,6 @@ public class CiudadRs {
 	
 	public CiudadRs() {
 	}
-
 	public int getId() {
 		return id;
 	}

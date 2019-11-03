@@ -1,6 +1,5 @@
 package com.s21.quemepongo2front;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button botonlogin, botonhome, botonobjetos, botonGuardar;
     String temperatura, nombre, viento, humedad;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
-    PreferenciaRs preferencias= new PreferenciaRs(false,false,false,false,false);
+    PreferenciaRs preferencias= new PreferenciaRs();
 
 
     @Override
@@ -47,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "QueMePongo@gmail.com", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "QueMePongo@gmail.com", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -88,12 +86,19 @@ public class MainActivity extends AppCompatActivity {
             Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
                 startActivity(gologin);
         }
+
+        //TODO crear un string que contenga el token para enviarlo por este metodo
     public void guardarPref(View v){
 
+                preferencias.setBufanda(false);
+                preferencias.setGorra(false);
+                preferencias.setLentes(false);
+                preferencias.setParaguas(false);
+                preferencias.setProtectorSolar(false);
                 Toast.makeText(MainActivity.this, "Holaa", Toast.LENGTH_SHORT).show();
                 //Codigo para la llamada a la api
                 RestClient restClient = Api.getRetrofit().create(RestClient.class);
-                Call<Void> call = restClient.actualizarPreferencias(preferencias);
+                Call<Void> call = restClient.actualizarPreferencias(preferencias,"Gcj6Clo8JHvFfcjVIywn7w==");
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

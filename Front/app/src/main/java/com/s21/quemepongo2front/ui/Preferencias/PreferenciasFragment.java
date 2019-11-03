@@ -8,20 +8,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import com.s21.quemepongo2front.Api;
 import com.s21.quemepongo2front.R;
-import com.s21.quemepongo2front.RestClient;
+import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
 
 public class PreferenciasFragment extends Fragment {
@@ -31,7 +27,7 @@ public class PreferenciasFragment extends Fragment {
     Context context;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
     Button botonGuardar;
-    PreferenciaRs preferencias= new PreferenciaRs(false,false,false,false,false);
+    ClimaActualRs preferencias= new ClimaActualRs();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             preferenciasViewModel =ViewModelProviders.of(this).get(PreferenciasViewModel.class);

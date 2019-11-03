@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.ui.ObjetosRS.PronosticoRs;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
+import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -61,18 +60,18 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
-//TODO
+        //TODO crear un string que contenga el token para enviarlo por este metodo
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
-        Call<PronosticoRs> call = restClient.recibirPronostico(3860259,"Gcj6Clo8JHvFfcjVIywn7w==");
+        Call<ClimaActualRs> call = restClient.recibirPronostico(3860259,"Gcj6Clo8JHvFfcjVIywn7w==");
 
         //Ejecutamos la llamada en  un thread a parte, el cual si te deja hacer modificaciones en la view
-        call.enqueue(new Callback<PronosticoRs>() {
+        call.enqueue(new Callback<ClimaActualRs>() {
             @Override
             //Este es el metodo en caso que la llamada a la API devuelva algo
-            public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
+            public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
                 //Obtenemos el body de la llamada, ya parseado a una clase java
-                PronosticoRs data = response.body();
+                ClimaActualRs data = response.body();
 
                 TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
                 temp_actual.setText(data.getTemperatura()+"℃");
@@ -87,7 +86,7 @@ public class HomeFragment extends Fragment {
                 textHumedad.setText("Humedad: "+data.getHumedad()+"%");
             }
             @Override
-            public void onFailure(Call<PronosticoRs> call, Throwable t) {
+            public void onFailure(Call<ClimaActualRs> call, Throwable t) {
             }
         });
 

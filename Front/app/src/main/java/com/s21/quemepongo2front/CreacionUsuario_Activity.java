@@ -34,6 +34,7 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO Generar codigo para validar que el usuario no exista y esten bien los campos de usuaio y clave
+                //TODO crear un string que contenga el token para enviarlo por este metodo
                 //Seteamos el texto del edittext en un string
                 txtNombre= (EditText)findViewById(R.id.edittext_usuario);
                 txtPasw = (EditText)findViewById(R.id.edit_text_pasw);

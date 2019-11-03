@@ -9,7 +9,7 @@ public class ClimaActualRs {
 	
 	public ClimaActualRs() {
 	}
-
+	
 	public int getCiudadId() {
 		return ciudadId;
 	}
