@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.s21.quemepongo2front.Api;
 import com.s21.quemepongo2front.PronosticoRs;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
@@ -30,6 +31,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -112,46 +114,22 @@ public class HomeFragment extends Fragment {
         });
         */
 
-        //Creamos la instancia de Retrofit, con el prefix de la URL( http://181.31.108.164:5599/ )
-        //Le seteamos el convertor de JSON a java class3
-        //TODO: Hacer este Retrofit Singleton
-        Retrofit retro = new Retrofit.Builder()
-                .baseUrl(getString(R.string.ipApi))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        //Creamos la clase RestClient ( que la cree yo )
-        //En esta clase tiene los EndPoints de mi API ( sufix ). Como por ejemplo: "Pronostico?IdCiudad=3860259"
-        RestClient restClient = retro.create(RestClient.class);
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
 
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
-        Call<PronosticoRs> call = restClient.getData();
+        Call<ResponseBody> call = restClient.getDataaa();
 
         //Ejecutamos la llamada en  un thread a parte, el cual si te deja ahcer modificaciones en la view
-        call.enqueue(new Callback<PronosticoRs>() {
+        call.enqueue(new Callback<ResponseBody>() {
 
-            //Este es el metodo en caso que la llamada a la API devuelva algo
-            public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
-                
-                //Obtenemos el body de la llamada, ya parseado a una clase java
-                PronosticoRs data = response.body();
-
-                TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                temp_actual.setText(data.getTemperatura()+"℃");
-
-                TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
-
-                TextView viento = getView().findViewById(R.id.textViento);
-                viento.setText("Viento: "+data.getViento()+" m/s");
-
-                TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
             }
 
-            //Este es el metodo en el caso de que algo falle, como que el celular no tiene internet
-            public void onFailure(Call<PronosticoRs> call, Throwable t) {
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
             }
         });
 
