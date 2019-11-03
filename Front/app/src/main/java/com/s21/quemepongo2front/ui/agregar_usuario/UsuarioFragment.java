@@ -16,8 +16,7 @@ import com.s21.quemepongo2front.R;
 
 public class UsuarioFragment extends Fragment {
 
-    private UsuarioViewModel usuarioViewModel
-            ;
+    private UsuarioViewModel usuarioViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

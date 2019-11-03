@@ -41,7 +41,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    Context context;
 
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader = null;
@@ -75,48 +74,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*
-        AsyncTask.execute(new Runnable() {
-            @Override
-
-            public void run() {
-                try {
-
-                    String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
-                    JSONObject jsonObject= new JSONObject(readUrl(urlS));
-
-                    String temperatura = jsonObject.get("temperatura").toString();
-                    String nombre = jsonObject.get("ciudadNombre").toString();
-                    String viento= jsonObject.get("viento").toString();
-                    String humedad=jsonObject.get("humedad").toString();
-                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                    temp_actual.setText(temperatura+"℃");
-
-                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                    ubicacion.setText(getText(R.string.ubicacion)+nombre);
-
-                    TextView vientoView = getView().findViewById(R.id.textViento);
-                    vientoView.setText("Viento: "+viento+" m/s");
-
-                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                    textHumedad.setText("Humedad: "+humedad+"%");
-
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        */
-
         //Creamos la instancia de Retrofit, con el prefix de la URL( http://181.31.108.164:5599/ )
-        //Le seteamos el convertor de JSON a java class3
+        //Le seteamos el convertor de JSON a java class
         //TODO: Hacer este Retrofit Singleton
         Retrofit retro = new Retrofit.Builder()
                 .baseUrl(getString(R.string.ipApi))
@@ -130,12 +89,12 @@ public class HomeFragment extends Fragment {
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
         Call<PronosticoRs> call = restClient.getData();
 
-        //Ejecutamos la llamada en  un thread a parte, el cual si te deja ahcer modificaciones en la view
+        //Ejecutamos la llamada en  un thread a parte, el cual si te deja hacer modificaciones en la view
         call.enqueue(new Callback<PronosticoRs>() {
 
             //Este es el metodo en caso que la llamada a la API devuelva algo
             public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
-                if(response.isSuccessful()){
+
                     //Obtenemos el body de la llamada, ya parseado a una clase java
                     PronosticoRs data = response.body();
 
@@ -150,10 +109,6 @@ public class HomeFragment extends Fragment {
 
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-                }else{
-                    Toast.makeText(context , "Hubo un error en la carga de los datos" , Toast.LENGTH_SHORT).show();
-                }
-
 
             }
 
