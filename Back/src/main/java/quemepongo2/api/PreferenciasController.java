@@ -29,6 +29,6 @@ public class PreferenciasController {
 	public void actualizarPreferencias(@RequestBody PreferenciaRq preferenciaRq, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
-		repo.actualizarPreferencias(preferenciaRq);
+		repo.actualizarPreferencias(preferenciaRq, userId);
 	}
 }
