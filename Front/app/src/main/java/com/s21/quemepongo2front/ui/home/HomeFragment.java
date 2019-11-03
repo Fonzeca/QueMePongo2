@@ -1,30 +1,18 @@
 package com.s21.quemepongo2front.ui.home;
 
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.PronosticoRs;
+import com.s21.quemepongo2front.ui.ObjetosRS.PronosticoRs;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import androidx.annotation.NonNull;
@@ -36,8 +24,6 @@ import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
 

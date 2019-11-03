@@ -14,9 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class usuariologin extends AppCompatActivity {
+import com.s21.quemepongo2front.ui.ObjetosRS.UsuarioRq;
+
+public class CreacionUsuario_Activity extends AppCompatActivity {
     Api retrofit ;
-    Button nuevoUsuario;
+    Button botonNuevoUsuario;
     UsuarioRq user = new UsuarioRq();
     EditText txtNombre, txtPasw;
     String nombre, clave;
@@ -27,30 +29,31 @@ public class usuariologin extends AppCompatActivity {
         setContentView(R.layout.activity_usuariologin);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        nuevoUsuario = findViewById(R.id.botonNuevoUsuario);
-        nuevoUsuario.setOnClickListener(new View.OnClickListener() {
+        botonNuevoUsuario = findViewById(R.id.botonNuevoUsuario);
+        botonNuevoUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Comentar esta parte
+                //TODO Generar codigo para validar que el usuario no exista y esten bien los campos de usuaio y clave
+                //Seteamos el texto del edittext en un string
                 txtNombre= (EditText)findViewById(R.id.edittext_usuario);
                 txtPasw = (EditText)findViewById(R.id.edit_text_pasw);
                 nombre = txtNombre.getText().toString();
                 clave = txtPasw.getText().toString();
-
+                // agregamos los string al objeto user
                 user.setClave(clave);
                 user.setUsuario(nombre);
-
+                //instanciamos el RestClient y enviamos los parametros del usuario
                 RestClient restClient = Api.getRetrofit().create(RestClient.class);
                 Call<Void> call = restClient.crearUsuario(user);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()){
-                            Toast.makeText(usuariologin.this, "Usuario Creado Correctamente", Toast.LENGTH_SHORT).show();
-                            Intent gohome = new Intent(usuariologin.this, MainActivity.class);
+                            Toast.makeText(CreacionUsuario_Activity.this, "Usuario Creado Correctamente", Toast.LENGTH_SHORT).show();
+                            Intent gohome = new Intent(CreacionUsuario_Activity.this, MainActivity.class);
                             startActivity(gohome);
                         }else {
-                            Toast.makeText(usuariologin.this, "Error Fatal", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreacionUsuario_Activity.this, "Error Fatal, Intentelo de nuevo :)", Toast.LENGTH_SHORT).show();
                         }
                     }
 

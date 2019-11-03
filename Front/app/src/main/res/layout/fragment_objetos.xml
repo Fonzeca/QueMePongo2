@@ -6,14 +6,16 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/text_preferencias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/boton_guardarPreferencias"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,87 +23,94 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contendorDeObjetos"
-        android:layout_width="316dp"
-        android:layout_height="454dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="320dp"
+        android:layout_height="450dp"
+        android:background="@mipmap/wp_fondo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButton_bufanda"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="51dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/colorPrimario"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_bloqueador"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.003"
             app:srcCompat="@mipmap/ic_bufanda" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:id="@+id/imageButton_bloqueador"
+            android:layout_width="56dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginBottom="309dp"
             android:backgroundTint="@color/colorPrimary"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-            app:layout_constraintHorizontal_bias="0.459"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_chaqueta" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="52dp"
-            android:backgroundTint="#008577"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_lentes" />
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="248dp"
-            android:backgroundTint="#008577"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton5"
-            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@mipmap/ic_hat" />
+            app:srcCompat="@mipmap/ic_bloqueador" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/imageButton_lentes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#008577"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton_paraguas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageButton_bloqueador"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.76"
+            app:srcCompat="@mipmap/ic_lentes" />
+
+        <ImageButton
+            android:id="@+id/imageButton_gorra"
+            android:layout_width="55dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="204dp"
             android:backgroundTint="#008577"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-            app:srcCompat="@mipmap/ic_paragua"
-            android:contentDescription="TODO" />
+            app:layout_constraintHorizontal_bias="0.967"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton_bufanda"
+            app:srcCompat="@mipmap/ic_gorra" />
+
+        <ImageButton
+            android:id="@+id/imageButton_paraguas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#008577"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.775"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.428"
+            app:srcCompat="@mipmap/ic_paragua" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/botonMostrarObjetos"
+        android:id="@+id/boton_guardarPreferencias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar un objeto"
+        android:text="@string/boton_guardar"
         app:layout_constraintBottom_toTopOf="@+id/contendorDeObjetos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_gallery" />
+        app:layout_constraintTop_toBottomOf="@+id/text_preferencias" />
 </androidx.constraintlayout.widget.ConstraintLayout>

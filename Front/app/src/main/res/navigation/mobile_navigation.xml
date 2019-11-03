@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_objetos_personales"
-        android:name="com.s21.quemepongo2front.ui.objetos_personales.ObjetosPersonalesFragment"
+        android:name="com.s21.quemepongo2front.ui.Preferencias.PreferenciasFragment"
         android:label="@string/menu_objetos_personales"
         tools:layout="@layout/fragment_objetos" />
 

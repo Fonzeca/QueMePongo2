@@ -1,14 +1,14 @@
-package com.s21.quemepongo2front.ui.objetos_personales;
+package com.s21.quemepongo2front.ui.Preferencias;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ObjetosViewModel extends ViewModel {
+public class PreferenciasViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ObjetosViewModel() {
+    public PreferenciasViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("Agrega tus objetos personales :D");
     }

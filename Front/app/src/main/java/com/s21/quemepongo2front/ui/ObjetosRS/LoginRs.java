@@ -1,5 +1,4 @@
-package com.s21.quemepongo2front;
-
+package com.s21.quemepongo2front.ui.ObjetosRS;
 
 
 public class LoginRs {

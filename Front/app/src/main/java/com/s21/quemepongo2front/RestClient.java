@@ -1,6 +1,10 @@
 //Interfaz donde se listan los endpoints de la API
 package com.s21.quemepongo2front;
 
+import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
+import com.s21.quemepongo2front.ui.ObjetosRS.PronosticoRs;
+import com.s21.quemepongo2front.ui.ObjetosRS.UsuarioRq;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -13,4 +17,7 @@ public interface RestClient {
 
     @POST("CrearUsuario")
     Call <Void> crearUsuario (@Body UsuarioRq crearusuario);
+
+    @POST("ActualizarPreferencias")
+    Call<Void> actualizarPreferencias(@Body PreferenciaRs preferenciaRq);
 }

@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true" >
 
         <activity
-            android:name=".usuariologin"
+            android:name=".CreacionUsuario_Activity"
             android:label="@string/title_activity_usuariologin"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
