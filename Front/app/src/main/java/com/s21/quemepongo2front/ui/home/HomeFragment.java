@@ -1,28 +1,18 @@
 package com.s21.quemepongo2front.ui.home;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.PronosticoRs;
+import com.s21.quemepongo2front.ui.ObjetosRS.PronosticoRs;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import androidx.annotation.NonNull;
@@ -35,8 +25,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
 
@@ -74,61 +62,30 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*
-        AsyncTask.execute(new Runnable() {
-            @Override
-
-            public void run() {
-                try {
-
-                    String urlS = getString(R.string.ipApi)+ getString(R.string.json_pronostico);
-                    JSONObject jsonObject= new JSONObject(readUrl(urlS));
-
-                    String temperatura = jsonObject.get("temperatura").toString();
-                    String nombre = jsonObject.get("ciudadNombre").toString();
-                    String viento= jsonObject.get("viento").toString();
-                    String humedad=jsonObject.get("humedad").toString();
-                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                    temp_actual.setText(temperatura+"℃");
-
-                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                    ubicacion.setText(getText(R.string.ubicacion)+nombre);
-
-                    TextView vientoView = getView().findViewById(R.id.textViento);
-                    vientoView.setText("Viento: "+viento+" m/s");
-
-                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                    textHumedad.setText("Humedad: "+humedad+"%");
-
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        */
-
-
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
-
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
         Call<ResponseBody> call = restClient.getDataaa();
 
-        //Ejecutamos la llamada en  un thread a parte, el cual si te deja ahcer modificaciones en la view
-        call.enqueue(new Callback<ResponseBody>() {
+        //Ejecutamos la llamada en  un thread a parte, el cual si te deja hacer modificaciones en la view
+        call.enqueue(new Callback<PronosticoRs>() {
 
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-            }
+            //Este es el metodo en caso que la llamada a la API devuelva algo
+            public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    //Obtenemos el body de la llamada, ya parseado a una clase java
+                    PronosticoRs data = response.body();
+
+                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
+                    temp_actual.setText(data.getTemperatura()+"℃");
+
+                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
+                    ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
+
+                    TextView viento = getView().findViewById(R.id.textViento);
+                    viento.setText("Viento: "+data.getViento()+" m/s");
+
+                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                    textHumedad.setText("Humedad: "+data.getHumedad()+"%");
 
             }
         });

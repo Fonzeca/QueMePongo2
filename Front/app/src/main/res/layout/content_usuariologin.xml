@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".usuariologin"
+    tools:context=".CreacionUsuario_Activity"
     tools:showIn="@layout/activity_usuariologin">
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/edit_text_pasw"
         android:layout_width="213dp"
         android:layout_height="47dp"
         android:layout_marginTop="25dp"
@@ -43,12 +43,11 @@
         android:layout_marginTop="55dp"
         android:layout_marginEnd="140dp"
         android:layout_marginBottom="358dp"
-        android:onClick="agregarusuario"
         android:text="@string/menu_agregar_usuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_pasw"
         app:layout_constraintVertical_bias="0.615" />
 </androidx.constraintlayout.widget.ConstraintLayout>

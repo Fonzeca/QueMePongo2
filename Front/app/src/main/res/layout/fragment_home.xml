@@ -68,7 +68,7 @@
         android:layout_width="171dp"
         android:layout_height="21dp"
         android:layout_marginBottom="268dp"
-        android:text="Humedad: 500.00"
+        android:text="Humedad: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"

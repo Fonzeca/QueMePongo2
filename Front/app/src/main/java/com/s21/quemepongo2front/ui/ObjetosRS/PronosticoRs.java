@@ -1,5 +1,5 @@
 
-package com.s21.quemepongo2front;
+package com.s21.quemepongo2front.ui.ObjetosRS;
 
 //POJO del response de la API Pronostico
 public class PronosticoRs {
