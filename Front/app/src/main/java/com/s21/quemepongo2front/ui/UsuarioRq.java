@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.ObjetosRS;
+package com.s21.quemepongo2front.ui;
 
 public class UsuarioRq{
 	private String usuario, clave;

@@ -61,32 +61,33 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
-
+//TODO
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
-        Call<ResponseBody> call = restClient.getDataaa();
+        Call<PronosticoRs> call = restClient.recibirPronostico(3860259,"Gcj6Clo8JHvFfcjVIywn7w==");
 
         //Ejecutamos la llamada en  un thread a parte, el cual si te deja hacer modificaciones en la view
         call.enqueue(new Callback<PronosticoRs>() {
-
+            @Override
             //Este es el metodo en caso que la llamada a la API devuelva algo
             public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
+                //Obtenemos el body de la llamada, ya parseado a una clase java
+                PronosticoRs data = response.body();
 
-                    //Obtenemos el body de la llamada, ya parseado a una clase java
-                    PronosticoRs data = response.body();
+                TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
+                temp_actual.setText(data.getTemperatura()+"℃");
 
-                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                    temp_actual.setText(data.getTemperatura()+"℃");
+                TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
+                ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
 
-                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                    ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
+                TextView viento = getView().findViewById(R.id.textViento);
+                viento.setText("Viento: "+data.getViento()+" m/s");
 
-                    TextView viento = getView().findViewById(R.id.textViento);
-                    viento.setText("Viento: "+data.getViento()+" m/s");
-
-                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                    textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-
+                TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+            }
+            @Override
+            public void onFailure(Call<PronosticoRs> call, Throwable t) {
             }
         });
 

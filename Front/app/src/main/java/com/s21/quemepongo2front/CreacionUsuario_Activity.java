@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.s21.quemepongo2front.ui.ObjetosRS.UsuarioRq;
+import com.s21.quemepongo2front.ui.UsuarioRq;
 
 public class CreacionUsuario_Activity extends AppCompatActivity {
     Api retrofit ;
