@@ -1,5 +1,6 @@
 package com.s21.quemepongo2front.ui.home;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -39,6 +41,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    Context context;
 
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader = null;
@@ -132,21 +135,25 @@ public class HomeFragment extends Fragment {
 
             //Este es el metodo en caso que la llamada a la API devuelva algo
             public void onResponse(Call<PronosticoRs> call, Response<PronosticoRs> response) {
-                
-                //Obtenemos el body de la llamada, ya parseado a una clase java
-                PronosticoRs data = response.body();
+                if(response.isSuccessful()){
+                    //Obtenemos el body de la llamada, ya parseado a una clase java
+                    PronosticoRs data = response.body();
 
-                TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                temp_actual.setText(data.getTemperatura()+"℃");
+                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
+                    temp_actual.setText(data.getTemperatura()+"℃");
 
-                TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
+                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
+                    ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
 
-                TextView viento = getView().findViewById(R.id.textViento);
-                viento.setText("Viento: "+data.getViento()+" m/s");
+                    TextView viento = getView().findViewById(R.id.textViento);
+                    viento.setText("Viento: "+data.getViento()+" m/s");
 
-                TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                    textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+                }else{
+                    Toast.makeText(context , "Hubo un error en la carga de los datos" , Toast.LENGTH_SHORT).show();
+                }
+
 
             }
 
