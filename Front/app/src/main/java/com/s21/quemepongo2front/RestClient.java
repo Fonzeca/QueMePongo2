@@ -1,3 +1,4 @@
+//Interfaz donde se listan los endpoints de la API
 package com.s21.quemepongo2front;
 
 import retrofit2.Call;
