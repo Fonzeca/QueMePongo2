@@ -1,7 +1,5 @@
 package com.s21.quemepongo2front;
 
-import main.java.quemepongo2.model.Ciudad;
-
 public class CiudadRs {
 	private int id;
 	private String nombre;
@@ -9,13 +7,7 @@ public class CiudadRs {
 	
 	public CiudadRs() {
 	}
-	
-	public CiudadRs(Ciudad ciudadBD) {
-		id = ciudadBD.getId();
-		nombre = ciudadBD.getNombre();
-		pais = ciudadBD.getPais();
-	}
-	
+
 	public int getId() {
 		return id;
 	}
