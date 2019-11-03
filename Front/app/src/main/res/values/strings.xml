@@ -4,11 +4,6 @@
 
     //ip's y direcciones strings.
 
-<!--    <string name="ipApi">http://192.167.0.7:5599</string>//PC DAIKO-->
-    <string name="ipApi">http://181.31.108.164:5599/</string>//Server Fonzo
-
-    <string name="json_pronostico">Pronostico?IdCiudad=3860259</string>//Api pronóstico para Córdoba.
-
     //navigation strings, Jere
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

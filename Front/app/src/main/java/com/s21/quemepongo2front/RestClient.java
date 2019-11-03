@@ -12,5 +12,5 @@ public interface RestClient {
     Call<PronosticoRs> getData();
 
     @POST("CrearUsuario")
-    Call crearUsuario (@Body UsuarioRq crearusuario);
+    Call <Void> crearUsuario (@Body UsuarioRq crearusuario);
 }

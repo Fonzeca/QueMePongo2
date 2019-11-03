@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.s21.quemepongo2front.Api;
 import com.s21.quemepongo2front.PronosticoRs;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
@@ -74,18 +75,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //Creamos la instancia de Retrofit, con el prefix de la URL( http://181.31.108.164:5599/ )
-        //Le seteamos el convertor de JSON a java class
-        //TODO: Hacer este Retrofit Singleton
-        Retrofit retro = new Retrofit.Builder()
-                .baseUrl(getString(R.string.ipApi))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        //Creamos la clase RestClient ( que la cree yo )
-        //En esta clase tiene los EndPoints de mi API ( sufix ). Como por ejemplo: "Pronostico?IdCiudad=3860259"
-        RestClient restClient = retro.create(RestClient.class);
-
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
         Call<PronosticoRs> call = restClient.getData();
 
