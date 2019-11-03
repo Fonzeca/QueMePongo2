@@ -84,6 +84,9 @@ public class HomeFragment extends Fragment {
 
                 TextView textHumedad= getView().findViewById(R.id.textHumedad);
                 textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+                //temporar es para ver el nombre del clima
+                TextView txtNombreClima= getView().findViewById(R.id.textView_nombreClima);
+                txtNombreClima.setText("nombreclima"+data.getNombreclima());
             }
             @Override
             public void onFailure(Call<ClimaActualRs> call, Throwable t) {

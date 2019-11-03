@@ -26,5 +26,4 @@ import retrofit2.http.Query;
 
     @POST("Login")
     Call<LoginRs> loginUsuario(@Body LoginRq logeo);
-
 }
