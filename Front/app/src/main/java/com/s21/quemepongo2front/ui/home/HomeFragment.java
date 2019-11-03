@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -63,7 +64,7 @@ public class HomeFragment extends Fragment {
 
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
-        Call<PronosticoRs> call = restClient.getData();
+        Call<ResponseBody> call = restClient.getDataaa();
 
         //Ejecutamos la llamada en  un thread a parte, el cual si te deja hacer modificaciones en la view
         call.enqueue(new Callback<PronosticoRs>() {
@@ -86,10 +87,6 @@ public class HomeFragment extends Fragment {
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");
 
-            }
-
-            //Este es el metodo en el caso de que algo falle, como que el celular no tiene internet
-            public void onFailure(Call<PronosticoRs> call, Throwable t) {
             }
         });
 

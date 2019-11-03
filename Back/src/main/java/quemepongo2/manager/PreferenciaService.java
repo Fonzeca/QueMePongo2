@@ -13,13 +13,13 @@ public class PreferenciaService {
 	@Autowired
 	UsuarioRepository repo;
 
-	public void actualizarPreferencias(PreferenciaRq preferenciaRq) {
+	public void actualizarPreferencias(PreferenciaRq preferenciaRq, int userId) {
 		boolean bufanda=preferenciaRq.isBufanda();
 		boolean lentes=preferenciaRq.isLentes();
 		boolean paraguas=preferenciaRq.isParaguas();
 		boolean protectorSolar=preferenciaRq.isProtectorSolar();
 		
-		Usuario user=repo.findById(preferenciaRq.getUserId()).get();
+		Usuario user=repo.findById(userId).get();
 		
 		user.setTieneBufanda(bufanda);
 		user.setTieneLentes(lentes);

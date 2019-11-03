@@ -13,14 +13,16 @@ import main.java.quemepongo2.api.requests.LoginRq;
 import main.java.quemepongo2.api.requests.UsuarioRq;
 import main.java.quemepongo2.api.responses.LoginRs;
 import main.java.quemepongo2.model.Usuario;
-import main.java.quemepongo2.persistence.IDaoInterface;
 import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
-public class UsuarioService implements IDaoInterface<Usuario>{
+public class UsuarioService {
 
 	@Autowired
 	UsuarioRepository repo;
+	
+	@Autowired
+	SecurityConfig tokenGenerator;
 
 	public List<Usuario> findAll() {
 		return repo.findAll();
@@ -36,7 +38,10 @@ public class UsuarioService implements IDaoInterface<Usuario>{
 			throw new RuntimeException("Usuario y/o clave incorrectos.");
 		}
 		
-		LoginRs log = new LoginRs(user);
+		//Creamos el token y se lo damos al RS
+		String token = tokenGenerator.crearToken(user.getId());
+		
+		LoginRs log = new LoginRs(user, token);
 		return log;
 	}
 	
