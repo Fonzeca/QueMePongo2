@@ -25,7 +25,7 @@ public class CiudadController {
 	
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
-	@GetMapping(params = "id", name = "/ObtenerCiudad")
+	@GetMapping(params = "id", path = "/ObtenerCiudad")
 	public CiudadRs getCiduadById(@RequestParam int id, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
@@ -36,7 +36,7 @@ public class CiudadController {
 	}
 	
 	
-	@GetMapping(params = "q", name = "/ObtenerCiudad")
+	@GetMapping(params = "q", path = "/ObtenerCiudad")
 	public List<CiudadRs> getCiudadByName(@RequestParam String q, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
@@ -44,7 +44,7 @@ public class CiudadController {
 		return service.getByLikeNombre(q);
 	}
 	
-	@GetMapping(name="/ListarCiudades")
+	@GetMapping("/ListarCiudades")
 	public List<CiudadRs> getCiudades(@RequestParam String token){
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);

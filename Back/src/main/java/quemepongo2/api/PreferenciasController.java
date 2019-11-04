@@ -24,7 +24,7 @@ public class PreferenciasController {
 	
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
-	@PostMapping(name = "/ActualizarPreferencias")
+	@PostMapping("/ActualizarPreferencias")
 	public PreferenciaRs actualizarPreferencias(@RequestBody PreferenciaRq preferenciaRq, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
