@@ -18,7 +18,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.s21.quemepongo2front.Api;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
-import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
 
 public class PreferenciasFragment extends Fragment {
 

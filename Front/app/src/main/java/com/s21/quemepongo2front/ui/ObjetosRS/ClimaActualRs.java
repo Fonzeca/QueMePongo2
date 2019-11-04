@@ -1,24 +1,17 @@
 package com.s21.quemepongo2front.ui.ObjetosRS;
 
+
 public class ClimaActualRs {
 	
 	private int ciudadId;
-	private String ciudadNombre;
-	private double temperatura, viento, humedad;
-	//TODO revisar que este bien
-	private String nombreclima;
-
-	public String getNombreclima() {
-		return nombreclima;
-	}
-
-	public void setNombreclima(String nombreclima) {
-		this.nombreclima = nombreclima;
-	}
-
+	private String ciudadNombre,nombreClima;
+	private double temperatura, viento, humedad ;
+	
+	
 	public ClimaActualRs() {
-
 	}
+	
+
 	
 	public int getCiudadId() {
 		return ciudadId;
@@ -55,5 +48,13 @@ public class ClimaActualRs {
 
 	public void setHumedad(double humedad) {
 		this.humedad = humedad;
+	}
+
+	public String getNombreClima() {
+		return nombreClima;
+	}
+
+	public void setNombreClima(String nombreClima) {
+		this.nombreClima = nombreClima;
 	}
 }

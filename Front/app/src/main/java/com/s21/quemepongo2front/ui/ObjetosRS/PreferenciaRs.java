@@ -1,7 +1,6 @@
 package com.s21.quemepongo2front.ui.ObjetosRS;
 
 public class PreferenciaRs {
-
 	private boolean bufanda,  lentes,  paraguas, protectorSolar,gorra;
 
 	public boolean isBufanda() {

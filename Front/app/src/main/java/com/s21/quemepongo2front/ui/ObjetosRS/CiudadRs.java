@@ -1,5 +1,6 @@
 package com.s21.quemepongo2front.ui.ObjetosRS;
 
+
 public class CiudadRs {
 	private int id;
 	private String nombre;
@@ -7,13 +8,14 @@ public class CiudadRs {
 	
 	public CiudadRs() {
 	}
+	
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		id = id;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
