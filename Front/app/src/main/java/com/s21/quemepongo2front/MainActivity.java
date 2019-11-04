@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        obtenertoken();
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -99,34 +98,36 @@ public class MainActivity extends AppCompatActivity {
         //TODO crear un string que contenga el token para enviarlo por este metodo
     public void guardarPref(View v){
 
-                preferencias.setBufanda(false);
-                preferencias.setGorra(false);
-                preferencias.setLentes(false);
-                preferencias.setParaguas(false);
-                preferencias.setProtectorSolar(false);
-                Toast.makeText(MainActivity.this, "Holaa", Toast.LENGTH_SHORT).show();
-                //Codigo para la llamada a la api
-                RestClient restClient = Api.getRetrofit().create(RestClient.class);
-                //TODO Agregar token dinamico
-                Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
-                call.enqueue(new Callback<PreferenciaRs>() {
-                    @Override
-                    public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
-                        if(response.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "Holi" , Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(MainActivity.this, "Fallo en responder", Toast.LENGTH_SHORT).show();
-                            finish();
+        preferencias.setBufanda(false);
+        preferencias.setGorra(false);
+        preferencias.setLentes(false);
+        preferencias.setParaguas(false);
+        preferencias.setProtectorSolar(false);
+        Toast.makeText(MainActivity.this, "Holaa", Toast.LENGTH_SHORT).show();
+        //Codigo para la llamada a la api
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
+        //TODO Agregar token dinamico
+        Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
+        call.enqueue(new Callback<PreferenciaRs>() {
+            @Override
+            public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
+                if(response.isSuccessful()){
 
-                        }
-                    }
 
-                    @Override
-                    public void onFailure(Call<PreferenciaRs> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    Toast.makeText(MainActivity.this, "Holi" , Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Fallo en responder", Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }
             }
+
+            @Override
+            public void onFailure(Call<PreferenciaRs> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     public static String getToken() {
         return token;
