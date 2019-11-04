@@ -18,7 +18,7 @@ import main.java.quemepongo2.model.Ciudad;
 public class CiudadController {
 	
 	@Autowired
-	private CiudadService repo;
+	private CiudadService service;
 	
 	@Autowired
 	private SecurityConfig tokenGenerator;
@@ -32,7 +32,7 @@ public class CiudadController {
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
 		
-		Ciudad c = repo.getById(id);
+		Ciudad c = service.getById(id);
 		
 		return c.getNombre() + " " + c.getPais() + " " + c.getLatitud() + " " + c.getLongitud();
 	}
@@ -43,7 +43,7 @@ public class CiudadController {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
-		return repo.getByLikeNombre(q);
+		return service.getByLikeNombre(q);
 	}
 	
 	@GetMapping(name="/ListarCiudades")
@@ -51,7 +51,7 @@ public class CiudadController {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
-		return repo.findAll();
+		return service.findAll();
 	}
 	
 	@GetMapping("/MisCiudades")
@@ -59,7 +59,7 @@ public class CiudadController {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
-		return repo.getAllByUsuario(userId);
+		return service.getAllByUsuario(userId);
 	}
 
 	

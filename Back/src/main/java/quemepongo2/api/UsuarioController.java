@@ -18,7 +18,7 @@ import main.java.quemepongo2.manager.UsuarioService;
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioService repo;
+	private UsuarioService service;
 	
 	@Autowired
 	private SecurityConfig tokenGenerator;
@@ -28,13 +28,13 @@ public class UsuarioController {
 	@PostMapping("/CrearUsuario")
 	public LoginRs createUsuario(@RequestBody UsuarioRq user){
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		return repo.saveNewUser(user);
+		return service.saveNewUser(user);
 	}
 	
 	@PostMapping("/Login")
 	public LoginRs login(@RequestBody LoginRq logBody) {
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		return repo.validateLogin(logBody);
+		return service.validateLogin(logBody);
 	}
 	
 	@PostMapping("/AgregarCiudad")
@@ -42,7 +42,7 @@ public class UsuarioController {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
-		repo.addCiudad(ciudadId, userId);
+		service.addCiudad(ciudadId, userId);
 		
 	}
 	
@@ -51,6 +51,6 @@ public class UsuarioController {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
-		repo.deleteCiudad(ciudadId, userId);
+		service.deleteCiudad(ciudadId, userId);
 	}
 }
