@@ -2,7 +2,7 @@ package main.java.quemepongo2.api.requests;
 
 public class PreferenciaRq {
 
-	private boolean bufanda,  lentes,  paraguas, protectorSolar;
+	private boolean bufanda,  lentes,  paraguas, protectorSolar, gorra;
 
 	public boolean isBufanda() {
 		return bufanda;
@@ -36,5 +36,13 @@ public class PreferenciaRq {
 
 	public void setProtectorSolar(boolean protectorSolar) {
 		this.protectorSolar = protectorSolar;
+	}
+
+	public boolean isGorra() {
+		return gorra;
+	}
+
+	public void setGorra(boolean gorra) {
+		this.gorra = gorra;
 	}
 }
