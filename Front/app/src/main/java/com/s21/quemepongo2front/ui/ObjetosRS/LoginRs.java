@@ -12,7 +12,6 @@ public class LoginRs {
 		this.preferenciaRs = preferenciaRs;
 	}
 
-
 	public String getToken() {
 		return token;
 	}

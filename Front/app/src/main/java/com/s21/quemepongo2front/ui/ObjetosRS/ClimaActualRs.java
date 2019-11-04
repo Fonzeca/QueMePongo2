@@ -5,6 +5,8 @@ public class ClimaActualRs {
 	private int ciudadId;
 	private String ciudadNombre;
 	private double temperatura, viento, humedad;
+	//TODO revisar que este bien
+	private String nombreclima;
 
 	public String getNombreclima() {
 		return nombreclima;
@@ -14,10 +16,8 @@ public class ClimaActualRs {
 		this.nombreclima = nombreclima;
 	}
 
-	private String nombreclima;
-	
-	
 	public ClimaActualRs() {
+
 	}
 	
 	public int getCiudadId() {

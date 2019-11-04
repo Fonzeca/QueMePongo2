@@ -1,7 +1,7 @@
-package com.s21.quemepongo2front.ui;
+package com.s21.quemepongo2front.ui.ObjetosRq;
 
-public class UsuarioRq{
-	private String usuario, clave;
+public class LoginRq {
+	private String usuario,clave;
 
 	public String getUsuario() {
 		return usuario;
@@ -18,5 +18,4 @@ public class UsuarioRq{
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
-	
 }
