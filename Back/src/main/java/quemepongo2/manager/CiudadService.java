@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 import main.java.quemepongo2.api.responses.CiudadRs;
 import main.java.quemepongo2.model.Ciudad;
 import main.java.quemepongo2.persistence.CiudadRepository;
-import main.java.quemepongo2.persistence.IDaoInterface;
 
 @Service
-public class CiudadService implements IDaoInterface<Ciudad>{
+public class CiudadService{
 
 	@Autowired
 	CiudadRepository repo;
