@@ -65,9 +65,8 @@ public class HomeFragment extends Fragment {
                     TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
                     ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
 
-                    ////TODO: configurar el viento en km/h esta en Metros por segundo
                     TextView viento = getView().findViewById(R.id.textViento);
-                    viento.setText("Viento: "+data.getViento()+" m/s");
+                    viento.setText("Viento: "+data.getViento()+" km/h");
 
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");

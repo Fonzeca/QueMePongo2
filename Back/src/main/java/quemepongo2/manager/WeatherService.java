@@ -16,7 +16,7 @@ public class WeatherService {
 		
 		RestTemplate rest = new RestTemplate();
 		CurrentWeather current = rest.getForObject(query, CurrentWeather.class);
-		
+		current.transformarViento();
 		return current;
 	}
 	

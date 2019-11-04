@@ -98,4 +98,7 @@ public class CurrentWeather {
 	public void setTimezone(String timezone) {
 		this.timezone = timezone;
 	}
+	public void transformarViento() {
+		wind.setSpeed(wind.getSpeed() * 3.6);
+	}
 }
