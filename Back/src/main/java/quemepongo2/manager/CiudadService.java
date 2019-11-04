@@ -8,13 +8,18 @@ import org.springframework.stereotype.Service;
 
 import main.java.quemepongo2.api.responses.CiudadRs;
 import main.java.quemepongo2.model.Ciudad;
+import main.java.quemepongo2.model.Usuario;
 import main.java.quemepongo2.persistence.CiudadRepository;
+import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
 public class CiudadService{
 
 	@Autowired
 	CiudadRepository repo;
+	
+	@Autowired
+	UsuarioRepository repoUsuario;
 
 	public List<CiudadRs> findAll() {
 		List <CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
@@ -23,13 +28,8 @@ public class CiudadService{
 			ciudadesRs.add(new CiudadRs(ciudad));
 		}
 		return ciudadesRs;
-		
 	}
 
-	public void save(Ciudad entity) {
-		repo.save(entity);
-	}
-	
 	public Ciudad getById(int id) {
 		return repo.getOne(id);
 	}
@@ -46,4 +46,15 @@ public class CiudadService{
 		return ciudadesRs;
 	}
 	
+	public List<CiudadRs> getAllByUsuario(int userId){
+		Usuario usuario = repoUsuario.getOne(userId);
+		
+		List <CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
+		
+		for (Ciudad ciudad : usuario.getCiudads()) {
+			ciudadesRs.add(new CiudadRs(ciudad));
+		}
+		
+		return ciudadesRs;
+	}
 }

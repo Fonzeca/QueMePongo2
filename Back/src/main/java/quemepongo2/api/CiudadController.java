@@ -53,4 +53,14 @@ public class CiudadController {
 		
 		return repo.findAll();
 	}
+	
+	@GetMapping("/MisCiudades")
+	public List<CiudadRs> getCiudadesByUsuario(@RequestParam String token){
+		int userId = tokenGenerator.validarToken(token);
+		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
+		
+		return repo.getAllByUsuario(userId);
+	}
+
+	
 }
