@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HTTP;
 
 public class HomeFragment extends Fragment {
 
@@ -54,24 +55,26 @@ public class HomeFragment extends Fragment {
             @Override
             //Este es el metodo en caso que la llamada a la API devuelva algo
             public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
-                //Obtenemos el body de la llamada, ya parseado a una clase java
-                ClimaActualRs data = response.body();
+                if (response.isSuccessful()){
+                    //Obtenemos el body de la llamada, ya parseado a una clase java
+                    ClimaActualRs data = response.body();
 
-                TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                temp_actual.setText(data.getTemperatura()+"℃");
+                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
+                    temp_actual.setText(data.getTemperatura()+"℃");
 
-                TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-                ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
+                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
+                    ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
 
-                ////TODO: configurar el viento en km/h esta en Metros por segundo
-                TextView viento = getView().findViewById(R.id.textViento);
-                viento.setText("Viento: "+data.getViento()+" m/s");
+                    ////TODO: configurar el viento en km/h esta en Metros por segundo
+                    TextView viento = getView().findViewById(R.id.textViento);
+                    viento.setText("Viento: "+data.getViento()+" m/s");
 
-                TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-                //temporar es para ver el nombre del clima
-                TextView txtNombreClima= getView().findViewById(R.id.textView_nombreClima);
-                txtNombreClima.setText("nombreclima:  "+data.getNombreclima());
+                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                    textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+                    //temporar es para ver el nombre del clima
+                    TextView txtNombreClima= getView().findViewById(R.id.textView_nombreClima);
+                    txtNombreClima.setText("nombreclima:  "+data.getNombreclima());
+                }
             }
             @Override
             public void onFailure(Call<ClimaActualRs> call, Throwable t) {
