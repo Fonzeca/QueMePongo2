@@ -26,12 +26,14 @@ public class UsuarioController {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
 	@PostMapping("/CrearUsuario")
-	public void createUsuario(@RequestBody UsuarioRq user){
-		repo.saveNewUser(user);
+	public LoginRs createUsuario(@RequestBody UsuarioRq user){
+		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		return repo.saveNewUser(user);
 	}
 	
 	@PostMapping("/Login")
 	public LoginRs login(@RequestBody LoginRq logBody) {
+		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return repo.validateLogin(logBody);
 	}
 	

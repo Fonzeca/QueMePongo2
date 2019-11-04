@@ -42,7 +42,7 @@ public class UsuarioService {
 		return log;
 	}
 	
-	public void saveNewUser(UsuarioRq userRq) {
+	public LoginRs saveNewUser(UsuarioRq userRq) {
 		Usuario usuario = new Usuario();
 		
 		usuario.setUsuario(userRq.getUsuario());
@@ -51,6 +51,12 @@ public class UsuarioService {
 		usuario.setClave(cifrado);
 		
 		repo.save(usuario);
+		
+		//Creamos el token y se lo damos al RS
+		String token = tokenGenerator.crearToken(usuario.getId());
+		
+		LoginRs log = new LoginRs(usuario, token);
+		return log;
 	}
 	
 	@Transactional
