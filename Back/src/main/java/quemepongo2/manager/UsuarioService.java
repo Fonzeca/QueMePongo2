@@ -4,15 +4,17 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import main.java.quemepongo2.api.requests.LoginRq;
 import main.java.quemepongo2.api.requests.UsuarioRq;
 import main.java.quemepongo2.api.responses.LoginRs;
+import main.java.quemepongo2.model.Ciudad;
 import main.java.quemepongo2.model.Usuario;
+import main.java.quemepongo2.persistence.CiudadRepository;
 import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
@@ -22,15 +24,10 @@ public class UsuarioService {
 	UsuarioRepository repo;
 	
 	@Autowired
+	CiudadRepository repoCiudad;
+	
+	@Autowired
 	SecurityConfig tokenGenerator;
-
-	public List<Usuario> findAll() {
-		return repo.findAll();
-	}
-
-	public void save(Usuario entity) {
-		repo.save(entity);
-	}
 	
 	public LoginRs validateLogin(LoginRq loginRq) {
 		Usuario user = repo.searchByUsuario(loginRq.getUsuario());
@@ -54,6 +51,37 @@ public class UsuarioService {
 		usuario.setClave(cifrado);
 		
 		repo.save(usuario);
+	}
+	
+	@Transactional
+	public void addCiudad(int ciudadId, int userId) {
+		//Obtenemos el usuario a agregarle la ciudad
+		Usuario usuario = repo.findById(userId).get();
+		
+		Ciudad ciudad = repoCiudad.findById(ciudadId).get();
+
+		//Le agregamos la ciudad a la lista de ciudades del usuario
+		usuario.getCiudads().add(ciudad);
+		
+		//Se guarda el usuario con la nueva ciudad
+		repo.save(usuario);
+	}
+	
+	public void deleteCiudad(int ciudadId, int userId) {
+		//Obtenemos el usuario a agregarle la ciudad
+		Usuario usuario = repo.findById(userId).get();
+		
+		for (Ciudad ciudad : usuario.getCiudads()) {
+			if(ciudad.getId() == ciudadId) {
+				usuario.getCiudads().remove(ciudad);
+				
+				//Se guarda el usuario sin la ciudad
+				repo.save(usuario);
+				return;
+			}
+		}
+		
+		throw new RuntimeException("No se encontro la ciudad que se quiere remover del usuario : "+ userId);
 	}
 	
 	private String cifrarClave(String clave) {
