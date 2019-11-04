@@ -30,18 +30,21 @@ public class MainActivity extends AppCompatActivity {
     Api retrofit;
     Button botonlogin, botonhome, botonobjetos, botonGuardar;
     String temperatura, nombre, viento, humedad;
+    public static String token;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
     PreferenciaRs preferencias= new PreferenciaRs();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        obtenertoken();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "QueMePongo@gmail.com", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -61,10 +65,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-////TODO: configurar el viento en km/h esta en Metros por segundo
+        //token= getIntent().getStringExtra("token");
 
     }
+
+    private void obtenertoken() {
+        if(token==null){
+            Intent goLogin= new Intent(this,CreacionUsuario_Activity.class);
+            startActivity(goLogin);
+        }else{
+            Toast.makeText(this, "ocurrio un error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -76,10 +89,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public void mostrarobjetos(View v){
-
     }
 
     public void loginusuario(View v ){
@@ -98,21 +107,32 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Holaa", Toast.LENGTH_SHORT).show();
                 //Codigo para la llamada a la api
                 RestClient restClient = Api.getRetrofit().create(RestClient.class);
-                Call<Void> call = restClient.actualizarPreferencias(preferencias,"Gcj6Clo8JHvFfcjVIywn7w==");
-                call.enqueue(new Callback<Void>() {
+                //TODO Agregar token dinamico
+                Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
+                call.enqueue(new Callback<PreferenciaRs>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
+                    public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
                         if(response.isSuccessful()){
                             Toast.makeText(MainActivity.this, "Holi" , Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(MainActivity.this, "Fallo en responder", Toast.LENGTH_SHORT).show();
+                            finish();
+
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
+                    public void onFailure(Call<PreferenciaRs> call, Throwable t) {
                         Toast.makeText(MainActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void setToken(String token) {
+        MainActivity.token = token;
+    }
     }

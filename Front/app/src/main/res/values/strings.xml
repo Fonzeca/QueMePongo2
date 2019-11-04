@@ -36,5 +36,6 @@
 
     //Objetos strings
     <string name="boton_guardar">Guardar Preferencias</string>
+    <string name="boton_agregar_ciudad">Agregar</string>
 
 </resources>

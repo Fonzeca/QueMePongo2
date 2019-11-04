@@ -13,6 +13,7 @@ public class CiudadRs {
 	public void setId(int id) {
 		id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
