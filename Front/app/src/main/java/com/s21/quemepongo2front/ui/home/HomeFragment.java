@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //Aca creamos el objeto "llamada" el cual va a ser el endpoint a cual vamos a llamar
         //TODO Agregar token dinamico
-        Call<ClimaActualRs> call = restClient.recibirPronostico(3860259, MainActivity.getToken());
+        Call<ClimaActualRs> call = restClient.recibirPronostico(3860259, MainActivity.token);
 
         //Ejecutamos la llamada en  un thread a parte, el cual si te deja hacer modificaciones en la view
         call.enqueue(new Callback<ClimaActualRs>() {

@@ -21,13 +21,14 @@ public class LoginActivity extends AppCompatActivity {
     String usuario,clave;
     LoginRq loginsend;
     LoginRs loginRecibe;
-    Context context= getBaseContext();
     Button botonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        txtusuario= findViewById(R.id.txtUsuarioLogin);
+        txtclave = findViewById(R.id.txtClaveLogin);
         botonLogin = findViewById(R.id.botonLogin);
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,11 +36,14 @@ public class LoginActivity extends AppCompatActivity {
                 logear();
             }
         });
-    }
-    protected void logear(){
 
-        txtusuario= findViewById(R.id.txtUsuarioLogin);
-        txtclave = findViewById(R.id.txtClaveLogin);
+        txtusuario.setText("Alexis");
+        txtclave.setText("123456");
+
+    }
+
+
+    protected void logear(){
         usuario = txtusuario.getText().toString();
         clave = txtclave.getText().toString();
         loginsend= new LoginRq();
@@ -51,13 +55,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginRs> call, Response<LoginRs> response) {
                 if(response.isSuccessful()){
-                    loginRecibe= response.body();
-                    Intent goHome = new Intent(context, MainActivity.class);
                     Toast.makeText(LoginActivity.this, "Se logeo correctamente", Toast.LENGTH_SHORT).show();
-                    MainActivity.setToken(loginRecibe.getToken());
-                    finish();
-                    startActivity(goHome);
-
+                    loginRecibe= response.body();
+                    pasarAlHome();
                 }else{
                     Toast.makeText(LoginActivity.this, "Error no se pudo procesar la peticion", Toast.LENGTH_SHORT).show();
                 }
@@ -69,6 +69,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void pasarAlHome(){
+        Intent goHome = new Intent(this, MainActivity.class);
+        MainActivity.token = loginRecibe.getToken();
+        finish();
+        startActivity(goHome);
+    }
 
 }

@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        //token= getIntent().getStringExtra("token");
-
     }
 
     private void obtenertoken() {
@@ -94,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginusuario(View v ){
-            Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
-                startActivity(gologin);
-        }
+        Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
+        startActivity(gologin);
+    }
 
         //TODO crear un string que contenga el token para enviarlo por este metodo
     public void guardarPref(View v){
@@ -131,12 +129,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    public static String getToken() {
-        return token;
-    }
-
-    public static void setToken(String token) {
-        MainActivity.token = token;
-    }
-    }
+}
