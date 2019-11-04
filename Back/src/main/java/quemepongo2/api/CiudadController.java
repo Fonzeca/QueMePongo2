@@ -25,16 +25,14 @@ public class CiudadController {
 	
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
-	//TODO: Cambiar el response
 	@GetMapping(params = "id", name = "/ObtenerCiudad")
-	public String getCiduadById(@RequestParam int id, @RequestParam String token) {
+	public CiudadRs getCiduadById(@RequestParam int id, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
-		
 		Ciudad c = service.getById(id);
 		
-		return c.getNombre() + " " + c.getPais() + " " + c.getLatitud() + " " + c.getLongitud();
+		return new CiudadRs(c);
 	}
 	
 	
