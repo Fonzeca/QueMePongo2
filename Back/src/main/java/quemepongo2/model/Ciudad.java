@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 02-nov-2019 2:10:46 by Hibernate Tools 4.3.5.Final
+// Generated 04-nov-2019 2:58:03 by Hibernate Tools 4.3.5.Final
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -28,8 +28,6 @@ public class Ciudad implements java.io.Serializable {
 	private BigDecimal longitud;
 	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
 	private Set<ReporteDelClima> reporteDelClimas = new HashSet<ReporteDelClima>(0);
-	private Set<ReporteDelClima> reporteDelClimas_1 = new HashSet<ReporteDelClima>(0);
-	private Set<Usuario> usuarios_1 = new HashSet<Usuario>(0);
 
 	public Ciudad() {
 	}
@@ -41,7 +39,7 @@ public class Ciudad implements java.io.Serializable {
 	}
 
 	public Ciudad(int id, String nombre, String pais, BigDecimal latitud, BigDecimal longitud, Set<Usuario> usuarios,
-			Set<ReporteDelClima> reporteDelClimas, Set<ReporteDelClima> reporteDelClimas_1, Set<Usuario> usuarios_1) {
+			Set<ReporteDelClima> reporteDelClimas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
@@ -49,8 +47,6 @@ public class Ciudad implements java.io.Serializable {
 		this.longitud = longitud;
 		this.usuarios = usuarios;
 		this.reporteDelClimas = reporteDelClimas;
-		this.reporteDelClimas_1 = reporteDelClimas_1;
-		this.usuarios_1 = usuarios_1;
 	}
 
 	@Id
@@ -119,27 +115,6 @@ public class Ciudad implements java.io.Serializable {
 
 	public void setReporteDelClimas(Set<ReporteDelClima> reporteDelClimas) {
 		this.reporteDelClimas = reporteDelClimas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")
-	public Set<ReporteDelClima> getReporteDelClimas_1() {
-		return this.reporteDelClimas_1;
-	}
-
-	public void setReporteDelClimas_1(Set<ReporteDelClima> reporteDelClimas_1) {
-		this.reporteDelClimas_1 = reporteDelClimas_1;
-	}
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
-			@JoinColumn(name = "CiudadId", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) })
-	public Set<Usuario> getUsuarios_1() {
-		return this.usuarios_1;
-	}
-
-	public void setUsuarios_1(Set<Usuario> usuarios_1) {
-		this.usuarios_1 = usuarios_1;
 	}
 
 }

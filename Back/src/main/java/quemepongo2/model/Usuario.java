@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 02-nov-2019 2:10:46 by Hibernate Tools 4.3.5.Final
+// Generated 04-nov-2019 2:58:03 by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +31,6 @@ public class Usuario implements java.io.Serializable {
 	private boolean tieneProtectorSolar;
 	private boolean tieneGorra;
 	private Set<Ciudad> ciudads = new HashSet<Ciudad>(0);
-	private Set<Ciudad> ciudads_1 = new HashSet<Ciudad>(0);
 
 	public Usuario() {
 	}
@@ -48,7 +47,7 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(String clave, String usuario, boolean tieneBufanda, boolean tieneLentes, boolean tieneParaguas,
-			boolean tieneProtectorSolar, boolean tieneGorra, Set<Ciudad> ciudads, Set<Ciudad> ciudads_1) {
+			boolean tieneProtectorSolar, boolean tieneGorra, Set<Ciudad> ciudads) {
 		this.clave = clave;
 		this.usuario = usuario;
 		this.tieneBufanda = tieneBufanda;
@@ -57,7 +56,6 @@ public class Usuario implements java.io.Serializable {
 		this.tieneProtectorSolar = tieneProtectorSolar;
 		this.tieneGorra = tieneGorra;
 		this.ciudads = ciudads;
-		this.ciudads_1 = ciudads_1;
 	}
 
 	@Id
@@ -145,18 +143,6 @@ public class Usuario implements java.io.Serializable {
 
 	public void setCiudads(Set<Ciudad> ciudads) {
 		this.ciudads = ciudads;
-	}
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
-			@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "CiudadId", nullable = false, updatable = false) })
-	public Set<Ciudad> getCiudads_1() {
-		return this.ciudads_1;
-	}
-
-	public void setCiudads_1(Set<Ciudad> ciudads_1) {
-		this.ciudads_1 = ciudads_1;
 	}
 
 }
