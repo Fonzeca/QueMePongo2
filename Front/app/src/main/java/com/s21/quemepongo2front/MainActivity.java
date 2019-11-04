@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        obtenertoken();
+        if(token==null) {
+            obtenertoken();
+        }
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void obtenertoken() {
         if(token==null){
-            Intent goLogin= new Intent(this,CreacionUsuario_Activity.class);
+            Intent goLogin= new Intent(this,LoginActivity.class);
             startActivity(goLogin);
         }else{
             Toast.makeText(this, "ocurrio un error", Toast.LENGTH_SHORT).show();

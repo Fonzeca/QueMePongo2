@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
 import com.s21.quemepongo2front.MainActivity;
@@ -26,7 +25,6 @@ import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.HTTP;
 
 public class HomeFragment extends Fragment {
 
@@ -70,9 +68,6 @@ public class HomeFragment extends Fragment {
 
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-                    //temporar es para ver el nombre del clima
-                    TextView txtNombreClima= getView().findViewById(R.id.textView_nombreClima);
-                    txtNombreClima.setText("nombreclima:  "+data.getNombreclima());
                 }
             }
             @Override

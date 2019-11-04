@@ -2,10 +2,10 @@
 package com.s21.quemepongo2front;
 
 import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
-import com.s21.quemepongo2front.ui.ObjetosRq.LoginRq;
 import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.ui.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
+import com.s21.quemepongo2front.ui.ObjetosRq.LoginRq;
 import com.s21.quemepongo2front.ui.ObjetosRq.UsuarioRq;
 
 import java.util.List;
