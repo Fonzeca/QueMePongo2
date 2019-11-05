@@ -6,6 +6,7 @@ import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.ui.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
 import com.s21.quemepongo2front.ui.ObjetosRq.LoginRq;
+import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
 import com.s21.quemepongo2front.ui.ObjetosRq.UsuarioRq;
 
 import java.util.List;
@@ -29,7 +30,10 @@ import retrofit2.http.Query;
     Call <LoginRs> crearUsuario (@Body UsuarioRq crearusuario);
 
     @POST("ActualizarPreferencias")
-    Call<PreferenciaRs> actualizarPreferencias(@Query("token") String token, @Body PreferenciaRs preferenciaRq);
+    Call<PreferenciaRs> actualizarPreferencias(@Query("token") String token, @Body PreferenciaRq preferenciaRq);
+
+    @GET("ObtenerPreferencias")
+    Call<PreferenciaRs> obtenerPreferencias(@Query("token") String token);
 
     @POST("Login")
     Call<LoginRs> loginUsuario(@Body LoginRq logeo);

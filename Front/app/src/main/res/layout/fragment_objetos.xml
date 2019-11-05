@@ -6,26 +6,11 @@
     android:layout_height="match_parent"
     android:background="@mipmap/wp_fondo">
 
-    <TextView
-        android:id="@+id/text_preferencias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="5dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/boton_guardarPreferencias"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contendorDeObjetos"
-        android:layout_width="320dp"
-        android:layout_height="450dp"
+        android:layout_width="300dp"
+        android:layout_height="515dp"
+        android:background="#8FFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,104 +18,138 @@
         app:layout_constraintVertical_bias="0.72">
 
         <ImageButton
-            android:id="@+id/imageButton_bufanda"
+            android:id="@+id/image_bufanda"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/colorPrimario"
+            android:clickable="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_bufanda" />
 
+        <CheckBox
+            android:id="@+id/checkBoxBufanda"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toEndOf="@+id/image_bufanda"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
-            android:id="@+id/imageButton_bloqueador"
-            android:layout_width="56dp"
-            android:layout_height="52dp"
+            android:id="@+id/image_gorra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#008577"
+            android:clickable="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_bufanda"
+            app:srcCompat="@mipmap/ic_gorra" />
+
+        <CheckBox
+            android:id="@+id/checkBoxGorra"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="42dp"
+            app:layout_constraintStart_toEndOf="@+id/image_gorra"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxBufanda" />
+
+        <ImageButton
+            android:id="@+id/image_bloqueador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/colorPrimary"
+            android:clickable="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton_gorra"
+            app:layout_constraintTop_toBottomOf="@+id/image_gorra"
             app:srcCompat="@mipmap/ic_bloqueador" />
 
+        <CheckBox
+            android:id="@+id/checkBoxBloqueador"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="42dp"
+            app:layout_constraintStart_toEndOf="@+id/image_bloqueador"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxGorra" />
+
         <ImageButton
-            android:id="@+id/imageButton_lentes"
+            android:id="@+id/image_paraguas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="24dp"
             android:backgroundTint="#008577"
+            android:clickable="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton_paraguas"
-            app:srcCompat="@mipmap/ic_lentes" />
-
-        <ImageButton
-            android:id="@+id/imageButton_gorra"
-            android:layout_width="55dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#008577"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton_bufanda"
-            app:srcCompat="@mipmap/ic_gorra" />
-
-        <ImageButton
-            android:id="@+id/imageButton_paraguas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#008577"
-            android:contentDescription="TODO"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton_bloqueador"
+            app:layout_constraintTop_toBottomOf="@+id/image_bloqueador"
             app:srcCompat="@mipmap/ic_paragua" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBoxParaguas"
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_marginStart="44dp"
-            app:layout_constraintStart_toEndOf="@+id/imageButton_bufanda"
-            tools:layout_editor_absoluteY="25dp" />
+            android:layout_marginTop="42dp"
+            app:layout_constraintStart_toEndOf="@+id/image_paraguas"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxBloqueador" />
+
+        <ImageButton
+            android:id="@+id/image_lentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#008577"
+            android:clickable="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_paraguas"
+            app:srcCompat="@mipmap/ic_lentes" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBoxLentes"
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_marginStart="44dp"
-            app:layout_constraintStart_toEndOf="@+id/imageButton_gorra"
-            tools:layout_editor_absoluteY="101dp" />
+            android:layout_marginTop="42dp"
+            app:layout_constraintStart_toEndOf="@+id/image_lentes"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxParaguas" />
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="40dp"
-            app:layout_constraintStart_toEndOf="@+id/imageButton_bloqueador"
-            tools:layout_editor_absoluteY="177dp" />
+        <TextView
+            android:id="@+id/text_preferencias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/preferencias_instrucciones"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/boton_guardarPreferencias"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="40dp"
-            app:layout_constraintStart_toEndOf="@+id/imageButton_paraguas"
-            tools:layout_editor_absoluteY="256dp" />
+        <Button
+            android:id="@+id/boton_guardarPreferencias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="28dp"
+            android:onClick="guardarPref"
+            android:text="@string/preferencias_boton_guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/boton_guardarPreferencias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="guardarPref"
-        android:text="@string/boton_guardar"
-        app:layout_constraintBottom_toTopOf="@+id/contendorDeObjetos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_preferencias" />
 </androidx.constraintlayout.widget.ConstraintLayout>

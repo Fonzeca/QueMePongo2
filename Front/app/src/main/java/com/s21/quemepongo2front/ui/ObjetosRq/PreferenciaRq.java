@@ -1,5 +1,4 @@
-package main.java.quemepongo2.api.requests;
-
+package com.s21.quemepongo2front.ui.ObjetosRq;
 
 public class PreferenciaRq {
 
@@ -12,6 +11,7 @@ public class PreferenciaRq {
 		this.protectorSolar = protectorSolar;
 		this.gorra = gorra;
 	}
+
 	public PreferenciaRq() {
 	}
 

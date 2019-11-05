@@ -33,6 +33,10 @@ public class PreferenciaService {
 		return new PreferenciaRs(bufanda, lentes, paraguas, protectorSolar, gorra);
 	}
 	
+	public PreferenciaRs obtenerPreferncias(int userId) {
+		Usuario user=repo.findById(userId).get();
+		return new PreferenciaRs(user);
+	}
 	
 	
 }

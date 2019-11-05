@@ -12,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
+import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     String temperatura, nombre, viento, humedad;
     public static String token;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
-    PreferenciaRs preferencias= new PreferenciaRs();
+    PreferenciaRq preferencias= new PreferenciaRq();
 
 
     @Override

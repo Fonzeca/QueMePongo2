@@ -10,7 +10,6 @@ public class PreferenciasViewModel extends ViewModel {
 
     public PreferenciasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Agrega tus objetos personales :D");
     }
 
     public LiveData<String> getText() {
