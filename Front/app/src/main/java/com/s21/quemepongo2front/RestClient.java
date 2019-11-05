@@ -24,7 +24,7 @@ import retrofit2.http.Query;
     Call<ClimaActualRs> recibirPronostico(@Query("idCiudad") int idCiudad, @Query("token") String token);
 
     @GET("listarCiudades")
-    Call<CiudadRs> listarCiudades(@Query("Token")String token);
+    Call <CiudadRs> listarCiudades(@Query("Token")String token);
 
     @POST("CrearUsuario")
     Call <LoginRs> crearUsuario (@Body UsuarioRq crearusuario);

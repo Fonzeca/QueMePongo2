@@ -10,49 +10,52 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="72dp"
+        android:text="@string/botonEliminar"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="307dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Button"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/botonEliminar"
         app:layout_constraintBottom_toTopOf="@+id/button4"
-        tools:layout_editor_absoluteX="307dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Button"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/botonEliminar"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        tools:layout_editor_absoluteX="307dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3" />
 
     <Button
         android:id="@+id/botonAgregarCiudad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="534dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginBottom="544dp"
         android:text="@string/boton_agregar_ciudad"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCiudades"
-        android:layout_width="397dp"
-        android:layout_height="158dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="348dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,66 +63,78 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.886" />
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="239dp"
         android:layout_height="48dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="24dp"
         android:text="@string/ubicacion_1"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewCiudades"
-        app:layout_constraintVertical_bias="0.795"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="233dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="239dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/ubicacion_2"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="239dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/ubicacion_3"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
-        tools:layout_editor_absoluteX="22dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="238dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
         android:text="@string/ubicacion_4"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="23dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        tools:layout_editor_absoluteX="307dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextBuscador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="Buscador"
+        android:text="@string/textViewBuscador"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/botonAgregarCiudad"
         app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041" />
+        app:layout_constraintVertical_bias="0.021" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/botonEliminar"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.997" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

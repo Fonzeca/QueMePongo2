@@ -44,6 +44,8 @@
     <string name="txtLoginUsuario">Usuario</string>
     <string name="txtClaveLogin">Clave</string>
     <string name="botonLogin">Login</string>
+    <string name="botonEliminar">Eliminar</string>
+    <string name="textViewBuscador">Buscador</string>
 
 <!--    Preferencias string-->
     <string name="preferencias_boton_guardar">Guardar preferencias</string>

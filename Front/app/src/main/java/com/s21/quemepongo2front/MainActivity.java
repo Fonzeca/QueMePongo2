@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
 import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
 
+import java.util.ArrayList;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,6 +24,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public static String token;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
     PreferenciaRq preferencias= new PreferenciaRq();
+    ArrayList<String> listaCiudadesSend;
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         if(token==null) {
             obtenertoken();
@@ -55,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "QueMePongo@gmail.com", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -69,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
-
     private void obtenertoken() {
         if(token==null){
             Intent goLogin= new Intent(this,LoginActivity.class);
@@ -78,25 +80,19 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "ocurrio un error", Toast.LENGTH_SHORT).show();
         }
     }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
     public void loginusuario(View v ){
         Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
         startActivity(gologin);
     }
-
         //TODO crear un string que contenga el token para enviarlo por este metodo
     public void guardarPref(View v){
 
@@ -105,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
         preferencias.setLentes(false);
         preferencias.setParaguas(false);
         preferencias.setProtectorSolar(false);
-        Toast.makeText(MainActivity.this, "Holaa", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
         //Codigo para la llamada a la api
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //TODO Agregar token dinamico
         Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
         call.enqueue(new Callback<PreferenciaRs>() {
-            @Override
+
             public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
                 if(response.isSuccessful()){
 
@@ -124,10 +120,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
             public void onFailure(Call<PreferenciaRs> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void llenarlistaciudades(){
+        RecyclerView recycler;
+        recycler= (RecyclerView) findViewById(R.id.recyclerViewCiudades);
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+
     }
 }
