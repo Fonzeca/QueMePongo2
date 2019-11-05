@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,12 +36,13 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     RestClient restClient = Api.getRetrofit().create(RestClient.class);
-    String temperatura, nombre, viento, humedad,buscador;
+    String temperatura, nombre, viento, humedad,buscador,ciudadSeleccionada;
     public static String token;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
     EditText editBuscador;
+    TextView txtCiudadSeleccion;
     PreferenciaRq preferencias= new PreferenciaRq();
-    ArrayList<CiudadRs> listaCiudadesSend;
+    ArrayList<CiudadRs> listaCiudadesRecibe;
     RecyclerView recycler;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +93,12 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
     public void loginusuario(View v ){
         Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
         startActivity(gologin);
     }
+
         //TODO Setear las preferencias dea cuerdo al check de el view de preferencias
     public void guardarPref(View v){
 
@@ -126,17 +130,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void llenarlistaciudades(View view){
         editBuscador = findViewById(R.id.editTextBuscador);
         buscador = editBuscador.getText().toString();
 
-        final Call <ArrayList<CiudadRs>> listar= restClient.obtenerCiudad(buscador,token);
+        final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
         listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
             @Override
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                 if(response.isSuccessful()){
 
-                    ArrayList <CiudadRs> listaCiudadesRecibe = response.body();
+                    listaCiudadesRecibe = response.body();
                     agregaradaptador(listaCiudadesRecibe);
 
                 }else{
@@ -152,11 +157,17 @@ public class MainActivity extends AppCompatActivity {
     }
     public void agregaradaptador(ArrayList <CiudadRs>lista){
         recycler = findViewById(R.id.recyclerViewCiudades);
+        txtCiudadSeleccion = findViewById(R.id.textViewCiudadSeleccionada);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         AdapterListaCiudad adaptador = new AdapterListaCiudad(lista);
+
+        adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ciudadSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getNombre();
+                txtCiudadSeleccion.setText(ciudadSeleccionada);
+            }
+        });
         recycler.setAdapter(adaptador);
-    }
-    public void itemRecyclerView(View v){
-        Toast.makeText(this, "Hola tocaste una ciudad :o", Toast.LENGTH_SHORT).show();
     }
 }

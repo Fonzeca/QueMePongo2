@@ -16,8 +16,11 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad.ViewHolderciudades> {
+public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad.ViewHolderciudades> implements View.OnClickListener {
+
     ArrayList<CiudadRs> listaCiudades;
+    private View.OnClickListener listener;
+
 
     public AdapterListaCiudad(ArrayList<CiudadRs> listaCiudades) {
         this.listaCiudades = listaCiudades;
@@ -26,17 +29,28 @@ public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad
 
     public ViewHolderciudades onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view,null,false);
-
+        view.setOnClickListener(this);
         return new ViewHolderciudades(view);
     }
 
     public void onBindViewHolder(@NonNull ViewHolderciudades holder, int position) {
         holder.asignardatos(listaCiudades.get(position));
-
     }
 
     public int getItemCount() {
         return listaCiudades.size();
+    }
+
+
+    public void setOnClickListener(View.OnClickListener listener ){
+        this.listener= listener;
+    }
+
+    public void onClick(View v) {
+
+        if(listener!=null){
+            listener.onClick(v);
+        }
     }
 
     public class ViewHolderciudades extends RecyclerView.ViewHolder {
