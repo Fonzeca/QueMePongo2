@@ -6,31 +6,33 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.s21.quemepongo2front.R;
+import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
+
 
 import org.w3c.dom.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad.ViewHolderciudades>{
-    ArrayList<String> listaCiudades;
+public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad.ViewHolderciudades> {
+    ArrayList<CiudadRs> listaCiudades;
 
-    public AdapterListaCiudad(ArrayList<String> listaCiudades) {
+    public AdapterListaCiudad(ArrayList<CiudadRs> listaCiudades) {
         this.listaCiudades = listaCiudades;
     }
 
 
     public ViewHolderciudades onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_de_ciudades,null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view,null,false);
 
         return new ViewHolderciudades(view);
     }
 
     public void onBindViewHolder(@NonNull ViewHolderciudades holder, int position) {
         holder.asignardatos(listaCiudades.get(position));
+
     }
 
     public int getItemCount() {
@@ -44,8 +46,9 @@ public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad
             nombreciudad= (TextView)itemView.findViewById(R.id.ciudadLista);
         }
 
-        public void asignardatos(String dato) {
-            nombreciudad.setText(dato);
+        public void asignardatos(CiudadRs ciudad) {
+            nombreciudad.setText(ciudad.getNombre()+", "+ciudad.getPais());
         }
+
     }
 }

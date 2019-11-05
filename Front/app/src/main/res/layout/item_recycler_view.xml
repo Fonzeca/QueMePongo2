@@ -7,5 +7,11 @@
         android:id="@+id/ciudadLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ciudad" />
+        android:clickable="true"
+        android:onClick="itemRecyclerView"
+        android:text="ciudad"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textStyle="italic" />
 </LinearLayout>

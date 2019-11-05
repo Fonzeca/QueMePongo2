@@ -4,18 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.s21.quemepongo2front.ui.AdapterListaCiudad;
+import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
 import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
 import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,15 +33,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     private AppBarConfiguration mAppBarConfiguration;
-    Api retrofit;
-    Button botonlogin, botonhome, botonobjetos, botonGuardar;
-    String temperatura, nombre, viento, humedad;
+    RestClient restClient = Api.getRetrofit().create(RestClient.class);
+    String temperatura, nombre, viento, humedad,buscador;
     public static String token;
     ImageButton bufanda,protector,lentes,gorra,paraguas;
+    EditText editBuscador;
     PreferenciaRq preferencias= new PreferenciaRq();
-    ArrayList<String> listaCiudadesSend;
+    ArrayList<CiudadRs> listaCiudadesSend;
+    RecyclerView recycler;
 
     protected void onCreate(Bundle savedInstanceState) {
         if(token==null) {
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
         startActivity(gologin);
     }
-        //TODO crear un string que contenga el token para enviarlo por este metodo
+        //TODO Setear las preferencias dea cuerdo al check de el view de preferencias
     public void guardarPref(View v){
 
         preferencias.setBufanda(false);
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         preferencias.setProtectorSolar(false);
         Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
         //Codigo para la llamada a la api
-        RestClient restClient = Api.getRetrofit().create(RestClient.class);
         //TODO Agregar token dinamico
         Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
         call.enqueue(new Callback<PreferenciaRs>() {
@@ -125,10 +126,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void llenarlistaciudades(){
-        RecyclerView recycler;
-        recycler= (RecyclerView) findViewById(R.id.recyclerViewCiudades);
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+    public void llenarlistaciudades(View view){
+        editBuscador = findViewById(R.id.editTextBuscador);
+        buscador = editBuscador.getText().toString();
 
+        final Call <ArrayList<CiudadRs>> listar= restClient.obtenerCiudad(buscador,token);
+        listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                if(response.isSuccessful()){
+
+                    ArrayList <CiudadRs> listaCiudadesRecibe = response.body();
+                    agregaradaptador(listaCiudadesRecibe);
+
+                }else{
+                    Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+
+            }
+        });
+
+    }
+    public void agregaradaptador(ArrayList <CiudadRs>lista){
+        recycler = findViewById(R.id.recyclerViewCiudades);
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        AdapterListaCiudad adaptador = new AdapterListaCiudad(lista);
+        recycler.setAdapter(adaptador);
+    }
+    public void itemRecyclerView(View v){
+        Toast.makeText(this, "Hola tocaste una ciudad :o", Toast.LENGTH_SHORT).show();
     }
 }

@@ -29,11 +29,10 @@ public class ubicacionesFragment extends Fragment {
         ubicacionesViewModel =
                 ViewModelProviders.of(this).get(UbicacionesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_ubicaciones, container, false);
-        final TextView textView = root.findViewById(R.id.editTextBuscador);
+
         ubicacionesViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
             }
         });
 

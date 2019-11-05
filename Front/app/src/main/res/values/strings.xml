@@ -36,6 +36,7 @@
 
 <!--    Objetos strings-->
     <string name="boton_agregar_ciudad">Agregar</string>
+    <string name="boton_buscar">Buscar</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

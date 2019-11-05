@@ -9,6 +9,7 @@ import com.s21.quemepongo2front.ui.ObjetosRq.LoginRq;
 import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
 import com.s21.quemepongo2front.ui.ObjetosRq.UsuarioRq;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,6 +26,9 @@ import retrofit2.http.Query;
 
     @GET("listarCiudades")
     Call <CiudadRs> listarCiudades(@Query("Token")String token);
+
+    @GET("ObtenerCiudad")
+    Call <ArrayList<CiudadRs>> obtenerCiudad(@Query("q")String nombreCiudad, @Query("token")String token);
 
     @POST("CrearUsuario")
     Call <LoginRs> crearUsuario (@Body UsuarioRq crearusuario);
