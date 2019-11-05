@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recycler;
 
     protected void onCreate(Bundle savedInstanceState) {
-        if(token==null) {
-            obtenertoken();
-        }
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -78,18 +75,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
-    private void obtenertoken() {
-        if(token==null){
-            Intent goLogin= new Intent(this,LoginActivity.class);
-            startActivity(goLogin);
-        }else{
-            Toast.makeText(this, "ocurrio un error", Toast.LENGTH_SHORT).show();
-        }
-    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
@@ -101,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(gologin);
     }
 
-        //TODO Setear las preferencias dea cuerdo al check de el view de preferencias
     public void guardarPref(View v){
 
         preferencias.setBufanda(false);
@@ -136,91 +126,42 @@ public class MainActivity extends AppCompatActivity {
     public void llenarlistaciudades(View view){
         editBuscador = findViewById(R.id.editTextBuscador);
         editBuscador.addTextChangedListener(new TextWatcher() {
-            @Override
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                editBuscador = findViewById(R.id.editTextBuscador);
+
                 buscador = editBuscador.getText().toString();
 
                 final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
                 listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
-                    @Override
                     public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                         if(response.isSuccessful()){
-
                             listaCiudadesRecibe = response.body();
                             agregaradaptador(listaCiudadesRecibe);
-
                         }else{
                             Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    @Override
                     public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
 
                     }
                 });
             }
 
-            @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                buscador = editBuscador.getText().toString();
 
-                final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
-                listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
-                        if(response.isSuccessful()){
-
-                            listaCiudadesRecibe = response.body();
-                            agregaradaptador(listaCiudadesRecibe);
-
-                        }else{
-                            Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
-
-                    }
-                });
             }
-
-            @Override
             public void afterTextChanged(Editable s) {
-                buscador = editBuscador.getText().toString();
-
-                final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
-                listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
-                        if(response.isSuccessful()){
-
-                            listaCiudadesRecibe = response.body();
-                            agregaradaptador(listaCiudadesRecibe);
-
-                        }else{
-                            Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
-
-                    }
-                });
-            }
+        }
         });
-
-
-
-
     }
+    //TODO Comentar este metodo
     public void agregaradaptador(ArrayList <CiudadRs>lista){
         recycler = findViewById(R.id.recyclerViewCiudades);
         txtCiudadSeleccion = findViewById(R.id.textViewCiudadSeleccionada);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         AdapterListaCiudad adaptador = new AdapterListaCiudad(lista);
-
         adaptador.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 ciudadSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getNombre();
                 txtCiudadSeleccion.setText(ciudadSeleccionada);

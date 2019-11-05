@@ -24,28 +24,28 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txtViewUbicacion1"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:text="@string/ubicacion_4" />
+                android:hint="@string/ubicacion_1" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textViewUbicacion2"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:text="@string/ubicacion_4" />
+                android:hint="@string/ubicacion_2" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/txtViewUbicacion3"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:text="@string/ubicacion_4" />
+                android:hint="@string/ubicacion_3" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/txtViewUbicacion4"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:text="@string/ubicacion_4" />
+                android:hint="@string/ubicacion_4" />
 
         </LinearLayout>
 
@@ -87,7 +87,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="416dp"
-        android:layout_height="249dp"
+        android:layout_height="278dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -100,7 +100,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCiudades"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clickable="true" />
 
         <View
             android:id="@+id/separator"
@@ -129,6 +130,8 @@
                 android:id="@+id/editTextBuscador"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:clickable="true"
+                android:contextClickable="true"
                 android:ems="10"
                 android:hint="@string/textViewBuscador"
                 android:importantForAutofill="no"

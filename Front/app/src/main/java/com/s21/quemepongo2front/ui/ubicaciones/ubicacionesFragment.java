@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.s21.quemepongo2front.Api;
+import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 
 import java.util.ArrayList;
@@ -20,22 +21,16 @@ import androidx.lifecycle.ViewModelProviders;
 public class ubicacionesFragment extends Fragment {
 
     private UbicacionesViewModel ubicacionesViewModel;
-    Api response;
-    ArrayList ciudades;
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         ubicacionesViewModel =
                 ViewModelProviders.of(this).get(UbicacionesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_ubicaciones, container, false);
-
-        ubicacionesViewModel.getText().observe(this, new Observer<String>() {
+            ubicacionesViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
             }
         });
-
 
         return root;
     }
