@@ -36,21 +36,23 @@ public class LoginActivity extends AppCompatActivity {
                 logear();
             }
         });
-
+//TODO Borrar el hardcodeo de fonzin
         txtusuario.setText("Alexis");
         txtclave.setText("123456");
 
     }
 
-
     protected void logear(){
+
         usuario = txtusuario.getText().toString();
         clave = txtclave.getText().toString();
         loginsend= new LoginRq();
         loginsend.setUsuario(usuario);
         loginsend.setClave(clave);
+
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         Call<LoginRs> logeo = restClient.loginUsuario(loginsend);
+
         logeo.enqueue(new Callback<LoginRs>() {
             @Override
             public void onResponse(Call<LoginRs> call, Response<LoginRs> response) {
