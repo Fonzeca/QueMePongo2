@@ -35,11 +35,11 @@ public class CiudadController {
 		return new CiudadRs(c);
 	}
 	
-	
+	//TODO: Cuando no tiene q, no devolver nada
 	@GetMapping(params = "q", path = "/ObtenerCiudad")
 	public List<CiudadRs> getCiudadByName(@RequestParam String q, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
-		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
+		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId + ", q : " + q);
 		
 		return service.getByLikeNombre(q);
 	}
