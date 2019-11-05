@@ -2,6 +2,8 @@ package com.s21.quemepongo2front;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -133,26 +135,82 @@ public class MainActivity extends AppCompatActivity {
 
     public void llenarlistaciudades(View view){
         editBuscador = findViewById(R.id.editTextBuscador);
-        buscador = editBuscador.getText().toString();
-
-        final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
-        listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
+        editBuscador.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
-                if(response.isSuccessful()){
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                buscador = editBuscador.getText().toString();
 
-                    listaCiudadesRecibe = response.body();
-                    agregaradaptador(listaCiudadesRecibe);
+                final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
+                listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                        if(response.isSuccessful()){
 
-                }else{
-                    Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
-                }
+                            listaCiudadesRecibe = response.body();
+                            agregaradaptador(listaCiudadesRecibe);
+
+                        }else{
+                            Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+
+                    }
+                });
             }
-            @Override
-            public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                buscador = editBuscador.getText().toString();
+
+                final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
+                listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                        if(response.isSuccessful()){
+
+                            listaCiudadesRecibe = response.body();
+                            agregaradaptador(listaCiudadesRecibe);
+
+                        }else{
+                            Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                buscador = editBuscador.getText().toString();
+
+                final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
+                listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                        if(response.isSuccessful()){
+
+                            listaCiudadesRecibe = response.body();
+                            agregaradaptador(listaCiudadesRecibe);
+
+                        }else{
+                            Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+
+                    }
+                });
             }
         });
+
+
+
 
     }
     public void agregaradaptador(ArrayList <CiudadRs>lista){

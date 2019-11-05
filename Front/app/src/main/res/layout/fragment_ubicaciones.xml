@@ -127,19 +127,14 @@
 
             <EditText
                 android:id="@+id/editTextBuscador"
-                android:layout_width="301dp"
-                android:layout_height="42dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:ems="10"
                 android:hint="@string/textViewBuscador"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:onClick="llenarlistaciudades" />
 
-            <Button
-                android:id="@+id/botonAgregarCiudad"
-                android:layout_width="113dp"
-                android:layout_height="57dp"
-                android:onClick="llenarlistaciudades"
-                android:text="@string/boton_buscar" />
         </LinearLayout>
 
         <LinearLayout
