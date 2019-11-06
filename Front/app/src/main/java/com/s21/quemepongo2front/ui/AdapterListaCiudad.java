@@ -52,14 +52,15 @@ public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad
             listener.onClick(v);
         }
     }
-
+    //general la vista de cada uno de los renglones del edittext como un objeto del xml ciudadLista
     public class ViewHolderciudades extends RecyclerView.ViewHolder {
+
         TextView nombreciudad;
         public ViewHolderciudades(@NonNull View itemView) {
             super(itemView);
             nombreciudad= (TextView)itemView.findViewById(R.id.ciudadLista);
         }
-
+        //Asigna a cada renglon el nombre de la ciudad y el pais de donde viene.
         public void asignardatos(CiudadRs ciudad) {
             nombreciudad.setText(ciudad.getNombre()+", "+ciudad.getPais());
         }

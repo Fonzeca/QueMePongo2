@@ -36,16 +36,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
     private AppBarConfiguration mAppBarConfiguration;
     RestClient restClient = Api.getRetrofit().create(RestClient.class);
-    String temperatura, nombre, viento, humedad,buscador,ciudadSeleccionada;
     public static String token;
-    ImageButton bufanda,protector,lentes,gorra,paraguas;
-    EditText editBuscador;
-    TextView txtCiudadSeleccion;
     PreferenciaRq preferencias= new PreferenciaRq();
     ArrayList<CiudadRs> listaCiudadesRecibe;
-    RecyclerView recycler;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,11 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void loginusuario(View v ){
-        Intent gologin = new Intent(this, CreacionUsuario_Activity.class);
-        startActivity(gologin);
-    }
-
     public void guardarPref(View v){
 
         preferencias.setBufanda(false);
@@ -123,50 +115,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void llenarlistaciudades(View view){
-        editBuscador = findViewById(R.id.editTextBuscador);
-        editBuscador.addTextChangedListener(new TextWatcher() {
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                editBuscador = findViewById(R.id.editTextBuscador);
-
-                buscador = editBuscador.getText().toString();
-
-                final Call <ArrayList<CiudadRs>> listar = restClient.obtenerCiudad(buscador,token);
-                listar.enqueue(new Callback<ArrayList<CiudadRs>>() {
-                    public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
-                        if(response.isSuccessful()){
-                            listaCiudadesRecibe = response.body();
-                            agregaradaptador(listaCiudadesRecibe);
-                        }else{
-                            Toast.makeText(MainActivity.this, "Error intentelo denuevo", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
-
-                    }
-                });
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-            public void afterTextChanged(Editable s) {
-        }
-        });
-    }
     //TODO Comentar este metodo
-    public void agregaradaptador(ArrayList <CiudadRs>lista){
-        recycler = findViewById(R.id.recyclerViewCiudades);
-        txtCiudadSeleccion = findViewById(R.id.textViewCiudadSeleccionada);
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        AdapterListaCiudad adaptador = new AdapterListaCiudad(lista);
-        adaptador.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                ciudadSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getNombre();
-                txtCiudadSeleccion.setText(ciudadSeleccionada);
-            }
-        });
-        recycler.setAdapter(adaptador);
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void setToken(String token) {
+        MainActivity.token = token;
     }
 }
+
