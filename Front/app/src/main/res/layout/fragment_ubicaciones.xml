@@ -19,61 +19,20 @@
         app:layout_constraintVertical_bias="0.979">
 
         <LinearLayout
-            android:layout_width="203dp"
+            android:layout_width="249dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtViewUbicacion1"
+            <ListView
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:hint="@string/ubicacion_1" />
-
-            <TextView
-                android:id="@+id/textViewUbicacion2"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:hint="@string/ubicacion_2" />
-
-            <TextView
-                android:id="@+id/txtViewUbicacion3"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:hint="@string/ubicacion_3" />
-
-            <TextView
-                android:id="@+id/txtViewUbicacion4"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:hint="@string/ubicacion_4" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="204dp"
+            android:layout_width="162dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="@string/botonEliminar" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="@string/botonEliminar" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="@string/botonEliminar" />
 
             <Button
                 android:id="@+id/button2"
@@ -135,8 +94,7 @@
                 android:ems="10"
                 android:hint="@string/textViewBuscador"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:onClick="llenarlistaciudades" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 

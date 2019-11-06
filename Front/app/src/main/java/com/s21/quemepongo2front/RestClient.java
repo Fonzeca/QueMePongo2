@@ -43,10 +43,10 @@ import retrofit2.http.Query;
     Call<LoginRs> loginUsuario(@Body LoginRq logeo);
 
     @GET ("MisCiudades")
-    Call<List<CiudadRs>> misCiudades(@Query("token")String token);
+    Call<ArrayList<CiudadRs>> misCiudades(@Query("token")String token);
 
     @POST("AgregarCiudad")
-    Call<Void> agregarCioudad(@Query("ciudadId") int idCiudad,@Query("token") String token);
+    Call<Void> agregarCiudad(@Query("ciudadId") int idCiudad,@Query("token") String token);
 
     @DELETE("QuitarCiudad")
     Call<Void> borrarciudad(@Query("ciudadId")int idCiudad,@Query("token")String token);
