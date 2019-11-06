@@ -8,18 +8,32 @@ public class PMV {
 
     private double pmv; // predicted mean vote
     private double ppd; // predicted percentage dissatisfied
+    private double clo;
 
-    public PMV() {
-        // required empty constructor
+    public PMV(double temperature, double humidity, double windSpeed) {
+    	clo = 0.1;
+    	
+    	while (true) {
+    		generarPMV(temperature, humidity, clo, windSpeed);
+    		
+    		if(pmv > 0.3) {
+    			clo -= 0.01;
+    		}else if(pmv < -0.3) {
+    			clo += 0.01;
+    		}else {
+    			break;
+    		}
+		}
+    	
     }
-
-    // Constructor
-    public PMV(double temperature, double humidity, double clothing, double windSpeed) {
+    
+    
+    public void generarPMV(double temperature, double humidity, double clothing, double windSpeed) {
 
         double met = 3.4; // metabolic rate
         double wme = 0; // external work
         double ta = temperature; // air temperature average
-        double tr = 20; // mean radiant temperature
+        double tr = 0; // mean radiant temperature
         double vel = windSpeed; // wind velocity
         double rh = humidity; // relative humidity average
         double clo = clothing;// clothing
@@ -146,12 +160,12 @@ public class PMV {
             /* Predicted Percentage dissatisfied */
             ppd = 100 - (95 * Math.exp((-0.03353 * (Math.pow(pmv, 4))) - (0.2179 * (Math.pow(pmv, 2)))));
         }
-        System.out.println("Calculated PMV: " + pmv + " Calculated PPD: " + ppd);
 
     }
 
-    public double getPmv() {
-        return pmv;
-    }
+
+	public double getClo() {
+		return clo;
+	}
 
 }

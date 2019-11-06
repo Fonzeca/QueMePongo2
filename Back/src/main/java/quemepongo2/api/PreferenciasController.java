@@ -18,7 +18,7 @@ import main.java.quemepongo2.manager.SecurityConfig;
 public class PreferenciasController {
 	
 	@Autowired
-	PreferenciaService service;
+	private PreferenciaService service;
 	
 	@Autowired
 	private SecurityConfig tokenGenerator;
