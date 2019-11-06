@@ -44,11 +44,12 @@
     <string name="title_logeo_activity">Logeo</string>
     <string name="txtLoginUsuario">Usuario</string>
     <string name="txtClaveLogin">Clave</string>
-    <string name="botonLogin">Login</string>
+    <string name="botonLogin">Ingresar</string>
     <string name="botonEliminar">Eliminar</string>
     <string name="textViewBuscador">Buscador</string>
 
 <!--    Preferencias string-->
     <string name="preferencias_boton_guardar">Guardar preferencias</string>
     <string name="preferencias_instrucciones">Aqui puedes guardar tus preferencias</string>
+    <string name="registrarse">Registrarse</string>
 </resources>

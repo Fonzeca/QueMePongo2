@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     String usuario,clave;
     LoginRq loginsend;
     LoginRs loginRecibe;
-    Button botonLogin;
+    Button botonLogin,botonRegistrase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         txtusuario= findViewById(R.id.txtUsuarioLogin);
         txtclave = findViewById(R.id.txtClaveLogin);
         botonLogin = findViewById(R.id.botonLogin);
+        botonRegistrase=findViewById(R.id.botonSignUp);
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +40,14 @@ public class LoginActivity extends AppCompatActivity {
 //TODO Borrar el hardcodeo de fonzin
         txtusuario.setText("Alexis");
         txtclave.setText("123456");
-
+        botonRegistrase.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                registrarse();
+            }
+        });
     }
+
 
     protected void logear(){
 
@@ -70,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void registrarse(){
+        Intent registro=new Intent(this,CreacionUsuario_Activity.class);
+        finish();
+        startActivity(registro);
     }
     private void pasarAlHome(){
         Intent goHome = new Intent(this, MainActivity.class);
