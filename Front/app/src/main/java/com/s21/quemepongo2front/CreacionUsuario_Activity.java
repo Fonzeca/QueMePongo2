@@ -27,7 +27,7 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuariologin);
+        setContentView(R.layout.activity_crearusuario);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         botonNuevoUsuario = findViewById(R.id.botonNuevoUsuario);

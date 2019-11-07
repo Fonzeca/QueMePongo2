@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <TextView
+        android:id="@+id/txtListaDeCiudades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Lista de ciudades del usuario"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="411dp"
@@ -47,15 +60,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="Predeterminar" />
+                android:text="@string/txtBotonPredeterminar" />
 
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="416dp"
-        android:layout_height="278dp"
+        android:layout_width="424dp"
+        android:layout_height="279dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -69,14 +82,9 @@
             android:id="@+id/recyclerViewCiudades"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clickable="true" />
+            android:clickable="true"
+            android:hapticFeedbackEnabled="true" />
 
-        <View
-            android:id="@+id/separator"
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:background="@android:color/darker_gray"
-            android:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
