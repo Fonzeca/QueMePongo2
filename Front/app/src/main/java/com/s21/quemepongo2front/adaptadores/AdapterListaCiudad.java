@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui;
+package com.s21.quemepongo2front.adaptadores;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,10 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.s21.quemepongo2front.R;
-import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
 
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

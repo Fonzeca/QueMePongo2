@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.ubicaciones;
+package com.s21.quemepongo2front.creadoresDeFragments.ubicaciones;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -6,7 +6,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.MainActivity;
+import com.s21.quemepongo2front.activitys.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
-import com.s21.quemepongo2front.ui.AdapterListaCiudad;
-import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
+import com.s21.quemepongo2front.adaptadores.AdapterListaCiudad;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
 
 import java.util.ArrayList;
 
@@ -114,7 +113,7 @@ public class ubicacionesFragment extends Fragment {
         //on click de cuando se toca una ciudad en el adapter
         adapterListaCiudad.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ciudadSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getNombre();
+                ciudadSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getNombre()+", "+listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getPais();
                 Toast.makeText(getContext(), "Selecciono la ciudad:  "+ ciudadSeleccionada, Toast.LENGTH_SHORT).show();
                 txtCiudadSeleccion.setText(ciudadSeleccionada);
                 ubicacionSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v));
@@ -142,7 +141,7 @@ public class ubicacionesFragment extends Fragment {
         token= MainActivity.getToken();
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
-            @Override
+
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -155,7 +154,6 @@ public class ubicacionesFragment extends Fragment {
                     Toast.makeText(getContext(), "Ocurrio un error " + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
-            @Override
             public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
             }
         });
@@ -170,6 +168,7 @@ public class ubicacionesFragment extends Fragment {
         ArrayAdapter adaptadorCiudadUsuario = new ArrayAdapter(getActivity(), R.layout.item_list_ciudades,R.id.itemListaCiudades, nombreDeCiudad);
         listViewMisCiudades.setAdapter(adaptadorCiudadUsuario);
     }
+
     public void agregarCiudadaMisCiudades(final CiudadRs ciudad){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         idciudad= ciudad.getId();

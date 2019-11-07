@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.s21.quemepongo2front.ui.home.HomeFragment"
+        android:name="com.s21.quemepongo2front.creadoresDeFragments.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_objetos_personales"
-        android:name="com.s21.quemepongo2front.ui.Preferencias.PreferenciasFragment"
+        android:name="com.s21.quemepongo2front.creadoresDeFragments.Preferencias.PreferenciasFragment"
         android:label="@string/menu_objetos_personales"
         tools:layout="@layout/fragment_objetos" />
 
     <fragment
         android:id="@+id/nav_ubicaciones"
-        android:name="com.s21.quemepongo2front.ui.ubicaciones.ubicacionesFragment"
+        android:name="com.s21.quemepongo2front.creadoresDeFragments.ubicaciones.ubicacionesFragment"
         android:label="@string/menu_ubicaciones"
         tools:layout="@layout/fragment_ubicaciones" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.s21.quemepongo2front.ui.share.ShareFragment"
+        android:name="com.s21.quemepongo2front.creadoresDeFragments.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_nuevo_usuario"
-        android:name="com.s21.quemepongo2front.ui.agregar_usuario.UsuarioFragment"
+        android:name="com.s21.quemepongo2front.creadoresDeFragments.agregar_usuario.UsuarioFragment"
         android:label="@string/menu_agregar_usuario"
         tools:layout="@layout/fragment_agregar_usuario" />
 </navigation>

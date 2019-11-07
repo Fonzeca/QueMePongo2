@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.share;
+package com.s21.quemepongo2front.creadoresDeFragments.agregar_usuario;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.s21.quemepongo2front.R;
 
-public class ShareFragment extends Fragment {
+public class UsuarioFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private UsuarioViewModel usuarioViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
+        usuarioViewModel =
+                ViewModelProviders.of(this).get(UsuarioViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_agregar_usuario, container, false);
+        final TextView textView = root.findViewById(R.id.textView2);
+        usuarioViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

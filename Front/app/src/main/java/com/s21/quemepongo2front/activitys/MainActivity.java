@@ -1,26 +1,18 @@
-package com.s21.quemepongo2front;
+package com.s21.quemepongo2front.activitys;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.s21.quemepongo2front.ui.AdapterListaCiudad;
-import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
-import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
-import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.s21.quemepongo2front.Api;
+import com.s21.quemepongo2front.R;
+import com.s21.quemepongo2front.RestClient;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.PreferenciaRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,8 +21,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     RestClient restClient = Api.getRetrofit().create(RestClient.class);
     public static String token;
     PreferenciaRq preferencias= new PreferenciaRq();
-    ArrayList<CiudadRs> listaCiudadesRecibe;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,19 +80,15 @@ public class MainActivity extends AppCompatActivity {
         preferencias.setLentes(false);
         preferencias.setParaguas(false);
         preferencias.setProtectorSolar(false);
-        Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
         //Codigo para la llamada a la api
-        //TODO Agregar token dinamico
         Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
         call.enqueue(new Callback<PreferenciaRs>() {
 
             public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
                 if(response.isSuccessful()){
-
-
-                    Toast.makeText(MainActivity.this, "Holi" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Se cargaron correctamente :D" , Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(MainActivity.this, "Fallo en responder", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Error intentelo otra vez", Toast.LENGTH_SHORT).show();
                     finish();
 
                 }

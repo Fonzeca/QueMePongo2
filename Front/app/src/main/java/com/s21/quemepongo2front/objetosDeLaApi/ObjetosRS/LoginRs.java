@@ -1,6 +1,5 @@
-package com.s21.quemepongo2front.ui.ObjetosRS;
+package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

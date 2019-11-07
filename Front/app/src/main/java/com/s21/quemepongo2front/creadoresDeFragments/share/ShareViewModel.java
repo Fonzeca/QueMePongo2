@@ -1,16 +1,16 @@
-package com.s21.quemepongo2front.ui.ubicaciones;
+package com.s21.quemepongo2front.creadoresDeFragments.share;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class UbicacionesViewModel extends ViewModel {
+public class ShareViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public UbicacionesViewModel() {
+    public ShareViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Fragmento de ubicaciones");
+        mText.setValue("This is share fragment");
     }
 
     public LiveData<String> getText() {

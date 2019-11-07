@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.home;
+package com.s21.quemepongo2front.creadoresDeFragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,14 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.MainActivity;
+import com.s21.quemepongo2front.activitys.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
-import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,7 +56,8 @@ public class HomeFragment extends Fragment {
                     ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
 
                     TextView viento = getView().findViewById(R.id.textViento);
-                    viento.setText("Viento: "+data.getViento()+" km/h");
+                    int numeroViento = (int)Math.round(data.getViento());
+                    viento.setText("Viento: "+ numeroViento +" km/h");
 
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");

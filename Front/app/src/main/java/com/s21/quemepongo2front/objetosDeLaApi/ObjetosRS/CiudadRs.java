@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.ObjetosRS;
+package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS;
 
 
 public class CiudadRs {

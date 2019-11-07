@@ -1,7 +1,17 @@
-package com.s21.quemepongo2front;
+package com.s21.quemepongo2front.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.s21.quemepongo2front.Api;
+import com.s21.quemepongo2front.R;
+import com.s21.quemepongo2front.RestClient;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.UsuarioRq;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,16 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.s21.quemepongo2front.ui.ObjetosRS.LoginRs;
-import com.s21.quemepongo2front.ui.ObjetosRq.UsuarioRq;
-
 public class CreacionUsuario_Activity extends AppCompatActivity {
-    Api retrofit ;
     Button botonNuevoUsuario;
     UsuarioRq user = new UsuarioRq();
     EditText txtNombre, txtPasw;

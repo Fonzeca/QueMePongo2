@@ -1,22 +1,21 @@
 //Interfaz donde se listan los endpoints de la API
 package com.s21.quemepongo2front;
 
-import com.s21.quemepongo2front.ui.ObjetosRS.CiudadRs;
-import com.s21.quemepongo2front.ui.ObjetosRS.ClimaActualRs;
-import com.s21.quemepongo2front.ui.ObjetosRS.LoginRs;
-import com.s21.quemepongo2front.ui.ObjetosRS.PreferenciaRs;
-import com.s21.quemepongo2front.ui.ObjetosRq.LoginRq;
-import com.s21.quemepongo2front.ui.ObjetosRq.PreferenciaRq;
-import com.s21.quemepongo2front.ui.ObjetosRq.UsuarioRq;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.PreferenciaRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.LoginRq;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.UsuarioRq;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Body;
 import retrofit2.http.Query;
 
 //Interfaz donde se listan los endpoints de la API

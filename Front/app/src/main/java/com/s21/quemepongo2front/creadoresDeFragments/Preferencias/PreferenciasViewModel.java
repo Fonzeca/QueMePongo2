@@ -1,16 +1,15 @@
-package com.s21.quemepongo2front.ui.agregar_usuario;
+package com.s21.quemepongo2front.creadoresDeFragments.Preferencias;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class UsuarioViewModel extends ViewModel {
+public class PreferenciasViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public UsuarioViewModel() {
+    public PreferenciasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("este es el Menu para agregar usuario");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.ui.ObjetosRq;
+package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq;
 
 public class PreferenciaRq {
 
