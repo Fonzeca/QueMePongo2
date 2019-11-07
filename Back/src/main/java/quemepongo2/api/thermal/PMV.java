@@ -30,7 +30,7 @@ public class PMV {
     
     public void generarPMV(double temperature, double humidity, double clothing, double windSpeed) {
 
-        double met = 3.4; // metabolic rate
+        double met = 2.5; // metabolic rate
         double wme = 0; // external work
         double ta = temperature; // air temperature average
         double tr = 0; // mean radiant temperature
