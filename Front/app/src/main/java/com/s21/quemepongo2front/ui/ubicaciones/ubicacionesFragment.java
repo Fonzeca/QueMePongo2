@@ -58,13 +58,13 @@ public class ubicacionesFragment extends Fragment {
         public void onChanged(@Nullable String s) {
             }
         });
-        mostrarCiudadesDeUsuario();
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mostrarCiudadesDeUsuario();
         editBuscador = getActivity().findViewById(R.id.editTextBuscador);
         editBuscador.addTextChangedListener(new TextWatcher() {
 
@@ -111,7 +111,7 @@ public class ubicacionesFragment extends Fragment {
         txtCiudadSeleccion = getActivity().findViewById(R.id.textViewCiudadSeleccionada);
         recycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
          adapterListaCiudad = new AdapterListaCiudad(lista);
-//on click de cuando se toca una ciudad en el adapter
+        //on click de cuando se toca una ciudad en el adapter
         adapterListaCiudad.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ciudadSeleccionada = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v)).getNombre();
@@ -128,16 +128,10 @@ public class ubicacionesFragment extends Fragment {
     public void agregarubicacion(final CiudadRs ubicacion, View v){
         agregarUbicacion = getActivity().findViewById(R.id.botonAgregarCiudadSeleccionada);
         ubicacion1 = listaCiudadesRecibe.get(recycler.getChildAdapterPosition(v));
-
-        /*
-        ubicaciontxt1 =getActivity().findViewById(R.id.txtViewUbicacion1);
-        ubicaciontxt2 =getActivity().findViewById(R.id.txtViewUbicacion2);
-        ubicaciontxt3 =getActivity().findViewById(R.id.txtViewUbicacion3);
-        ubicaciontxt4 =getActivity().findViewById(R.id.txtViewUbicacion4);
-        */
         agregarUbicacion.setOnClickListener(new View.OnClickListener() {
         //crear metodo para la seleccion de ciudades revisar que se esten mostrando antes las ciudades del usuario
             public void onClick(View v) {
+                mostrarCiudadesDeUsuario();
                 agregarCiudadaMisCiudades(ubicacion);
             }
         });
@@ -152,9 +146,8 @@ public class ubicacionesFragment extends Fragment {
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        ciudadesUsuario= response.body();
-                        ArrayAdapter<CiudadRs> adaptadorCiudadUsuario = new ArrayAdapter(getContext(), R.layout.item_list_ciudades, ciudadesUsuario);
-                        listViewMisCiudades.setAdapter(adaptadorCiudadUsuario);
+                        ciudadesUsuario = response.body();
+                        cargarListaCiudadesUsuario(ciudadesUsuario);
                     } else {
                         Toast.makeText(getContext(), "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
                     }
@@ -166,6 +159,16 @@ public class ubicacionesFragment extends Fragment {
             public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
             }
         });
+    }
+
+    public void cargarListaCiudadesUsuario(ArrayList lista){
+
+        ArrayList <String> nombreDeCiudad = new ArrayList<String>();
+        for (int i = 0; i <lista.size() ; i++) {
+            nombreDeCiudad.add(((CiudadRs)lista.get(i)).getNombre());
+        }
+        ArrayAdapter adaptadorCiudadUsuario = new ArrayAdapter(getActivity(), R.layout.item_list_ciudades,R.id.itemListaCiudades, nombreDeCiudad);
+        listViewMisCiudades.setAdapter(adaptadorCiudadUsuario);
     }
     public void agregarCiudadaMisCiudades(final CiudadRs ciudad){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
