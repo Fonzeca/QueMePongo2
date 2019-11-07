@@ -53,7 +53,8 @@ public class HomeFragment extends Fragment {
                     ClimaActualRs data = response.body();
 
                     TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                    temp_actual.setText(data.getTemperatura()+"℃");
+                    int temp = (int) Math.round(data.getTemperatura());
+                    temp_actual.setText( temp+"℃");
 
                     TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
                     ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());

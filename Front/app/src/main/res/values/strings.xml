@@ -51,5 +51,7 @@
 <!--    Preferencias string-->
     <string name="preferencias_boton_guardar">Guardar preferencias</string>
     <string name="preferencias_instrucciones">Aqui puedes guardar tus preferencias</string>
+    <string name="txtBotonPredeterminar">Predeterminar</string>
+    <string name="txtViewCrearNuevoUsuario">Crear nuevo usuario</string>
     <string name="registrarse">Registrarse</string>
 </resources>

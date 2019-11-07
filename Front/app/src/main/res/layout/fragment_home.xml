@@ -8,16 +8,17 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="423dp"
-        android:layout_height="258dp"
+        android:layout_width="410dp"
+        android:layout_height="255dp"
         android:background="#008577"
         android:foregroundTint="#3C3F41"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.991">
 
         <TextView
             android:id="@+id/textView4"
@@ -55,9 +56,10 @@
 
     <TextView
         android:id="@+id/textViento"
-        android:layout_width="112dp"
-        android:layout_height="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Viento"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textHumedad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
@@ -65,10 +67,11 @@
 
     <TextView
         android:id="@+id/textHumedad"
-        android:layout_width="171dp"
-        android:layout_height="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="268dp"
         android:text="Humedad: "
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
@@ -82,6 +85,7 @@
         android:layout_height="40dp"
         android:text="@string/temperatura_actual"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/temperatura_actual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +99,7 @@
         android:layout_marginBottom="404dp"
         android:text="@string/ubicacion"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.065"
@@ -108,27 +113,15 @@
         android:layout_height="65dp"
         android:layout_marginStart="155dp"
         android:layout_marginEnd="156dp"
+        android:fontFamily="sans-serif-black"
         android:textAlignment="center"
         android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.262" />
-
-    <TextView
-        android:id="@+id/textView_nombreClima"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="186dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="166dp"
-        android:layout_marginBottom="95dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatura_actual" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
