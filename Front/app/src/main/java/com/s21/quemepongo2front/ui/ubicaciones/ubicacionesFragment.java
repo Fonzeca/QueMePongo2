@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -137,38 +138,36 @@ public class ubicacionesFragment extends Fragment {
         agregarUbicacion.setOnClickListener(new View.OnClickListener() {
         //crear metodo para la seleccion de ciudades revisar que se esten mostrando antes las ciudades del usuario
             public void onClick(View v) {
-                agregarciudadamisubicaciones(ubicacion);
+                agregarCiudadaMisCiudades(ubicacion);
             }
         });
     }
     public void mostrarCiudadesDeUsuario(){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
-
+        listViewMisCiudades= (ListView) getActivity().findViewById(R.id.listViewCiudadesUsuario);
+        token= MainActivity.getToken();
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
             @Override
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        ciudadesUsuario = response.body();
-                        ArrayAdapter adaptadorMisCiudades = new ArrayAdapter(getContext(), R.layout.item_list_ciudades, ciudadesUsuario);
-                        listViewMisCiudades.setAdapter(adaptadorMisCiudades);
-
+                        ciudadesUsuario= response.body();
+                        ArrayAdapter<CiudadRs> adaptadorCiudadUsuario = new ArrayAdapter(getContext(), R.layout.item_list_ciudades, ciudadesUsuario);
+                        listViewMisCiudades.setAdapter(adaptadorCiudadUsuario);
                     } else {
-                        Toast.makeText(getContext(), "No existen ciudades para mostrar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Ocurrio un error" + response.errorBody(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Ocurrio un error " + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
-                Toast.makeText(getContext(), "Ocurrio un error: No hay ciudades cargadas"+ t, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-    public void agregarciudadamisubicaciones(final CiudadRs ciudad){
+    public void agregarCiudadaMisCiudades(final CiudadRs ciudad){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         idciudad= ciudad.getId();
         Call <Void> agregarciudad= restClient.agregarCiudad(idciudad,token);
@@ -178,7 +177,7 @@ public class ubicacionesFragment extends Fragment {
                 if(response.isSuccessful()){
                     Toast.makeText(getContext(), "Se agrego la ciudad: " + ciudad.getNombre(), Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getContext(), "Se produjo un error en agregarr la ciudad", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Se produjo un error en agregar la ciudad", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
