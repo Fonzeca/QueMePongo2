@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.activitys;
+package com.s21.quemepongo2front;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,9 +8,6 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.R;
-import com.s21.quemepongo2front.RestClient;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.PreferenciaRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 
@@ -31,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     RestClient restClient = Api.getRetrofit().create(RestClient.class);
     public static String token;
     PreferenciaRq preferencias= new PreferenciaRq();
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,15 +96,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    //TODO Comentar este metodo
-
-    public static String getToken() {
-        return token;
-    }
-
-    public static void setToken(String token) {
-        MainActivity.token = token;
-    }
 }
 

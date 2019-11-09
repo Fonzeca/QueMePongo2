@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
+import com.s21.quemepongo2front.R;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-
-import com.s21.quemepongo2front.R;
 
 public class UsuarioFragment extends Fragment {
 
@@ -30,6 +30,7 @@ public class UsuarioFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
         return root;
     }
 }

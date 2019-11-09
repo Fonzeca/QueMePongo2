@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front.activitys;
+package com.s21.quemepongo2front;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.R;
-import com.s21.quemepongo2front.RestClient;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.LoginRq;
 

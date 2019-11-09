@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activitys.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/nav_header_title"
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar">
@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activitys.CreacionUsuario_Activity"
+            android:name=".CreacionUsuario_Activity"
             android:label="@string/title_activity_usuariologin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activitys.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar">

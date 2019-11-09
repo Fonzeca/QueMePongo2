@@ -5,6 +5,7 @@ import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.PreferenciaRs;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.SugerenciaRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.LoginRq;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.UsuarioRq;
@@ -44,8 +45,12 @@ import retrofit2.http.Query;
     @GET ("MisCiudades")
     Call<ArrayList<CiudadRs>> misCiudades(@Query("token")String token);
 
+    @GET ("Obtenersugerencia")
+    Call<SugerenciaRs> recibirsugerencia(@Query("idCiudad")int idCiudad, @Query("token")String token );
+
     @POST("AgregarCiudad")
     Call<Void> agregarCiudad(@Query("ciudadId") int idCiudad,@Query("token") String token);
+
 
     @DELETE("QuitarCiudad")
     Call<Void> borrarciudad(@Query("ciudadId")int idCiudad,@Query("token")String token);

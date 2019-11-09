@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.activitys.MainActivity;
+import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.PreferenciaRs;
@@ -82,6 +82,7 @@ public class PreferenciasFragment extends Fragment {
     }
 
     private void guardarPreferencias(){
+
         PreferenciaRq rq = new PreferenciaRq(
             bufandaCheck.isChecked(),
             lentesCheck.isChecked(),

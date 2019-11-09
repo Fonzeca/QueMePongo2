@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
-import com.s21.quemepongo2front.activitys.MainActivity;
+import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
 import com.s21.quemepongo2front.adaptadores.AdapterListaCiudad;
@@ -80,8 +80,6 @@ public class ubicacionesFragment extends Fragment {
 
     //busca la ciudad cuando se escribe en el editText del buscador
     private void buscarCiudadOnTextChange(){
-        //traemos el token del main activity para pasarlo en la llamada a la api
-        token= MainActivity.getToken();
         //le seteamos a la variable buscador el texto que se escribe, para enviarlo a la api
         buscador = editBuscador.getText().toString();
 
@@ -137,8 +135,8 @@ public class ubicacionesFragment extends Fragment {
     }
     public void mostrarCiudadesDeUsuario(){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
-        listViewMisCiudades= (ListView) getActivity().findViewById(R.id.listViewCiudadesUsuario);
-        token= MainActivity.getToken();
+        listViewMisCiudades= getActivity().findViewById(R.id.listViewCiudadesUsuario);
+        token= MainActivity.token ;
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
 

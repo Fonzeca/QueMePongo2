@@ -56,7 +56,7 @@ public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad
         TextView nombreciudad;
         public ViewHolderciudades(@NonNull View itemView) {
             super(itemView);
-            nombreciudad= (TextView)itemView.findViewById(R.id.ciudadLista);
+            nombreciudad= itemView.findViewById(R.id.ciudadLista);
         }
         //Asigna a cada renglon el nombre de la ciudad y el pais de donde viene.
         public void asignardatos(CiudadRs ciudad) {
