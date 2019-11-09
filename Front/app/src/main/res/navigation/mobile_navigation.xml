@@ -32,6 +32,6 @@
     <fragment
         android:id="@+id/nav_nuevo_usuario"
         android:name="com.s21.quemepongo2front.creadoresDeFragments.agregar_usuario.UsuarioFragment"
-        android:label="@string/menu_agregar_usuario"
+        android:label="@string/menu_nuevo_usuario"
         tools:layout="@layout/fragment_agregar_usuario" />
 </navigation>

@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 logear();
             }
         });
+
 //TODO Borrar el hardcodeo de fonzin
         txtusuario.setText("Alexis");
         txtclave.setText("123456");
@@ -52,30 +53,35 @@ public class LoginActivity extends AppCompatActivity {
 
         usuario = txtusuario.getText().toString();
         clave = txtclave.getText().toString();
-        loginsend= new LoginRq();
-        loginsend.setUsuario(usuario);
-        loginsend.setClave(clave);
+        Boolean usr=true, cla=true;
+        usr= validarUsuario(usuario);
+        cla = validarClave(clave);
+        if(usr&&cla){
 
-        RestClient restClient = Api.getRetrofit().create(RestClient.class);
-        Call<LoginRs> logeo = restClient.loginUsuario(loginsend);
+            loginsend= new LoginRq();
+            loginsend.setUsuario(usuario);
+            loginsend.setClave(clave);
 
-        logeo.enqueue(new Callback<LoginRs>() {
-            @Override
-            public void onResponse(Call<LoginRs> call, Response<LoginRs> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Se logeo correctamente", Toast.LENGTH_SHORT).show();
-                    loginRecibe= response.body();
-                    pasarAlHome();
-                }else{
-                    Toast.makeText(LoginActivity.this, "Error no se pudo procesar la peticion", Toast.LENGTH_SHORT).show();
+            RestClient restClient = Api.getRetrofit().create(RestClient.class);
+            Call<LoginRs> logeo = restClient.loginUsuario(loginsend);
+
+            logeo.enqueue(new Callback<LoginRs>() {
+                public void onResponse(Call<LoginRs> call, Response<LoginRs> response) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(LoginActivity.this, "Se logeo correctamente", Toast.LENGTH_SHORT).show();
+                        loginRecibe= response.body();
+                        pasarAlHome();
+                    }else{
+                        Toast.makeText(LoginActivity.this, "¡Error no se pudo Logear, usuario o contraseña incorrectos!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+                public void onFailure(Call<LoginRs> call, Throwable t) {
 
-            @Override
-            public void onFailure(Call<LoginRs> call, Throwable t) {
+                }
+            });
+        }
 
-            }
-        });
+
     }
     private void registrarse(){
         Intent registro=new Intent(this,CreacionUsuario_Activity.class);
@@ -89,4 +95,32 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(goHome);
     }
 
+    private boolean validarUsuario(String usuario){
+        Boolean resultado = true;
+        TextView textViewUsuario = findViewById(R.id.textViewAlertadeusuarioincorrecto);
+        textViewUsuario.setText("");
+        if(usuario==""){
+            textViewUsuario.setText("El usuario no puede estar vacio, porfavor ingrese uno");
+            resultado=false;
+        }else if(usuario.length()<=3){
+            textViewUsuario.setText("Por favor ingrese una clave superior a 3 letras");
+            resultado=false;
+        }
+
+        return resultado;
+    }
+    private Boolean validarClave(String clave){
+        TextView textViewclave = findViewById(R.id.textViewClaveIncorrecta);
+        textViewclave.setText("");
+        Boolean resultado = true;
+        if(clave==""){
+            textViewclave.setText("La contraseña no puede estar vacia, profavor ingrese una");
+            resultado=false;
+        }else if(clave.length()<=3){
+            textViewclave.setText("Por favor ingrese una clave superior a 3 letras");
+            resultado=false;
+        }
+
+        return resultado;
+    }
 }

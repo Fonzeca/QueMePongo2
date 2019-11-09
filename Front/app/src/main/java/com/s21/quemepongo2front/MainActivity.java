@@ -3,12 +3,10 @@ package com.s21.quemepongo2front;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.PreferenciaRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +16,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,33 +62,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public void guardarPref(View v){
-
-        preferencias.setBufanda(false);
-        preferencias.setGorra(false);
-        preferencias.setLentes(false);
-        preferencias.setParaguas(false);
-        preferencias.setProtectorSolar(false);
-        //Codigo para la llamada a la api
-        Call<PreferenciaRs> call = restClient.actualizarPreferencias(token,preferencias);
-        call.enqueue(new Callback<PreferenciaRs>() {
-
-            public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "Se cargaron correctamente :D" , Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(MainActivity.this, "Error intentelo otra vez", Toast.LENGTH_SHORT).show();
-                    finish();
-
-                }
-            }
-
-            public void onFailure(Call<PreferenciaRs> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Fallo", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/usuario_nuevo_layouyt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".CreacionUsuario_Activity"
+    tools:showIn="@layout/activity_crearusuario">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <EditText
+            android:id="@+id/edittext_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/txt_usuario"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textViewUsuario"
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FF1744" />
+
+        <EditText
+            android:id="@+id/edit_text_pasw"
+            android:layout_width="213dp"
+            android:layout_height="47dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Constraseña"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textViewClave"
+            android:layout_width="271dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="clip_horizontal|center"
+            android:textColor="#FF1744" />
+
+        <Button
+            android:id="@+id/botonNuevoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="139dp"
+            android:layout_marginEnd="140dp"
+            android:layout_marginBottom="358dp"
+            android:text="@string/boton_crear_usuario" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

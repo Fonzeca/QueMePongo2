@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_nuevo_usuario"
             android:icon="@mipmap/ic_user"
-            android:title="@string/menu_agregar_usuario" />
+            android:title="@string/menu_nuevo_usuario" />
     </group>
 
     <item android:title="@string/communicate">

@@ -45,8 +45,8 @@ import retrofit2.http.Query;
     @GET ("MisCiudades")
     Call<ArrayList<CiudadRs>> misCiudades(@Query("token")String token);
 
-    @GET ("Obtenersugerencia")
-    Call<SugerenciaRs> recibirsugerencia(@Query("idCiudad")int idCiudad, @Query("token")String token );
+    @GET ("ObtenerSugerencia?")
+    Call<SugerenciaRs> recibirsugerencia(@Query("token")String token, @Query("ciudadId")int idCiudad );
 
     @POST("AgregarCiudad")
     Call<Void> agregarCiudad(@Query("ciudadId") int idCiudad,@Query("token") String token);

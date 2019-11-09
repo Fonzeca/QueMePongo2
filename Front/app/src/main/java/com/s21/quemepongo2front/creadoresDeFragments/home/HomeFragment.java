@@ -1,6 +1,7 @@
 package com.s21.quemepongo2front.creadoresDeFragments.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,16 +80,16 @@ public class HomeFragment extends Fragment {
 
     public void mostrarsugerencia(){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
-        Call<SugerenciaRs> call= restClient.recibirsugerencia(3860259, MainActivity.token);
+        Call<SugerenciaRs> call= restClient.recibirsugerencia(MainActivity.token, 3860259);
         call.enqueue(new Callback<SugerenciaRs>() {
             @Override
             public void onResponse(Call<SugerenciaRs> call, Response<SugerenciaRs> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getActivity(), "Entro a mostrar sugerencia", Toast.LENGTH_SHORT).show();
                     sugerencia = response.body();
                     setearsugerencia();
                 }else{
                     Toast.makeText(getActivity(), "Error en el response", Toast.LENGTH_SHORT).show();
+                    Log.e("responsedemierda", ""+ response.errorBody());
                 }
             }
 
@@ -101,7 +102,7 @@ public class HomeFragment extends Fragment {
 
     public void setearsugerencia( ){
         txtViewsugerencia= getActivity().findViewById(R.id.txtViewSugerencia);
-        txtViewsugerencia.setText( sugerencia.getSugerencia()) ;
+        txtViewsugerencia.setText(txtViewsugerencia.getText()+" +  "+sugerencia.getSugerencia()) ;
     }
 }
 
