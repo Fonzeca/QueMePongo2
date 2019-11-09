@@ -6,37 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <TextView
-            android:id="@+id/txtViewTituloLoginActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/TituloLoginActivity"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
+    <ImageView
+        android:tint=""
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-    </LinearLayout>
-
+        android:src="@drawable/login_background"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:alpha="0.6"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/degradado_splashart"
+        android:alpha="0.4"
+        />
     <include
         layout="@layout/content_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@+id/linearLayout4"
+        android:layout_height="match_parent"
         app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
