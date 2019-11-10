@@ -4,30 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:contextClickable="true"
     android:orientation="vertical"
-    tools:context=".creadoresDeFragments.ubicaciones.fragment_mas_ubicaciones" >
+    tools:context=".creadoresDeFragments.ubicaciones.fragment_mas_ubicaciones">
 
     <EditText
         android:id="@+id/ediTextBuscador"
         android:layout_width="412dp"
         android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/boton_buscar"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="6dp" />
+        tools:layout_editor_absoluteY="6dp"
+        tools:targetApi="o" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:spinnerMode="dialog" />
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:contextClickable="true"
+        android:spinnerMode="dropdown" />
 
     <Button
         android:id="@+id/botonGuardarCiudad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Button" />
+        android:layout_marginTop="10dp"
+        android:text="@string/preferencias_boton_guardar" />
 
 </LinearLayout>

@@ -7,10 +7,11 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:scaleType="centerCrop"
+        android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/login_background"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_background" />
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,10 +24,12 @@
         android:background="@drawable/degradado_splashart"
         android:alpha="0.4"
         />
+
     <include
         layout="@layout/content_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_anchor="@+id/imageView5"
         app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

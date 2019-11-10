@@ -4,136 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_home"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="410dp"
-        android:layout_height="255dp"
-        android:background="#008577"
-        android:foregroundTint="#3C3F41"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ubicacion_1" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ubicacion_2"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="316dp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ubicacion_3"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="316dp" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ubicacion_4"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="316dp" />
-    </LinearLayout>
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textViento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_thin"
         android:text="@string/textViewViento"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textHumedad"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textHumedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="71dp"
+        android:fontFamily="@font/roboto_thin"
         android:text="@string/textViewHumedad"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_temperaturaActual"
-        android:layout_width="269dp"
-        android:layout_height="40dp"
-        android:text="@string/temperatura_actual"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/temperatura_actual"
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#000"
+        app:layout_constraintBottom_toTopOf="@+id/textViento"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewUbicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="404dp"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/roboto_thin"
         android:text="@string/ubicacion"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
-
-    <TextView
-        android:id="@+id/temperatura_actual"
-        android:layout_width="163dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginEnd="156dp"
-        android:fontFamily="sans-serif-black"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtViewSugerencia"
         android:layout_width="395dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginTop="388dp"
+        android:fontFamily="@font/roboto_light"
         android:text="@string/txtViewSugerencia"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="Detalles"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViento"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="318dp"
+        android:layout_height="121dp"
+        android:background="#59303F9F"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewSugerencia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445">
+
+        <TextView
+            android:id="@+id/temperatura_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="67dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_light"
+            android:text=" "
+            android:textAlignment="center"
+            android:textSize="58sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="90dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@mipmap/contrast" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinnerhome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="363dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatura_actual" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
