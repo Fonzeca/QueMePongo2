@@ -7,6 +7,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +21,10 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    RestClient restClient = Api.getRetrofit().create(RestClient.class);
     public static String token;
     PreferenciaRq preferencias= new PreferenciaRq();
+    public static ClimaActualRs climapredeterminado;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "QueMePongo2@gmail.com", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(view, "QueMePongo2@gmail.com", Snackbar.LENGTH_LONG).setAction("Mostrar Email", null).show();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
