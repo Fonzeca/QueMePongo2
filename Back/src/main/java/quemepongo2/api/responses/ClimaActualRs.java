@@ -1,7 +1,6 @@
 package main.java.quemepongo2.api.responses;
 
 import main.java.quemepongo2.api.openweather.current.CurrentWeather;
-import main.java.quemepongo2.api.openweather.current.WindWeather;
 
 public class ClimaActualRs {
 	
@@ -20,7 +19,7 @@ public class ClimaActualRs {
 		
 		viento=weather.getWind().getSpeed();
 		humedad=weather.getMain().getHumidity();
-		nombreClima=weather.getWeather().get(0).getDescription();
+		nombreClima=weather.getWeather().get(0).getMain();
 	}
 	
 	
