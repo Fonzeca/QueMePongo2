@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
 
     public void setearsugerencia( ){
         txtViewsugerencia= getActivity().findViewById(R.id.txtViewSugerencia);
-        txtViewsugerencia.setText(txtViewsugerencia.getText()+" +  "+sugerencia.getSugerencia()) ;
+        txtViewsugerencia.setText(txtViewsugerencia.getText()+sugerencia.getSugerencia()) ;
     }
 }
 
