@@ -77,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 public void onFailure(Call<LoginRs> call, Throwable t) {
-
+                    Toast.makeText(LoginActivity.this, "Error al conectar", Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
                 }
             });
         }
@@ -86,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void registrarse(){
         Intent registro=new Intent(this,CreacionUsuario_Activity.class);
-        finish();
         startActivity(registro);
     }
     private void pasarAlHome(){

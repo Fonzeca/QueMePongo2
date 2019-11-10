@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
@@ -17,24 +19,22 @@ import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class fragment_ubicaciones_lista extends Fragment {
-    private Context context = getActivity();
-    private ArrayList<CiudadRs>ciudadesUsuario;
-    private  ArrayList <String> nombreDeCiudad = new ArrayList<String>();
+    private ArrayList<CiudadRs> ciudadesUsuario;
     private ListView listViewMisCiudades;
+    private ArrayAdapter<CiudadRs> adapter;
+
     public fragment_ubicaciones_lista() {
         // Required empty public constructor
-    }
-
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-                mostrarCiudadesDeUsuario();
     }
 
     @Override
@@ -45,7 +45,20 @@ public class fragment_ubicaciones_lista extends Fragment {
 
     }
 
-    public void mostrarCiudadesDeUsuario(){
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mostrarCiudadesDeUsuario();
+        listViewMisCiudades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CiudadRs ciudad = (CiudadRs)adapterView.getItemAtPosition(i);
+                quitarCiudad(ciudad.getId(), i);
+
+            }
+        });
+    }
+
+    private void mostrarCiudadesDeUsuario(){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         listViewMisCiudades= getActivity().findViewById(R.id.listViewCiudadesUsuario);
 
@@ -59,7 +72,7 @@ public class fragment_ubicaciones_lista extends Fragment {
 
                         ciudadesUsuario = response.body();
 
-                        cargarListaCiudadesUsuario(ciudadesUsuario);
+                        cargarListaCiudadesUsuario();
 
                     } else {
                         Toast.makeText(getContext(), "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
@@ -72,15 +85,28 @@ public class fragment_ubicaciones_lista extends Fragment {
             }
         });
     }
-
-    public void cargarListaCiudadesUsuario(ArrayList<CiudadRs> lista){
-
-        for (int i = 0; i <lista.size() ; i++) {
-            nombreDeCiudad.add((lista.get(i)).getNombre());
-        }
-        listViewMisCiudades=getActivity().findViewById(R.id.listViewCiudadesUsuario);
-        ArrayAdapter<String> adaptadorCiudadUsuario = new ArrayAdapter(getActivity(),R.layout.item_list_ciudades,R.id.itemListaCiudades,nombreDeCiudad);
-        listViewMisCiudades.setAdapter(adaptadorCiudadUsuario);
+     //TODO; Refactotr
+    private void cargarListaCiudadesUsuario(){
+        adapter = new ArrayAdapter(getActivity(),R.layout.item_list_ciudades,R.id.itemListaCiudades,ciudadesUsuario);
+        listViewMisCiudades.setAdapter(adapter);
     }
+
+    private void quitarCiudad(int idCiudad, final int indexInAdapter){
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
+
+        restClient.borrarciudad(idCiudad, MainActivity.token).enqueue(new Callback<Void>() {
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    ciudadesUsuario.remove(indexInAdapter);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
 }
 

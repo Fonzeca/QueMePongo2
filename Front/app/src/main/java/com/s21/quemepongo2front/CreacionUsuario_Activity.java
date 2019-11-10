@@ -63,6 +63,7 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
                                 token= login.getToken();
                                 Intent gohome = new Intent(CreacionUsuario_Activity.this, MainActivity.class);
                                 gohome.putExtra("token", token);
+                                finish();
                                 startActivity(gohome);
                             }else {
                                 Toast.makeText(CreacionUsuario_Activity.this, "Error Fatal, Intentelo de nuevo :)", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,8 @@
 package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS;
 
 
+import androidx.annotation.NonNull;
+
 public class CiudadRs {
 	private int id;
 	private String nombre;
@@ -29,5 +31,10 @@ public class CiudadRs {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+
+
+	public String toString() {
+		return nombre + ", " + pais;
 	}
 }
