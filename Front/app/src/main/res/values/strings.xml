@@ -18,7 +18,7 @@
     <string name="communicate">Compartir</string>
 
     <!--    login strings-->
-    <string name="txt_agregar_usuario">Bienvenido presiona el botón para agregar un usuario</string>
+    <string name="txt_agregar_usuario">Bienvenido, presione el botón para agregar un usuario</string>
     <string name="title_activity_usuariologin">Usuario inicio</string>
     <string name="txt_usuario">Usuario</string>
     <string name="temperaturaActual">no funciono la api :c</string>
@@ -55,11 +55,10 @@
     <string name="txtViewCrearNuevoUsuario">Crear nuevo usuario</string>
     <string name="registrarse">Registrarse</string>
     <string name="TituloLoginActivity">Iniciar sesion</string>
-    <string name="txtViewSugerencia">Sugerencia:</string>
+    <string name="txtViewSugerencia">Sugerencia: </string>
     <string name="textViewViento">Viento</string>
     <string name="textViewHumedad">Humedad:</string>
+    <string name="bienvenido">Bienvenido!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

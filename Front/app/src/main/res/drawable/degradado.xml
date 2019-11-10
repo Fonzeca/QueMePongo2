@@ -5,7 +5,7 @@
            <gradient
                android:type="linear"
                android:centerX="49%"
-               android:startColor="@color/colortext"
+               android:startColor="@color/colorText"
                android:endColor="@color/cardview_light_background"
                android:angle="90"/>
        </shape>
