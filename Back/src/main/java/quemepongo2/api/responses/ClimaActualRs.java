@@ -17,9 +17,10 @@ public class ClimaActualRs {
 		temperatura = weather.getMain().getTemp();
 		ciudadId = weather.getId();
 		ciudadNombre = weather.getName();
+		
 		viento=weather.getWind().getSpeed();
 		humedad=weather.getMain().getHumidity();
-		nombreClima=weather.getName();
+		nombreClima=weather.getWeather().get(0).getDescription();
 	}
 	
 	
