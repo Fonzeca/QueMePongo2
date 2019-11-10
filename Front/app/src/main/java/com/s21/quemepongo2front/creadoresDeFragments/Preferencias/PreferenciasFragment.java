@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
@@ -19,7 +18,6 @@ import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,14 +32,6 @@ public class PreferenciasFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         preferenciasViewModel =ViewModelProviders.of(this).get(PreferenciasViewModel.class);
         View root = inflater.inflate(R.layout.fragment_objetos, container, false);
-        final TextView textView = root.findViewById(R.id.text_preferencias);
-        preferenciasViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
         return root;
     }
 
@@ -60,8 +50,6 @@ public class PreferenciasFragment extends Fragment {
                 guardarPreferencias();
             }
         });
-
-
 
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         Call<PreferenciaRs> obtenerPreferncia = restClient.obtenerPreferencias(MainActivity.token);
@@ -99,7 +87,7 @@ public class PreferenciasFragment extends Fragment {
         call.enqueue(new Callback<PreferenciaRs>() {
             public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getActivity(),"Text!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Se guardaron las preferencias",Toast.LENGTH_SHORT).show();
                 }
             }
 

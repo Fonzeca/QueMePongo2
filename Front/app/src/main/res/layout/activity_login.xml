@@ -7,7 +7,6 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:tint=""
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

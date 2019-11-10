@@ -16,10 +16,6 @@
             android:id="@+id/nav_ubicaciones"
             android:icon="@mipmap/ic_varias_ubicacioens"
             android:title="@string/menu_ubicaciones" />
-        <item
-            android:id="@+id/nav_nuevo_usuario"
-            android:icon="@mipmap/ic_user"
-            android:title="@string/menu_nuevo_usuario" />
     </group>
 
     <item android:title="@string/communicate">

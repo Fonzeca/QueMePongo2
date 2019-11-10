@@ -16,11 +16,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView txtusuario,txtclave;
+    TextView txtusuario,txtclave,botonRegistrase;
     String usuario,clave;
     LoginRq loginsend;
     LoginRs loginRecibe;
-    Button botonLogin,botonRegistrase;
+    Button botonLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,27 +98,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean validarUsuario(String usuario){
         Boolean resultado = true;
-        TextView textViewUsuario = findViewById(R.id.textViewAlertadeusuarioincorrecto);
-        textViewUsuario.setText("");
+        //TODO hacer los snack bars
         if(usuario==""){
-            textViewUsuario.setText("El usuario no puede estar vacio, porfavor ingrese uno");
             resultado=false;
         }else if(usuario.length()<=3){
-            textViewUsuario.setText("Por favor ingrese una clave superior a 3 letras");
             resultado=false;
         }
 
         return resultado;
     }
     private Boolean validarClave(String clave){
-        TextView textViewclave = findViewById(R.id.textViewClaveIncorrecta);
-        textViewclave.setText("");
+        //TODO hacer los snack bars
         Boolean resultado = true;
         if(clave==""){
-            textViewclave.setText("La contraseña no puede estar vacia, profavor ingrese una");
             resultado=false;
         }else if(clave.length()<=3){
-            textViewclave.setText("Por favor ingrese una clave superior a 3 letras");
             resultado=false;
         }
 

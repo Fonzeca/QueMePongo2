@@ -124,18 +124,6 @@
             app:layout_constraintStart_toEndOf="@+id/image_lentes"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxParaguas" />
 
-        <TextView
-            android:id="@+id/text_preferencias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/preferencias_instrucciones"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/boton_guardarPreferencias"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <Button
             android:id="@+id/boton_guardarPreferencias"
             android:layout_width="wrap_content"

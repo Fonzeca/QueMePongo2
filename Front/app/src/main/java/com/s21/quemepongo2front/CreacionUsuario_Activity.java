@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
@@ -82,27 +81,21 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
     }
     private boolean validarUsuario(String usuario){
         Boolean resultado = true;
-        TextView textViewUsuario = findViewById(R.id.textViewUsuario);
-        textViewUsuario.setText("");
         if(usuario==""){
-            textViewUsuario.setText("El usuario no puede estar vacio, porfavor ingrese uno");
             resultado=false;
         }else if(usuario.length()<=3){
-            textViewUsuario.setText("Por favor ingrese una clave superior a 3 letras");
             resultado=false;
         }
 
         return resultado;
     }
+    //TODO crear los snack bar para los errores de ingreso
+
     private Boolean validarClave(String clave){
-        TextView textViewclave = findViewById(R.id.textViewClave);
-        textViewclave.setText("");
         Boolean resultado = true;
         if(clave==""){
-            textViewclave.setText("La contraseña no puede estar vacia, profavor ingrese una");
             resultado=false;
         }else if(clave.length()<=3){
-            textViewclave.setText("Por favor ingrese una clave superior a 3 letras");
             resultado=false;
         }
 

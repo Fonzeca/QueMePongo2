@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.textViewUbicacion);
         homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
@@ -50,7 +49,6 @@ public class HomeFragment extends Fragment {
         Call<ClimaActualRs> call = restClient.recibirPronostico(3860259, MainActivity.token);
 
         call.enqueue(new Callback<ClimaActualRs>() {
-            @Override
             public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
                 if (response.isSuccessful()){
                     ClimaActualRs data = response.body();
@@ -69,7 +67,6 @@ public class HomeFragment extends Fragment {
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");
                 }
             }
-            @Override
             public void onFailure(Call<ClimaActualRs> call, Throwable t) {
 
             }
@@ -82,7 +79,6 @@ public class HomeFragment extends Fragment {
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         Call<SugerenciaRs> call= restClient.recibirsugerencia(MainActivity.token, 3860259);
         call.enqueue(new Callback<SugerenciaRs>() {
-            @Override
             public void onResponse(Call<SugerenciaRs> call, Response<SugerenciaRs> response) {
                 if(response.isSuccessful()){
                     sugerencia = response.body();
@@ -93,7 +89,6 @@ public class HomeFragment extends Fragment {
                 }
             }
 
-            @Override
             public void onFailure(Call<SugerenciaRs> call, Throwable t) {
 
             }

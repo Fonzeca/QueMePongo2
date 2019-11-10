@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.s21.quemepongo2front.CreacionUsuario_Activity;
@@ -20,7 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 public class UsuarioFragment extends Fragment {
 
     private UsuarioViewModel usuarioViewModel;
-    Button botonnuevousuario;
+    TextView botonnuevousuario;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         usuarioViewModel =

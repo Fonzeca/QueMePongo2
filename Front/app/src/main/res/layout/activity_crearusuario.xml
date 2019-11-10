@@ -9,17 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txtViewCrearNuevoUsuario"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:theme="@style/AppTheme.AppBarOverlay"/>
 
     <include layout="@layout/content_usuariologin" />
 
