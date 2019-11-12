@@ -34,25 +34,33 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private SugerenciaRs sugerencia;
     private String climaActual;
+    private int idCiudad;
     private TextView txtViewsugerencia,textViewDescripcion;
     private ClimaActualRs climaActualRs;
-    private ArrayList<String> ciudadesUsuario;
-    private ArrayAdapter<String> adapter;
     private  ArrayList<CiudadRs> ciudadesRsRecibe;
     private ImageView clima;
     private ClimaActualRs data;
     Spinner spinnerHome;
 
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mostrarCiudadesDeUsuario();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        mostrarCiudadesDeUsuario();
+        spinnerHome = getActivity().findViewById(R.id.spinnerhome);
+        textViewDescripcion = getActivity().findViewById(R.id.textViewDescripcionClima);
+        clima = getActivity().findViewById(R.id.imageViewClima);
+        climaActualRs = MainActivity.climapredeterminado;
+        idCiudad=0;
+        idCiudad = MainActivity.getCiudadpredeterminado().getId();
 
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
 
-        Call<ClimaActualRs> call = restClient.recibirPronostico(3860259, MainActivity.token);
+        Call<ClimaActualRs> call = restClient.recibirPronostico(idCiudad, MainActivity.token);
 
         call.enqueue(new Callback<ClimaActualRs>() {
             public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
@@ -74,29 +82,24 @@ public class HomeFragment extends Fragment {
                     climaActual = data.getNombreClima();
                     textViewDescripcion.setText(climaActual);
                     mostrarIcono(climaActual);
+                }else{
+                    Toast.makeText(getActivity(), "error en el cargar pantalla", Toast.LENGTH_SHORT).show();
                 }
             }
             public void onFailure(Call<ClimaActualRs> call, Throwable t) {
             }
         });
-
         mostrarsugerencia();
         return root;
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        climaActualRs = MainActivity.climapredeterminado;
-        textViewDescripcion = getActivity().findViewById(R.id.textViewDescripcionClima);
-        spinnerHome = getActivity().findViewById(R.id.spinnerhome);
-        clima = getActivity().findViewById(R.id.imageViewClima);
-        mostrarCiudadesDeUsuario();
-        mostrarIcono(climaActual);
     }
 
     public void mostrarsugerencia(){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
-        Call<SugerenciaRs> call= restClient.recibirsugerencia(MainActivity.token, 3860259);
+        Call<SugerenciaRs> call= restClient.recibirsugerencia(MainActivity.token, idCiudad);
         call.enqueue(new Callback<SugerenciaRs>() {
 
             public void onResponse(Call<SugerenciaRs> call, Response<SugerenciaRs> response) {
@@ -104,7 +107,7 @@ public class HomeFragment extends Fragment {
                     sugerencia = response.body();
                     setearsugerencia();
                 }else{
-                    Toast.makeText(getActivity(), "Error en el response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error en el response de mostrar sugerencia", Toast.LENGTH_SHORT).show();
                     Log.e("responsedemierda", ""+ response.errorBody());
                 }
             }
@@ -121,18 +124,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void cargarListaCiudadesUsuario(ArrayList<CiudadRs> listaobjetos){
-        ciudadesUsuario = new ArrayList<String>();
-
-        for (int i = 0; i <listaobjetos.size(); i++) {
-            ciudadesUsuario.add((listaobjetos.get(i)).getNombre()+", "+ listaobjetos.get(i).getPais());
-        }
-        adapter = new ArrayAdapter<>(getActivity(),R.layout.support_simple_spinner_dropdown_item,ciudadesUsuario);
-
+        spinnerHome= getActivity().findViewById(R.id.spinnerhome);
+        ArrayAdapter<CiudadRs> adapter = new ArrayAdapter<CiudadRs>(getActivity(),R.layout.support_simple_spinner_dropdown_item,ciudadesRsRecibe);
         spinnerHome.setAdapter(adapter);
     }
 
     private void mostrarCiudadesDeUsuario(){
-
+        Log.e("Mostrar ciudad", "inicio");
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
 
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(MainActivity.token);
@@ -140,10 +138,18 @@ public class HomeFragment extends Fragment {
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
 
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                Log.e("Mostrar ciudad", "onresponse");
                 if (response.isSuccessful()) {
+
                     if (response.body() != null) {
+
                         ciudadesRsRecibe = response.body();
+                        Log.e("Mostrar ciudad", "response= ciudades");
                         cargarListaCiudadesUsuario( ciudadesRsRecibe);
+                        Log.e("Mostrar ciudad", "cargolaciudad");
+                        idCiudad= ciudadesRsRecibe.get(0).getId();
+                        Log.e("Mostrar ciudad", "setea idcudad  "+idCiudad);
+
                     } else {
 
                         Toast.makeText(getActivity() , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
@@ -169,6 +175,8 @@ public class HomeFragment extends Fragment {
            clima.setImageResource(R.mipmap.storm);
        }
     }
+
+
    /* public String recuperaricono(){
         String nombreclima;
         nombreclima = ciudadesRsRecibe.get(spinnerHome.getSelectedItemId()).;

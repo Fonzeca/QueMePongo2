@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:fontFamily="@font/roboto_thin"
-        android:text="Detalles"
+        android:text="@string/textViewDetalles"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textViento"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,7 +103,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.246">
@@ -111,21 +111,22 @@
         <TextView
             android:id="@+id/temperatura_actual"
             android:layout_width="wrap_content"
-            android:layout_height="67dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_light"
-            android:text=" "
             android:textAlignment="center"
             android:textSize="58sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageViewClima"
-            android:layout_width="90dp"
-            android:layout_height="82dp"
+            android:layout_width="91dp"
+            android:layout_height="77dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <Spinner
