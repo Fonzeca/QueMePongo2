@@ -30,13 +30,15 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public static String token;
     public static ClimaActualRs climapredeterminado;
-    public static CiudadRs ciudadPredeterminada;
+    public static CiudadRs ciudadPredeterminada = new CiudadRs();
     public static ArrayList<CiudadRs> ciudadesRsRecibe;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mostrarCiudadesDeUsuario();
         setContentView(R.layout.activity_main);
+        ciudadesRsRecibe= new ArrayList<CiudadRs>();
+        ciudadPredeterminada.setId(3860259);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mostrarCiudadesDeUsuario();
         //Inicializar el navigation_bar
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_objetos_personales,
+                 R.id.nav_objetos_personales,R.id.nav_home,
                 R.id.nav_ubicaciones, R.id.nav_share, R.id.nav_nuevo_usuario)
                 .setDrawerLayout(drawer)
                 .build();
@@ -72,29 +74,28 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    public static CiudadRs getCiudadpredeterminado() {
-        return ciudadPredeterminada;
-    }
 
-    public static void setCiudadPredeterminada(CiudadRs predeterminada) {
-        MainActivity.climapredeterminado = climapredeterminado;
-    }
 
     private void mostrarCiudadesDeUsuario(){
         Log.e("Mostrar ciudad", "inicio");
+
+
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
-
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
-
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
+
+
+
+
 
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                 Log.e("Mostrar ciudad", "onresponse main");
                 if (response.isSuccessful()) {
 
                     if (response.body() != null) {
-                        ciudadesRsRecibe = response.body();
-                        Log.e("seteodeCiudad","ciudadesRsRecibe"+ ciudadesRsRecibe.get(0).getId());
+                        ciudadesRsRecibe= response.body();
+                        ciudadPredeterminada=ciudadesRsRecibe.get(0);
+                        Log.e("Ciudad id 0 >>","ciudadesRsRecibe"+ ciudadesRsRecibe.get(0).getNombre());
                     } else {
 
                         Toast.makeText(MainActivity.this , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+                Log.v(">>>>>>", "falló la wea de fonzo.");
             }
         });
 
