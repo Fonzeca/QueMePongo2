@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         mostrarCiudadesDeUsuario();
         setContentView(R.layout.activity_main);
         ciudadesRsRecibe= new ArrayList<CiudadRs>();
-        ciudadPredeterminada.setId(3860259);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,21 +50,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
+
         mostrarCiudadesDeUsuario();
+
         //Inicializar el navigation_bar
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                  R.id.nav_objetos_personales,R.id.nav_home,
                 R.id.nav_ubicaciones, R.id.nav_share, R.id.nav_nuevo_usuario)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -77,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void mostrarCiudadesDeUsuario(){
-        Log.e("Mostrar ciudad", "inicio");
-
 
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
+
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
+
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
 
 
@@ -89,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
-                Log.e("Mostrar ciudad", "onresponse main");
                 if (response.isSuccessful()) {
 
                     if (response.body() != null) {
                         ciudadesRsRecibe= response.body();
+
                         ciudadPredeterminada=ciudadesRsRecibe.get(0);
-                        Log.e("Ciudad id 0 >>","ciudadesRsRecibe"+ ciudadesRsRecibe.get(0).getNombre());
+
                     } else {
 
                         Toast.makeText(MainActivity.this , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
