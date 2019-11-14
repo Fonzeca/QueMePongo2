@@ -1,5 +1,7 @@
 package com.s21.quemepongo2front.creadoresDeFragments.ubicaciones;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,9 +51,7 @@ public class fragment_ubicaciones_lista extends Fragment {
         mostrarCiudadesDeUsuario();
         listViewMisCiudades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CiudadRs ciudad = (CiudadRs)adapterView.getItemAtPosition(i);
-                quitarCiudad(ciudad.getId(), i);
-
+                mostrarDialogoEliminar(adapterView,view,i);
             }
         });
     }
@@ -104,6 +104,34 @@ public class fragment_ubicaciones_lista extends Fragment {
 
             }
         });
+    }
+
+    public  void mostrarDialogoEliminar(final AdapterView<?> adapterView, View view, final int i){
+        final CiudadRs ciudad = (CiudadRs)adapterView.getItemAtPosition(i);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(true);
+
+        builder.setTitle("Eliminar Ciudad");
+        builder.setMessage("Esta seguro de eliminar la ciudad : \n"+ ciudad.toString());
+        builder.setPositiveButton("Confirm",
+
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        quitarCiudad(ciudad.getId(), i);
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

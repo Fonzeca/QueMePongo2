@@ -14,26 +14,12 @@
 
         <ListView
             android:id="@+id/listViewCiudadesUsuario"
+            style="@style/Widget.AppCompat.Light.ListView.DropDown"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
-            android:layout_marginTop="20dp" >
+            android:layout_height="593dp"
+            android:layout_marginTop="20dp">
 
         </ListView>
-
-        <TextView
-            android:id="@+id/textView_seleccionCiudad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Selecionaste: "
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="@string/botonEliminar" />
 
     </LinearLayout>
 
