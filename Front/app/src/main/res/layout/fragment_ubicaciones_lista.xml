@@ -8,15 +8,15 @@
     tools:context=".creadoresDeFragments.ubicaciones.fragment_ubicaciones_lista" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ListView
             android:id="@+id/listViewCiudadesUsuario"
             style="@style/Widget.AppCompat.Light.ListView.DropDown"
             android:layout_width="match_parent"
-            android:layout_height="593dp"
+            android:layout_height="420dp"
             android:layout_marginTop="20dp">
 
         </ListView>

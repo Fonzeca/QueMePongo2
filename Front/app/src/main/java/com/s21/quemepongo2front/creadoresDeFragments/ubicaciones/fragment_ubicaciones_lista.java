@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.Api;
@@ -76,6 +77,7 @@ public class fragment_ubicaciones_lista extends Fragment {
                 CiudadRs ciudad = (CiudadRs)adapterView.getItemAtPosition(i);
                 itemSelected = new Selected(ciudad.getId(), i);
                 textViewSeleccionCiudad.setText("Seleccionaste: " + ciudad.toString());
+                //mostrarDialogoEliminar(adapterView,view,i);
             }
         });
         botonEliminar.setOnClickListener(new View.OnClickListener() {
@@ -83,9 +85,7 @@ public class fragment_ubicaciones_lista extends Fragment {
                 //TODO: hacer el else
                 if(itemSelected != null){
                     quitarCiudad(itemSelected.idCIudad, itemSelected.indexOfArray);
-
                 }
-                mostrarDialogoEliminar(adapterView,view,i);
             }
         });
     }
@@ -144,7 +144,6 @@ public class fragment_ubicaciones_lista extends Fragment {
         builder.setTitle("Eliminar Ciudad");
         builder.setMessage("Esta seguro de eliminar la ciudad : \n"+ ciudad.toString());
         builder.setPositiveButton("Confirm",
-
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
