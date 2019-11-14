@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_objetos_personales">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -15,7 +15,7 @@
         android:id="@+id/nav_objetos_personales"
         android:name="com.s21.quemepongo2front.creadoresDeFragments.Preferencias.PreferenciasFragment"
         android:label="@string/menu_objetos_personales"
-        tools:layout="@layout/fragment_objetos" />
+        tools:layout="@layout/fragment_preferencias" />
 
     <fragment
         android:id="@+id/nav_ubicaciones"

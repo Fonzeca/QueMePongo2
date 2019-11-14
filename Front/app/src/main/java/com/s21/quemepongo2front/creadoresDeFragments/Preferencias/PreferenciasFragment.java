@@ -18,23 +18,22 @@ import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PreferenciasFragment extends Fragment {
 
-    private PreferenciasViewModel preferenciasViewModel;
     private Button botonGuardar;
     private CheckBox bufandaCheck, gorraCheck, bloqueadorCheck, paraguasCheck, lentesCheck;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        preferenciasViewModel =ViewModelProviders.of(this).get(PreferenciasViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_objetos, container, false);
-        return root;
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_preferencias, container, false);
 
+        return v;
+    }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
