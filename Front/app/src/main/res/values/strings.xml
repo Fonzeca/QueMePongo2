@@ -59,6 +59,7 @@
     <string name="textViewViento">Viento</string>
     <string name="textViewHumedad">Humedad:</string>
     <string name="bienvenido">Bienvenido!</string>
+    <string name="textViewDetalles">Detalles</string>
 
 
 </resources>

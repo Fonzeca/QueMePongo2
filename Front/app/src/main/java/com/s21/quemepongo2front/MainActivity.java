@@ -1,14 +1,18 @@
 package com.s21.quemepongo2front;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
-import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.PreferenciaRq;
+
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,19 +21,23 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static String token;
-    PreferenciaRq preferencias= new PreferenciaRq();
     public static ClimaActualRs climapredeterminado;
-
+    public static CiudadRs ciudadPredeterminada = new CiudadRs();
+    public static ArrayList<CiudadRs> ciudadesRsRecibe;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mostrarCiudadesDeUsuario();
         setContentView(R.layout.activity_main);
+        ciudadesRsRecibe= new ArrayList<CiudadRs>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,21 +50,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        mostrarCiudadesDeUsuario();
 
         //Inicializar el navigation_bar
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_objetos_personales,
+                 R.id.nav_objetos_personales,R.id.nav_home,
                 R.id.nav_ubicaciones, R.id.nav_share, R.id.nav_nuevo_usuario)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -66,5 +82,40 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
+    private void mostrarCiudadesDeUsuario(){
+
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
+
+        Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
+
+        ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
+
+
+
+
+
+            public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                if (response.isSuccessful()) {
+
+                    if (response.body() != null) {
+                        ciudadesRsRecibe= response.body();
+
+                        ciudadPredeterminada=ciudadesRsRecibe.get(0);
+
+                    } else {
+
+                        Toast.makeText(MainActivity.this , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Ocurrio un error " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+                Log.v(">>>>>>", "falló la wea de fonzo.");
+            }
+        });
+
+    }
 }
 

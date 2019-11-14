@@ -1,12 +1,11 @@
 package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS;
 
 
-import androidx.annotation.NonNull;
-
 public class CiudadRs {
 	private int id;
 	private String nombre;
 	private String pais;
+
 	
 	public CiudadRs() {
 	}
