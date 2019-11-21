@@ -20,7 +20,7 @@ public class CiudadRs {
 		return id;
 	}
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
 	public String getNombre() {
 		return nombre;
