@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
     private Spinner spinnerHome;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -59,6 +60,7 @@ public class HomeFragment extends Fragment {
         cargarListaCiudadesUsuario(MainActivity.ciudadesRsRecibe);
 
         spinnerHome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 RestClient restClient = Api.getRetrofit().create(RestClient.class);
                 CiudadRs rs = (CiudadRs) spinnerHome.getSelectedItem();
@@ -157,7 +159,6 @@ public class HomeFragment extends Fragment {
     }
 
     public void setearSugerencia( ){
-//TODO: en prueba boyz
         txtViewsugerencia.setText(sugerencia.getSugerencia()) ;
     }
 

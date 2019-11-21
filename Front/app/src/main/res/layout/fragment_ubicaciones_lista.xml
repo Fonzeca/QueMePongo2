@@ -16,7 +16,7 @@
             android:id="@+id/listViewCiudadesUsuario"
             style="@style/Widget.AppCompat.Light.ListView.DropDown"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="342dp"
             android:layout_marginTop="20dp">
 
         </ListView>
@@ -24,17 +24,43 @@
         <TextView
             android:id="@+id/textView_seleccionCiudad"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="88dp"
             android:text="Selecionaste: "
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/buttonEliminar_miCiudad"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="@string/botonEliminar" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="205dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonEliminar_miCiudad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/botonEliminar" />
+
+                <Button
+                    android:id="@+id/buttonPredeterminar_miCiudad2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/botonPredeterminar" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonMostrarSatelite_miCiudad"
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center|center_horizontal"
+                android:text="@string/fa_icon_linechart" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
