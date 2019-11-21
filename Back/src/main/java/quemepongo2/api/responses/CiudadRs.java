@@ -1,11 +1,15 @@
 package main.java.quemepongo2.api.responses;
 
+import java.math.BigDecimal;
+
 import main.java.quemepongo2.model.Ciudad;
 
 public class CiudadRs {
 	private int id;
 	private String nombre;
 	private String pais;
+	private BigDecimal latitud;
+	private BigDecimal longitud;
 	
 	public CiudadRs() {
 	}
@@ -14,6 +18,8 @@ public class CiudadRs {
 		id = ciudadBD.getId();
 		nombre = ciudadBD.getNombre();
 		pais = ciudadBD.getPais();
+		latitud = ciudadBD.getLatitud();
+		longitud = ciudadBD.getLongitud();
 	}
 	
 	public int getId() {
@@ -35,5 +41,13 @@ public class CiudadRs {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+
+	public BigDecimal getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(BigDecimal latitud) {
+		this.latitud = latitud;
 	}
 }
