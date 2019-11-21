@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mostrarCiudadesDeUsuario();
         setContentView(R.layout.activity_main);
         ciudadesRsRecibe= new ArrayList<CiudadRs>();
 
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        mostrarCiudadesDeUsuario();
 
         //Inicializar el navigation_bar
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -93,33 +91,6 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-
-    private void mostrarCiudadesDeUsuario(){
-
-        RestClient restClient = Api.getRetrofit().create(RestClient.class);
-
-        Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
-
-        ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
-            public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        ciudadesRsRecibe= response.body();
-                        ciudadPredeterminada=ciudadesRsRecibe.get(0);
-                    } else {
-                        Toast.makeText(MainActivity.this , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Ocurrio un error " + response.errorBody(), Toast.LENGTH_SHORT).show();
-                }
-            }
-            public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
-                Log.v(">>>>>>", "falló la wea de fonzo.");
-            }
-        });
-
     }
 }
 

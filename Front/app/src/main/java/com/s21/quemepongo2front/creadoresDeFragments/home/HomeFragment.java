@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     private ImageView clima;
     private ClimaActualRs data;
     private Spinner spinnerHome;
+    private ArrayAdapter<CiudadRs> adapterSpinner;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,85 +57,19 @@ public class HomeFragment extends Fragment {
         clima = getActivity().findViewById(R.id.imageViewClima);
         txtViewsugerencia = getActivity().findViewById(R.id.txtViewSugerencia);
 
-        cargarListaCiudadesUsuario(MainActivity.ciudadesRsRecibe);
-
         spinnerHome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                RestClient restClient = Api.getRetrofit().create(RestClient.class);
-                CiudadRs rs = (CiudadRs) spinnerHome.getSelectedItem();
-
-                Call<ClimaActualRs> call = restClient.recibirPronostico(rs.getId(), MainActivity.token);
-
-                call.enqueue(new Callback<ClimaActualRs>() {
-                    public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
-                        if (response.isSuccessful()){
-
-                            Log.v("DEBUG", "RECIBIR PRONOSTICO");
-
-                            data =response.body();
-                            TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                            int temp = (int) Math.round(data.getTemperatura());
-
-                            temp_actual.setText( temp+"°C");
-                            TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-
-                            ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
-
-                            TextView viento = getView().findViewById(R.id.textViento);
-                            int numeroViento = (int)Math.round(data.getViento());
-                            viento.setText("Viento: "+ numeroViento +" km/h");
-
-                            TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                            textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-                            climaActual = data.getNombreClima();
-                            textViewDescripcion.setText(climaActual);
-                            mostrarIcono(climaActual);
-                        }else{
-                            Toast.makeText(getActivity(), "error en el cargar pantalla", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    public void onFailure(Call<ClimaActualRs> call, Throwable t) {
-                    }
-                });
-                mostrarSugerencia(rs.getId());
+                mostrarTodo();
             }
             public void onNothingSelected(AdapterView<?> adapterView) {
-                CiudadRs primeraCiudad = MainActivity.ciudadPredeterminada;
-                RestClient restClient = Api.getRetrofit().create(RestClient.class);
-
-                Call<ClimaActualRs> call = restClient.recibirPronostico(primeraCiudad.getId(), MainActivity.token);
-
-                call.enqueue(new Callback<ClimaActualRs>() {
-                    public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
-                        if (response.isSuccessful()){
-                            data =response.body();
-                            TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
-                            int temp = (int) Math.round(data.getTemperatura());
-
-                            temp_actual.setText( temp+"°C");
-                            TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
-
-                            ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
-
-                            TextView viento = getView().findViewById(R.id.textViento);
-                            int numeroViento = (int)Math.round(data.getViento());
-                            viento.setText("Viento: "+ numeroViento +" km/h");
-
-                            TextView textHumedad= getView().findViewById(R.id.textHumedad);
-                            textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-                            climaActual = data.getNombreClima();
-                            textViewDescripcion.setText(climaActual);
-                            mostrarIcono(climaActual);
-                        }else{
-                            Toast.makeText(getActivity(), "error en el cargar pantalla", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    public void onFailure(Call<ClimaActualRs> call, Throwable t) {
-                    }
-                });
-                mostrarSugerencia(primeraCiudad.getId());
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mostrarCiudadesDeUsuario();
     }
 
     public void mostrarSugerencia(int id){
@@ -161,11 +96,6 @@ public class HomeFragment extends Fragment {
         txtViewsugerencia.setText(sugerencia.getSugerencia()) ;
     }
 
-    private void cargarListaCiudadesUsuario(ArrayList<CiudadRs> listaobjetos){
-        ArrayAdapter<CiudadRs> adapter = new ArrayAdapter(this.getContext(),android.R.layout.simple_spinner_dropdown_item,listaobjetos);
-        spinnerHome.setAdapter(adapter);
-    }
-
     public void mostrarIcono(String estado){
         clima= getActivity().findViewById(R.id.imageViewClima);
         String c1="Clear", c2="Rain",c3="Clouds",c4="Thunderstorm";
@@ -178,6 +108,74 @@ public class HomeFragment extends Fragment {
         }else if (c4.equals(estado)){
             clima.setImageResource(R.mipmap.storm);
         }
+    }
+
+    public void mostrarTodo(){
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
+        CiudadRs rs = (CiudadRs) spinnerHome.getSelectedItem();
+        if(rs == null){
+            adapterSpinner.getItem(0);
+        }
+
+        Call<ClimaActualRs> call = restClient.recibirPronostico(rs.getId(), MainActivity.token);
+
+        call.enqueue(new Callback<ClimaActualRs>() {
+            public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
+                if (response.isSuccessful()){
+
+                    data =response.body();
+                    TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
+                    int temp = (int) Math.round(data.getTemperatura());
+
+                    temp_actual.setText( temp+"°C");
+                    TextView ubicacion = getView().findViewById(R.id.textViewUbicacion);
+
+                    ubicacion.setText(getText(R.string.ubicacion)+data.getCiudadNombre());
+
+                    TextView viento = getView().findViewById(R.id.textViento);
+                    int numeroViento = (int)Math.round(data.getViento());
+                    viento.setText("Viento: "+ numeroViento +" km/h");
+
+                    TextView textHumedad= getView().findViewById(R.id.textHumedad);
+                    textHumedad.setText("Humedad: "+data.getHumedad()+"%");
+                    climaActual = data.getNombreClima();
+                    textViewDescripcion.setText(climaActual);
+                    mostrarIcono(climaActual);
+                }else{
+                    Toast.makeText(getActivity(), "error en el cargar pantalla", Toast.LENGTH_SHORT).show();
+                }
+            }
+            public void onFailure(Call<ClimaActualRs> call, Throwable t) {
+            }
+        });
+        mostrarSugerencia(rs.getId());
+    }
+
+    private void mostrarCiudadesDeUsuario(){
+        RestClient restClient = Api.getRetrofit().create(RestClient.class);
+
+        Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(MainActivity.token);
+        ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
+            public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        adapterSpinner = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, response.body());
+                        if(spinnerHome.getAdapter() == null){
+                            spinnerHome.setAdapter(adapterSpinner);
+                        }
+                        adapterSpinner.notifyDataSetChanged();
+                        mostrarTodo();
+                    } else {
+                        Toast.makeText(getActivity() , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Ocurrio un error " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            public void onFailure(Call<ArrayList<CiudadRs>> call, Throwable t) {
+            }
+        });
+
     }
 }
 
