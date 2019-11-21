@@ -71,10 +71,9 @@
 
     <TextView
         android:id="@+id/txtViewSugerencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="340dp"
         android:fontFamily="@font/roboto_light"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
@@ -83,7 +82,7 @@
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtViewSugerencia2" />
 
     <TextView
         android:id="@+id/txtViewSugerencia2"
