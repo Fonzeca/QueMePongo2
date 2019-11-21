@@ -54,7 +54,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         spinnerHome = getActivity().findViewById(R.id.spinnerhome);
-        textViewDescripcion = getActivity().findViewById(R.id.textViewDescripcionClima);
         clima = getActivity().findViewById(R.id.imageViewClima);
         txtViewsugerencia = getActivity().findViewById(R.id.txtViewSugerencia);
 
@@ -140,7 +139,6 @@ public class HomeFragment extends Fragment {
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");
                     climaActual = data.getNombreClima();
-                    textViewDescripcion.setText(climaActual);
                     mostrarIcono(climaActual);
                 }else{
                     Toast.makeText(getActivity(), "error en el cargar pantalla", Toast.LENGTH_SHORT).show();

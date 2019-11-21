@@ -34,7 +34,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="205dp"
+                android:layout_width="215dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -42,6 +42,7 @@
                     android:id="@+id/buttonEliminar_miCiudad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:text="@string/botonEliminar" />
 
@@ -49,16 +50,17 @@
                     android:id="@+id/buttonPredeterminar_miCiudad2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="@string/botonPredeterminar" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/buttonMostrarSatelite_miCiudad"
-                android:layout_width="197dp"
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center|center_horizontal"
-                android:text="@string/fa_icon_linechart" />
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_satelite" />
 
         </LinearLayout>
 
