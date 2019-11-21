@@ -15,35 +15,33 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-public class ubicacionesFragment extends Fragment {
+public class UbicacionesFragment extends Fragment {
 
     private UbicacionesViewModel ubicacionesViewModel;
     private ViewPager mViewPager;
-    public View onCreateView(@NonNull LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ubicacionesViewModel = ViewModelProviders.of(this).get(UbicacionesViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_ubicaciones, container, false);
 
-            ViewGroup container, Bundle savedInstanceState) {
-                ubicacionesViewModel =
-                        ViewModelProviders.of(this).get(UbicacionesViewModel.class);
-                View root = inflater.inflate(R.layout.fragment_ubicaciones, container, false);
-
-            mViewPager = root.findViewById(R.id.viewPagerUbicaciones);
-            setViewPager(mViewPager);
-            TabLayout tabLayout = root.findViewById(R.id.tabLayout);
-            tabLayout.setupWithViewPager(mViewPager);
+        mViewPager = root.findViewById(R.id.viewPagerUbicaciones);
+        setViewPager(mViewPager);
+        TabLayout tabLayout = root.findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(mViewPager);
 
         return root;
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        }
+    }
 
     private void setViewPager(ViewPager viewPage ) {
         AdaptadorTabView adaptador = new AdaptadorTabView(getFragmentManager());
         adaptador.addFragment(new fragment_ubicaciones_lista(),"Ubicaciones");
-        adaptador.addFragment(new fragment_mas_ubicaciones(),"Nueva ubicacion");
+        adaptador.addFragment(new Fragment_mas_ubicaciones(),"Nueva ubicacion");
         viewPage.setAdapter(adaptador);
-
+    }
+    public ViewPager getViewPager(){
+        return mViewPager;
     }
 }

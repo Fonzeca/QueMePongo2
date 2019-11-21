@@ -16,6 +16,9 @@ import com.s21.quemepongo2front.Api;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
+import com.s21.quemepongo2front.creadoresDeFragments.Preferencias.PreferenciasFragment;
+import com.s21.quemepongo2front.creadoresDeFragments.ubicaciones.Fragment_mas_ubicaciones;
+import com.s21.quemepongo2front.creadoresDeFragments.ubicaciones.UbicacionesFragment;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.SugerenciaRs;
@@ -114,7 +117,14 @@ public class HomeFragment extends Fragment {
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         CiudadRs rs = (CiudadRs) spinnerHome.getSelectedItem();
         if(rs == null){
-            adapterSpinner.getItem(0);
+            if(adapterSpinner.getCount() != 0){
+                rs = adapterSpinner.getItem(0);
+            }else {
+                UbicacionesFragment fr = new UbicacionesFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fr).addToBackStack(null).commit();
+                Toast.makeText(getActivity(), "Por favor, agregue una ciudad.", Toast.LENGTH_LONG).show();
+                return;
+            }
         }
 
         Call<ClimaActualRs> call = restClient.recibirPronostico(rs.getId(), MainActivity.token);

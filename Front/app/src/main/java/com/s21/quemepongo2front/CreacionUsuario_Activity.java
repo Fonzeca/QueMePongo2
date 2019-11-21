@@ -62,7 +62,7 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
                                 LoginRs login = response.body();
                                 token= login.getToken();
                                 Intent gohome = new Intent(CreacionUsuario_Activity.this, MainActivity.class);
-                                gohome.putExtra("token", token);
+                                MainActivity.token = token;
                                 finish();
                                 startActivity(gohome);
                             }else {

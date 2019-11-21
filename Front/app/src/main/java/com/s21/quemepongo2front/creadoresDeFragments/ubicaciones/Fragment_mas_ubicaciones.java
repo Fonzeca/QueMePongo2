@@ -30,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class fragment_mas_ubicaciones extends Fragment {
+public class Fragment_mas_ubicaciones extends Fragment {
 
     private ArrayList<CiudadRs> listaCiudadesRecibe;
     private  ArrayList <String> nombreDeCiudad;
@@ -39,7 +39,7 @@ public class fragment_mas_ubicaciones extends Fragment {
     private Spinner spinner;
     private Button botonGuardar;
 
-    public fragment_mas_ubicaciones() {
+    public Fragment_mas_ubicaciones() {
         // Required empty public constructor
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

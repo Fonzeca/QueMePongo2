@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:contextClickable="true"
     android:orientation="vertical"
-    tools:context=".creadoresDeFragments.ubicaciones.fragment_mas_ubicaciones">
+    tools:context=".creadoresDeFragments.ubicaciones.Fragment_mas_ubicaciones">
 
     <EditText
         android:id="@+id/ediTextBuscador"

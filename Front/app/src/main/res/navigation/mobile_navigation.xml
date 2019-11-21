@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_ubicaciones"
-        android:name="com.s21.quemepongo2front.creadoresDeFragments.ubicaciones.ubicacionesFragment"
+        android:name="com.s21.quemepongo2front.creadoresDeFragments.ubicaciones.UbicacionesFragment"
         android:label="@string/menu_ubicaciones"
         tools:layout="@layout/fragment_ubicaciones" />
 
