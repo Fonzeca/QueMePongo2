@@ -15,6 +15,7 @@
         android:layout_marginTop="20dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/roboto_condensed_light"
         android:hint="@string/boton_buscar"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="-1dp"
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_thin"
         android:text="@string/preferencias_boton_guardar" />
 
 </LinearLayout>

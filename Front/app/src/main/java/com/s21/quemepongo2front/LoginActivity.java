@@ -37,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
                 logear();
             }
         });
+        //TODO borrar hardocedo
+        txtusuario.setText("alexis");
+        txtclave.setText("123456");
         botonRegistrase.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -48,8 +51,10 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void logear(){
 
+
         usuario = txtusuario.getText().toString();
         clave = txtclave.getText().toString();
+
         Boolean usr=true, cla=true;
         usr= validarUsuario(usuario);
         cla = validarClave(clave);

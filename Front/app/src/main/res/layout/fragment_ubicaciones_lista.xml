@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="584dp"
         android:orientation="vertical">
 
         <ListView
@@ -17,20 +17,21 @@
             style="@style/Widget.AppCompat.Light.ListView.DropDown"
             android:layout_width="match_parent"
             android:layout_height="342dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp">
 
         </ListView>
 
         <TextView
             android:id="@+id/textView_seleccionCiudad"
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="75dp"
+            android:fontFamily="@font/roboto"
             android:text="Selecionaste: "
             android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="154dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -40,27 +41,34 @@
 
                 <Button
                     android:id="@+id/buttonEliminar_miCiudad"
-                    android:layout_width="wrap_content"
+                    android:layout_width="118dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/boton_background"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:text="@string/botonEliminar" />
 
                 <Button
                     android:id="@+id/buttonPredeterminar_miCiudad2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/boton_background"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:text="@string/botonPredeterminar" />
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
+                android:id="@+id/imageViewSatelite"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
+                android:background="@drawable/boton_background"
                 android:src="@mipmap/ic_satelite" />
+
 
         </LinearLayout>
 

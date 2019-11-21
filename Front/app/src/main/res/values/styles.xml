@@ -34,4 +34,6 @@
 
     </style>
 
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+
 </resources>

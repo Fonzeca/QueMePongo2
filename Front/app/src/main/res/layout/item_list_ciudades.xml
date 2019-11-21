@@ -10,6 +10,7 @@
         android:background="@color/design_default_color_primary"
         android:clickable="false"
         android:contextClickable="false"
+        android:fontFamily="@font/roboto_light"
         android:padding="10sp"
         android:textColor="@color/cardview_light_background"
         android:textSize="20dp" />
