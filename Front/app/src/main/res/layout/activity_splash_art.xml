@@ -30,7 +30,7 @@
         android:layout_marginTop="106dp"
         android:fontFamily="@font/roboto_thin"
         android:text="@string/bienvenido"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
