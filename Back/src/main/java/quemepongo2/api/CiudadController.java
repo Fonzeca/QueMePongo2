@@ -1,5 +1,6 @@
 package main.java.quemepongo2.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -35,11 +36,13 @@ public class CiudadController {
 		return new CiudadRs(c);
 	}
 	
-	//TODO: Cuando no tiene q, no devolver nada
 	@GetMapping(params = "q", path = "/ObtenerCiudad")
 	public List<CiudadRs> getCiudadByName(@RequestParam String q, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId + ", q : " + q);
+		if(q == null || q.equals("")) {
+			return  new ArrayList<CiudadRs>();
+		}
 		
 		return service.getByLikeNombre(q);
 	}
