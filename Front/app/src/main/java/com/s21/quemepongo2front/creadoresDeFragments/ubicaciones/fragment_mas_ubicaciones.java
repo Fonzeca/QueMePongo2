@@ -110,7 +110,8 @@ public class fragment_mas_ubicaciones extends Fragment {
         ArrayAdapter<String> adaptadorCiudadBuscada = new ArrayAdapter (getActivity(),android.R.layout.simple_spinner_dropdown_item, nombreDeCiudad);
         spinner.setAdapter(adaptadorCiudadBuscada);
     }
-
+//TODO Agregar boton para predeterminar
+    
     public void agregarCiudadaMisCiudades(final CiudadRs ciudad){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         int idciudad = ciudad.getId();
