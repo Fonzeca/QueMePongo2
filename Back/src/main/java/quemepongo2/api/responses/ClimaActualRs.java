@@ -6,7 +6,7 @@ public class ClimaActualRs {
 	
 	private int ciudadId;
 	private String ciudadNombre,nombreClima;
-	private double temperatura, viento, humedad ;
+	private double temperatura, viento, humedad, latitud, longitud;
 	
 	
 	public ClimaActualRs() {
@@ -20,6 +20,9 @@ public class ClimaActualRs {
 		viento=weather.getWind().getSpeed();
 		humedad=weather.getMain().getHumidity();
 		nombreClima=weather.getWeather().get(0).getMain();
+		
+		latitud=weather.getCoord().getLat();
+		longitud=weather.getCoord().getLon();
 	}
 	
 	
@@ -66,5 +69,21 @@ public class ClimaActualRs {
 
 	public void setNombreClima(String nombreClima) {
 		this.nombreClima = nombreClima;
+	}
+
+	public double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
+	}
+
+	public double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
 	}
 }
