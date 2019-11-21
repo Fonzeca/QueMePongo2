@@ -14,8 +14,7 @@
         android:layout_height="34dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
-        android:background="#59303F9F"
-        android:backgroundTintMode="add"
+        style="@style/spinner_style"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

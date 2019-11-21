@@ -39,6 +39,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_thin"
-        android:text="@string/preferencias_boton_guardar" />
+        android:text="@string/preferencias_boton_guardar"
+        android:textStyle="bold" />
 
 </LinearLayout>

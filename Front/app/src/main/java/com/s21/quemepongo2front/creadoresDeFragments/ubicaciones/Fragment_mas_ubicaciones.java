@@ -59,6 +59,7 @@ public class Fragment_mas_ubicaciones extends Fragment {
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             buscarCiudadOnTextChange();
+            botonGuardar.setEnabled(true);
             }
             public void afterTextChanged(Editable s) {
 

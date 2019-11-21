@@ -69,13 +69,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
+        android:layout_width="156dp"
+        android:layout_height="39dp"
         android:layout_marginTop="56dp"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto_condensed_light"
         android:text="Ver mapa satelital"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.874"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_seleccionCiudad" />
 
