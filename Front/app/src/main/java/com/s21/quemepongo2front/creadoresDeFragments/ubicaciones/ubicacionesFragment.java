@@ -19,17 +19,15 @@ public class ubicacionesFragment extends Fragment {
 
     private UbicacionesViewModel ubicacionesViewModel;
     private ViewPager mViewPager;
-    public View onCreateView(@NonNull LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState){
 
-            ViewGroup container, Bundle savedInstanceState) {
-                ubicacionesViewModel =
-                        ViewModelProviders.of(this).get(UbicacionesViewModel.class);
+                ubicacionesViewModel = ViewModelProviders.of(this).get(UbicacionesViewModel.class);
                 View root = inflater.inflate(R.layout.fragment_ubicaciones, container, false);
 
             mViewPager = root.findViewById(R.id.viewPagerUbicaciones);
-            setViewPager(mViewPager);
-            TabLayout tabLayout = root.findViewById(R.id.tabLayout);
-            tabLayout.setupWithViewPager(mViewPager);
+                setViewPager(mViewPager);
+                 TabLayout tabLayout = root.findViewById(R.id.tabLayout);
+                tabLayout.setupWithViewPager(mViewPager);
 
         return root;
     }
