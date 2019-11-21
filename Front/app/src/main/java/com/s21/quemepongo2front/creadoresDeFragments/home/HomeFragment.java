@@ -1,6 +1,7 @@
 package com.s21.quemepongo2front.creadoresDeFragments.home;
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     private ClimaActualRs data;
     private Spinner spinnerHome;
     private ArrayAdapter<CiudadRs> adapterSpinner;
+    private View layouthome;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -98,14 +100,21 @@ public class HomeFragment extends Fragment {
 
     public void mostrarIcono(String estado){
         clima= getActivity().findViewById(R.id.imageViewClima);
+        layouthome = getActivity().findViewById(R.id.layout_home);
         String c1="Clear", c2="Rain",c3="Clouds",c4="Thunderstorm";
         if(c1.equals(estado)){
+            layouthome.setBackgroundResource(R.mipmap.wp_sun);
             clima.setImageResource(R.mipmap.contrast);
         }else if(c2.equals(estado)){
+            layouthome.setBackgroundResource(R.mipmap.wp_rain);
+
             clima.setImageResource(R.mipmap.rain);
         }else if (c3.equals(estado)){
+            layouthome.setBackgroundResource(R.mipmap.wp_clouds);
+
             clima.setImageResource(R.mipmap.clouds);
         }else if (c4.equals(estado)){
+            layouthome.setBackgroundResource(R.mipmap.wp_thunderstorm2);
             clima.setImageResource(R.mipmap.storm);
         }
     }
