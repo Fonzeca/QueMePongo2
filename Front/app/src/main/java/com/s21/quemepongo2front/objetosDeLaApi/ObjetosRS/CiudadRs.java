@@ -1,15 +1,36 @@
 package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS;
 
 
+import java.math.BigDecimal;
+
 public class CiudadRs {
 	private int id;
 	private String nombre;
 	private String pais;
 
-	
+	public BigDecimal getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(BigDecimal latitud) {
+		this.latitud = latitud;
+	}
+
+	private BigDecimal latitud;
+
+	public BigDecimal getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(BigDecimal longitud) {
+		this.longitud = longitud;
+	}
+
+	private BigDecimal longitud;
+
 	public CiudadRs() {
 	}
-	
+
 
 	public int getId() {
 		return id;
