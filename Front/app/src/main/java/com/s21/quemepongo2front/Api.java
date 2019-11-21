@@ -7,7 +7,7 @@ public class Api {
 
     private static Retrofit retrofit = null;
     private static String apiUrl = "http://181.31.108.164:5599/";
-//    private static String apiUrl = "http://192.167.0.7:5599/"; PC DIEGO
+//    private static String apiUrl = "http://192.167.0.7:5599/"; //PC DIEGO
 //    private static String apiUrl ="http://181.105.112.123:5599"; //PC JERE
 
     public static Retrofit getRetrofit(){

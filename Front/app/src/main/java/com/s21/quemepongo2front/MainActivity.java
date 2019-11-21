@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static String token;
-    public static ClimaActualRs climapredeterminado;
     public static CiudadRs ciudadPredeterminada = new CiudadRs();
     public static ArrayList<CiudadRs> ciudadesRsRecibe;
 
@@ -72,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.main, menu);
-
         return true;
     }
 
@@ -106,21 +103,12 @@ public class MainActivity extends AppCompatActivity {
         Call<ArrayList<CiudadRs>> ubicaciones = restClient.misCiudades(token);
 
         ubicaciones.enqueue(new Callback<ArrayList<CiudadRs>>() {
-
-
-
-
-
             public void onResponse(Call<ArrayList<CiudadRs>> call, Response<ArrayList<CiudadRs>> response) {
                 if (response.isSuccessful()) {
-
                     if (response.body() != null) {
                         ciudadesRsRecibe= response.body();
-
                         ciudadPredeterminada=ciudadesRsRecibe.get(0);
-
                     } else {
-
                         Toast.makeText(MainActivity.this , "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
                     }
                 } else {

@@ -35,18 +35,14 @@ public class HomeFragment extends Fragment {
     private String climaActual;
     private TextView txtViewsugerencia,textViewDescripcion;
     private ImageView clima;
-    private ClimaActualRs climaActualRs;
     private ClimaActualRs data;
     private Spinner spinnerHome;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        climaActualRs = MainActivity.climapredeterminado;
-
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -55,13 +51,14 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        spinnerHome= getActivity().findViewById(R.id.spinnerhome);
-        cargarListaCiudadesUsuario(MainActivity.ciudadesRsRecibe);
+        spinnerHome = getActivity().findViewById(R.id.spinnerhome);
         textViewDescripcion = getActivity().findViewById(R.id.textViewDescripcionClima);
         clima = getActivity().findViewById(R.id.imageViewClima);
-        txtViewsugerencia= getActivity().findViewById(R.id.txtViewSugerencia);
-        spinnerHome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        txtViewsugerencia = getActivity().findViewById(R.id.txtViewSugerencia);
 
+        cargarListaCiudadesUsuario(MainActivity.ciudadesRsRecibe);
+
+        spinnerHome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 RestClient restClient = Api.getRetrofit().create(RestClient.class);
                 CiudadRs rs = (CiudadRs) spinnerHome.getSelectedItem();
@@ -71,6 +68,9 @@ public class HomeFragment extends Fragment {
                 call.enqueue(new Callback<ClimaActualRs>() {
                     public void onResponse(Call<ClimaActualRs> call, Response<ClimaActualRs> response) {
                         if (response.isSuccessful()){
+
+                            Log.v("DEBUG", "RECIBIR PRONOSTICO");
+
                             data =response.body();
                             TextView temp_actual = getView().findViewById(R.id.temperatura_actual);
                             int temp = (int) Math.round(data.getTemperatura());
@@ -96,10 +96,10 @@ public class HomeFragment extends Fragment {
                     public void onFailure(Call<ClimaActualRs> call, Throwable t) {
                     }
                 });
-                mostrarsugerencia(rs.getId());
+                mostrarSugerencia(rs.getId());
             }
             public void onNothingSelected(AdapterView<?> adapterView) {
-                 CiudadRs primeraCiudad = MainActivity.ciudadPredeterminada;
+                CiudadRs primeraCiudad = MainActivity.ciudadPredeterminada;
                 RestClient restClient = Api.getRetrofit().create(RestClient.class);
 
                 Call<ClimaActualRs> call = restClient.recibirPronostico(primeraCiudad.getId(), MainActivity.token);
@@ -132,12 +132,12 @@ public class HomeFragment extends Fragment {
                     public void onFailure(Call<ClimaActualRs> call, Throwable t) {
                     }
                 });
-                mostrarsugerencia(primeraCiudad.getId());
+                mostrarSugerencia(primeraCiudad.getId());
             }
         });
     }
 
-    public void mostrarsugerencia(int id){
+    public void mostrarSugerencia(int id){
         RestClient restClient = Api.getRetrofit().create(RestClient.class);
         Call<SugerenciaRs> call= restClient.recibirsugerencia(MainActivity.token, id);
         call.enqueue(new Callback<SugerenciaRs>() {
@@ -145,7 +145,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<SugerenciaRs> call, Response<SugerenciaRs> response) {
                 if(response.isSuccessful()){
                     sugerencia = response.body();
-                    setearsugerencia();
+                    setearSugerencia();
                 }else{
                     Toast.makeText(getActivity(), "Error en el response de mostrar sugerencia", Toast.LENGTH_SHORT).show();
                     Log.e("responsedemierda", ""+ response.errorBody());
@@ -156,7 +156,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void setearsugerencia( ){
+    public void setearSugerencia( ){
 //TODO: en prueba boyz
         txtViewsugerencia.setText(txtViewsugerencia.getText()+" "+sugerencia.getSugerencia()+"  En prueba") ;
     }
@@ -169,16 +169,15 @@ public class HomeFragment extends Fragment {
     public void mostrarIcono(String estado){
         clima= getActivity().findViewById(R.id.imageViewClima);
         String c1="Clear", c2="Rain",c3="Clouds",c4="Thunderstorm";
-       if(c1.equals(estado)){
+        if(c1.equals(estado)){
             clima.setImageResource(R.mipmap.contrast);
-
-       }else if(c2.equals(estado)){
-           clima.setImageResource(R.mipmap.rain);
-       }else if (c3.equals(estado)){
-           clima.setImageResource(R.mipmap.clouds);
-       }else if (c4.equals(estado)){
-           clima.setImageResource(R.mipmap.storm);
-       }
+        }else if(c2.equals(estado)){
+            clima.setImageResource(R.mipmap.rain);
+        }else if (c3.equals(estado)){
+            clima.setImageResource(R.mipmap.clouds);
+        }else if (c4.equals(estado)){
+            clima.setImageResource(R.mipmap.storm);
+        }
     }
 }
 
