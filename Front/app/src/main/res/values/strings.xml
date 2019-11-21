@@ -31,7 +31,7 @@
 
     <!--    main_activity strings-->
     <string name="temperatura_actual">Temperatura actual</string>
-    <string name="ubicacion">Ubicacion: </string>
+    <string name="ubicacion">Ubicacion:  </string>
     <string name="txt_temperatura_actual">Temperatura Actual</string>
 
     <!--    Objetos strings-->
@@ -45,6 +45,8 @@
     <string name="txtClaveLogin">Clave</string>
     <string name="botonLogin">Ingresar</string>
     <string name="botonEliminar">Eliminar</string>
+    <string name="botonPredeterminar">Predeterminar</string>
+    <string name="botonMostrarSatelite">Mostrar Mapa Satelital</string>
     <string name="textViewBuscador">Buscador</string>
     <string name="boton_crear_usuario">Crear usuario</string>
 
@@ -60,6 +62,4 @@
     <string name="textViewHumedad">Humedad:</string>
     <string name="bienvenido">Bienvenido!</string>
     <string name="textViewDetalles">Detalles</string>
-
-
 </resources>

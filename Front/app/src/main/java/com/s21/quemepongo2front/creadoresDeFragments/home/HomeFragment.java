@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment {
     private ArrayAdapter<CiudadRs> adapterSpinner;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -58,6 +59,7 @@ public class HomeFragment extends Fragment {
         txtViewsugerencia = getActivity().findViewById(R.id.txtViewSugerencia);
 
         spinnerHome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 mostrarTodo();
             }
@@ -92,7 +94,6 @@ public class HomeFragment extends Fragment {
     }
 
     public void setearSugerencia( ){
-//TODO: en prueba boyz
         txtViewsugerencia.setText(sugerencia.getSugerencia()) ;
     }
 
