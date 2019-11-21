@@ -158,7 +158,7 @@ public class HomeFragment extends Fragment {
 
     public void setearsugerencia( ){
 //TODO: en prueba boyz
-        txtViewsugerencia.setText(txtViewsugerencia.getText()+" "+sugerencia.getSugerencia()+"  En prueba") ;
+        txtViewsugerencia.setText(sugerencia.getSugerencia()) ;
     }
 
     private void cargarListaCiudadesUsuario(ArrayList<CiudadRs> listaobjetos){

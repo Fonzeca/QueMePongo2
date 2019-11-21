@@ -71,9 +71,25 @@
 
     <TextView
         android:id="@+id/txtViewSugerencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="340dp"
+        android:fontFamily="@font/roboto_light"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtViewSugerencia2"
         android:layout_width="395dp"
         android:layout_height="33dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginTop="304dp"
         android:fontFamily="@font/roboto_light"
         android:text="@string/txtViewSugerencia"
         android:textAlignment="viewStart"
@@ -82,6 +98,7 @@
         android:textSize="24sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
