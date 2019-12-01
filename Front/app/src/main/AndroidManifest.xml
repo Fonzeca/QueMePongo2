@@ -17,8 +17,7 @@
         android:windowSoftInputMode="adjustPan"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".SplashArt"
-            android:label="@string/nav_header_title"
-            android:theme="@style/FullscreenTheme">
+            android:label="@string/nav_header_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,17 +27,14 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/nav_header_title"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".CreacionUsuario_Activity"
-            android:label="@string/title_activity_usuariologin"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_usuariologin" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"
         />
 
