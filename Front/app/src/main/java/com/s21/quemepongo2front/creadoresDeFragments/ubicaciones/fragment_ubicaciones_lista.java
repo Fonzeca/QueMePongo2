@@ -40,8 +40,7 @@ public class fragment_ubicaciones_lista extends Fragment {
     private ArrayList<CiudadRs> ciudadesUsuario;
     private ListView listViewMisCiudades;
     private ArrayAdapter<CiudadRs> adapter;
-    private Button botonEliminar,botonPredeterminar;
-    private ImageButton botonSatelite;
+    private Button botonEliminar,botonPredeterminar, botonSatelite;
     private TextView textViewSeleccionCiudad;
     private Selected itemSelected;
     private BigDecimal lat,lon;
@@ -126,7 +125,7 @@ public class fragment_ubicaciones_lista extends Fragment {
             public void onClick(View v) {
                 Uri webpage = Uri.parse("https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=" +
                         lat+"&lon=" +
-                        lon+"zoom=8");
+                        lon+"zoom=50");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
             }

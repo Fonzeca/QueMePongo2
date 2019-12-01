@@ -11,8 +11,8 @@
     <ListView
         android:id="@+id/listViewCiudadesUsuario"
         style="@style/Widget.AppCompat.Light.ListView.DropDown"
-        android:layout_width="405dp"
-        android:layout_height="279dp"
+        android:layout_width="404dp"
+        android:layout_height="346dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView_seleccionCiudad"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,62 +39,71 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/buttonEliminar_miCiudad"
-        android:layout_width="135dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/boton_background"
-        android:fontFamily="@font/roboto_condensed_light"
-        android:text="@string/botonEliminar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_seleccionCiudad" />
 
-    <Button
-        android:id="@+id/buttonPredeterminar_miCiudad2"
-        android:layout_width="139dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/boton_background"
-        android:fontFamily="@font/roboto_condensed_light"
-        android:text="@string/botonPredeterminar"
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="168dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEliminar_miCiudad"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="156dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/roboto_condensed_light"
-        android:text="Ver mapa satelital"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.874"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_seleccionCiudad" />
+        <LinearLayout
+            android:layout_width="207dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/imageViewSatelite"
-        android:layout_width="161dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/boton_background"
-        android:src="@mipmap/ic_satelite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+            <Button
+
+                android:id="@+id/buttonPredeterminar_miCiudad2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boton_background"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:text="@string/botonPredeterminar" />
+
+            <Button
+                android:id="@+id/buttonEliminar_miCiudad"
+                android:layout_width="127dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/boton_background"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:text="@string/botonEliminar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="203dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="156dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:gravity="center"
+                android:text="Ver mapa satelital"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/imageViewSatelite"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:icon="@mipmap/ic_satelite"
+                app:iconGravity="textEnd" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
