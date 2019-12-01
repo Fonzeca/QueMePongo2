@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-
+        navigationView.setItemIconTintList(null);
 
         //Inicializar el navigation_bar
         mAppBarConfiguration = new AppBarConfiguration.Builder(

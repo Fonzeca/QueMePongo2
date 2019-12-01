@@ -11,18 +11,17 @@
     <ListView
         android:id="@+id/listViewCiudadesUsuario"
         style="@style/Widget.AppCompat.Light.ListView.DropDown"
-        android:layout_width="404dp"
-        android:layout_height="346dp"
+        android:layout_width="412dp"
+        android:layout_height="342dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView_seleccionCiudad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView_seleccionCiudad"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
     </ListView>
-
 
     <TextView
         android:id="@+id/textView_seleccionCiudad"
@@ -50,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:layout_width="207dp"
+            android:layout_width="214dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -85,6 +84,7 @@
                 android:layout_width="156dp"
                 android:layout_height="39dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_condensed_light"
                 android:gravity="center"
                 android:text="Ver mapa satelital"
@@ -98,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 app:icon="@mipmap/ic_satelite"
                 app:iconGravity="textEnd" />
 
