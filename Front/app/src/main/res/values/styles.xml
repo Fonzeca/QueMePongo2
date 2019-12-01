@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="QueMePongo2.ToolBar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
 
     <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/colorPrimary</item>
