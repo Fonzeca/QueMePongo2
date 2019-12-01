@@ -123,9 +123,8 @@ public class fragment_ubicaciones_lista extends Fragment {
         botonSatelite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri webpage = Uri.parse("https://openweathermap.org/weathermap?basemap=map&cities=false&layer=precipitation&lat=" +
-                        lat+"&lon=" +
-                        lon+"zoom=50");
+                Uri webpage = Uri.parse("https://openweathermap.org/weathermap?basemap=map&cities=true&layer=precipitation&lat=" +
+                        lat+"&lon="+lon+"zoom=10");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
             }

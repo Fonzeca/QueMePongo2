@@ -7,11 +7,10 @@
         android:id="@+id/itemListaCiudades"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:clickable="false"
         android:contextClickable="false"
         android:fontFamily="@font/roboto_light"
         android:padding="10sp"
-        android:textColor="@color/cardview_light_background"
         android:textSize="20dp" />
 </LinearLayout>
