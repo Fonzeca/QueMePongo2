@@ -9,7 +9,7 @@
     </style>
 
 
-    <style name="AppButton" parent="Widget.AppCompat.Button">
+    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 

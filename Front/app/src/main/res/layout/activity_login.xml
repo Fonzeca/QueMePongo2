@@ -16,14 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black"
-        android:alpha="0.6"
-        />
+        android:alpha="0.6" />
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/degradado_splashart"
-        android:alpha="0.4"
-        />
+        android:alpha="0.4" />
 
     <include
         layout="@layout/content_login"
