@@ -13,6 +13,10 @@
     </style>
 
 
+    <style name="QueMePongo2.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
     <style name="QueMePongo2.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
