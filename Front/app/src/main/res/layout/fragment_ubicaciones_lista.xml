@@ -50,24 +50,23 @@
             android:layout_height="match_parent"
             android:gravity="center">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
 
                 android:id="@+id/buttonPredeterminar_miCiudad2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/boton_background"
                 android:fontFamily="@font/roboto_condensed_light"
                 android:gravity="center"
-                android:text="@string/botonPredeterminar" />
+                android:text="@string/botonPredeterminar"
+                style="@style/QueMePongo2.Button"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonEliminar_miCiudad"
                 android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:background="@drawable/boton_background"
                 android:fontFamily="@font/roboto_condensed_light"
                 android:text="@string/botonEliminar" />
 
