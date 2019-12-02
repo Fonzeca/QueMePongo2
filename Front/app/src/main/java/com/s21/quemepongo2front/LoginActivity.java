@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.LoginRq;
 
@@ -16,7 +17,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView txtusuario,txtclave,botonRegistrase;
+    TextInputEditText txtusuario,txtclave;
+    TextView botonRegistrase;
     String usuario,clave;
     LoginRq loginsend;
     LoginRs loginRecibe;
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         txtusuario= findViewById(R.id.txtUsuarioLogin);
         txtclave = findViewById(R.id.txtClaveLogin);
+
         botonLogin = findViewById(R.id.botonLogin);
         botonRegistrase=findViewById(R.id.botonSignUp);
         botonLogin.setOnClickListener(new View.OnClickListener() {
