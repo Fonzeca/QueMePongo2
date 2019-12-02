@@ -9,14 +9,14 @@
     android:background="@drawable/degradado">
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerUbicaciones"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewPagerUbicaciones">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            android:layout_width="407dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:tabIndicatorColor="#651FFF"
             app:tabIndicatorGravity="bottom">
 

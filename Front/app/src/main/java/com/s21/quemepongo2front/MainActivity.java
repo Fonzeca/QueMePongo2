@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements HostNavigation, N
 				MainActivity.token = null;
 				Intent intent = new Intent(this, LoginActivity.class);
 				startActivity(intent);
+
 				break;
 		}
 
