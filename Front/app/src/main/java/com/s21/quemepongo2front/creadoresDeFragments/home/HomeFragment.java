@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     private View layouthome;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
-
+        Log.v("PRUEBAAAAAAA", "PROBAMOS QUE SE CREE UNA VEZ");
         super.onCreate(savedInstanceState);
     }
 
