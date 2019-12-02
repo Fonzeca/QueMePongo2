@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.s21.quemepongo2front.MainActivity;
@@ -28,13 +29,12 @@ public class LoginActivity extends AppCompatActivity {
     LoginRs loginRecibe;
     Button botonLogin;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        txtusuario= findViewById(R.id.txtUsuarioLogin);
-        txtclave = findViewById(R.id.txtClaveLogin);
+        txtusuario= findViewById(R.id.edittext_usuario);
+        txtclave = findViewById(R.id.edit_text_pasw);
 
         botonLogin = findViewById(R.id.botonLogin);
         botonRegistrase=findViewById(R.id.botonSignUp);
@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 logear();
             }
         });
+
         //TODO borrar hardocedo
         txtusuario.setText("Alexis");
         txtclave.setText("123456");

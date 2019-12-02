@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
         Log.v("PRUEBAAAAAAA", "PROBAMOS QUE SE CREE UNA VEZ");
         super.onCreate(savedInstanceState);
     }
-
+    //TODO AGREGAR DIFERENTES FONDOS SEGUN LA HORA DEL DIA
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_home, container, false);
