@@ -18,7 +18,8 @@
     </style>
 
     <style name="QueMePongo2.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
 
