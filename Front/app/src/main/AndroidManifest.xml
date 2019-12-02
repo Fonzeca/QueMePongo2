@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_quemepongo_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/QueMePongo2"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustPan"
         tools:ignore="GoogleAppIndexingWarning">

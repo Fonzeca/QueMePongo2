@@ -27,7 +27,7 @@
 
     <Button
         android:id="@+id/boton_login_usuario"
-        style="@style/AppTheme.Button"
+        style="@style/QueMePongo2.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"

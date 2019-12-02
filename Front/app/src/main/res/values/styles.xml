@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="QueMePongo2" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,7 +13,7 @@
     </style>
 
 
-    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
+    <style name="QueMePongo2.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 

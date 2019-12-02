@@ -42,7 +42,7 @@
 
         <Button
             android:id="@+id/botonNuevoUsuario"
-            style="@style/AppTheme.Button"
+            style="@style/QueMePongo2.Button"
             android:layout_width="169dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
