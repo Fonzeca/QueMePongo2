@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_menu_top"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@mipmap/ic_home"
@@ -18,9 +20,12 @@
             android:icon="@mipmap/ic_location"
             android:title="@string/menu_ubicaciones" />
     </group>
+    <group
+        android:id="@+id/nav_menu_bottom"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_cerrar_sesion"
             android:icon="@mipmap/ic_logout"
             android:title="@string/menu_cerrar_sesion" />
-
+    </group>
 </menu>
