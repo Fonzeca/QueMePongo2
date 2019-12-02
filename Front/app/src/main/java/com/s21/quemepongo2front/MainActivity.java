@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements HostNavigation, N
 		toggle.syncState();
 
 		if(savedInstanceState == null){
+			changeFragment(new HomeFragment(), true);
 			navigationView.setCheckedItem(R.id.nav_home);
 		}
 	}
