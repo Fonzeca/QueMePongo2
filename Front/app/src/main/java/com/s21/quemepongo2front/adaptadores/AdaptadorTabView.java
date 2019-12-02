@@ -16,7 +16,6 @@ public class AdaptadorTabView extends FragmentStatePagerAdapter {
         super(fm);
     }
 
-
     public CharSequence getPageTitle(int position){
         return mFragmentTitleList.get(position);
     }
