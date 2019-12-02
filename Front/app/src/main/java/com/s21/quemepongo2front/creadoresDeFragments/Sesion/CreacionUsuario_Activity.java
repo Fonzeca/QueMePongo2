@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
@@ -26,22 +28,35 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
     UsuarioRq user = new UsuarioRq();
     EditText txtNombre, txtPasw;
     String usuario, clave, token;
+    Button botonH,botonM;
+    MaterialButtonToggleGroup group;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crearusuario);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        botonH = findViewById(R.id.boton_hombre);
+        botonM = findViewById(R.id.boton_mujer);
+
         setSupportActionBar(toolbar);
         }
 
     protected void onResume() {
         super.onResume();
         botonNuevoUsuario = findViewById(R.id.botonNuevoUsuario);
+
+
+        botonH.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                cambiarEstado();
+            }
+        });
         botonNuevoUsuario.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(final View v) {
-
-                //TODO Generar codigo para validar que el usuario no exista y esten bien los campos de usuaio y clave
 
                 //Seteamos el texto del edittext en un string
                 txtNombre= findViewById(R.id.edittext_usuario);
@@ -106,6 +121,14 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
         }
 
         return resultado;
+    }
+
+    private void cambiarEstado(){
+    if(botonH.isPressed()){
+        botonM.setEnabled(false);
+    }else if (botonM.isPressed()){
+        botonH.setEnabled(false);
+        }
     }
 }
 
