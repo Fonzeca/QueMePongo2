@@ -9,9 +9,7 @@
     android:background="@drawable/degradado">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerUbicaciones"
-        android:layout_width="417dp"
-        android:layout_height="655dp">
+        android:id="@+id/viewPagerUbicaciones">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

@@ -38,8 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto_condensed_light"
         android:text="@string/preferencias_boton_guardar"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
 </LinearLayout>
