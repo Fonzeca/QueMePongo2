@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front;
+package com.s21.quemepongo2front.creadoresDeFragments.Sesion;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.s21.quemepongo2front.MainActivity;
+import com.s21.quemepongo2front.R;
+import com.s21.quemepongo2front.RestClient;
+import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.LoginRq;
 
@@ -88,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void registrarse(){
-        Intent registro=new Intent(this,CreacionUsuario_Activity.class);
+        Intent registro=new Intent(this, CreacionUsuario_Activity.class);
         startActivity(registro);
     }
     private void pasarAlHome(){

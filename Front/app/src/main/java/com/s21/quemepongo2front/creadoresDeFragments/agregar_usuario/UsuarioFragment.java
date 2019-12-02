@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.s21.quemepongo2front.CreacionUsuario_Activity;
+import com.s21.quemepongo2front.creadoresDeFragments.Sesion.CreacionUsuario_Activity;
 import com.s21.quemepongo2front.R;
 
 import androidx.fragment.app.Fragment;

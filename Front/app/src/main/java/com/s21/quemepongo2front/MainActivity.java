@@ -1,17 +1,11 @@
 package com.s21.quemepongo2front;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.CiudadRs;
-import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
 
 import java.util.ArrayList;
 
@@ -23,9 +17,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         //Inicializar el navigation_bar
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                  R.id.nav_objetos_personales,R.id.nav_home,
-                R.id.nav_ubicaciones, R.id.nav_share, R.id.nav_nuevo_usuario)
+                R.id.nav_ubicaciones, R.id.nav_cerrar_sesion, R.id.nav_nuevo_usuario)
                 .setDrawerLayout(drawer)
                 .build();
 

@@ -8,122 +8,104 @@
     android:background="@drawable/degradado"
     tools:layout_editor_absoluteY="81dp">
 
-    <Spinner
-        android:id="@+id/spinnerhome"
-        android:layout_width="286dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
-        style="@style/spinner_style"
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="380dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:background="#C9ACB9F7"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/spinnerhome"
+            style="@style/spinner_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="380dp"
-        android:layout_height="121dp"
-        android:layout_marginTop="28dp"
-        android:background="#C9ACB9F7"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUbicacion">
-
-        <TextView
-            android:id="@+id/temperatura_actual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/roboto_light"
-            android:textAlignment="center"
-            android:textSize="58sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageViewClima"
-            android:layout_width="91dp"
-            android:layout_height="77dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription=""
-            tools:ignore="ContentDescription" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="380dp"
-        android:layout_height="130dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:background="#C9ACB9F7"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
-        <TextView
-            android:id="@+id/textViewDetalles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:text="@string/textViewDetalles"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:background="#000" />
+            <TextView
+                android:id="@+id/textViewUbicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/ubicacion"
+                android:textAlignment="viewStart"
+                android:textColor="@color/negro"
+                android:textSize="30sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/textViento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:text="@string/textViewViento"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="#000" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textHumedad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:text="@string/textViewHumedad"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/temperatura_actual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="60dp"
+                android:fontFamily="@font/roboto_light"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="58sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageViewClima"
+                android:layout_width="91dp"
+                android:layout_height="77dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription=""
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textViewUbicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:background="#C9ACB9F7"
-        android:fontFamily="@font/roboto_condensed_light"
-        android:text="@string/ubicacion"
-        android:textAlignment="viewStart"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="380dp"
         android:layout_height="138dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:background="#C9ACB9F7"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
@@ -132,13 +114,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_condensed_light"
+            android:fontFamily="@font/roboto_light"
             android:text="@string/txtViewSugerencia"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/negro"
             android:textSize="24sp"
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
             android:typeface="normal" />
 
         <View
@@ -152,14 +135,70 @@
             android:id="@+id/txtViewSugerencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_condensed_light"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_light"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/negro"
             android:textSize="24sp"
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
             android:typeface="normal" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="380dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="#C9ACB9F7"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/textViewDetalles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/textViewDetalles"
+            android:textColor="@color/negro"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/textViento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/textViewViento"
+            android:textColor="@color/negro"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/textHumedad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/textViewHumedad"
+            android:textColor="@color/negro"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

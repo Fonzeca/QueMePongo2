@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import com.s21.quemepongo2front.Api;
+import com.google.android.material.snackbar.Snackbar;
+import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
@@ -87,6 +88,7 @@ public class PreferenciasFragment extends Fragment {
             public void onResponse(Call<PreferenciaRs> call, Response<PreferenciaRs> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(getActivity(),"Se guardaron las preferencias",Toast.LENGTH_SHORT).show();
+
                 }
             }
 

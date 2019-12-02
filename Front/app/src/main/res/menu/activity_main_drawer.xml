@@ -18,14 +18,9 @@
             android:icon="@mipmap/ic_location"
             android:title="@string/menu_ubicaciones" />
     </group>
-
-    <item android:title="@string/communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_cerrar_sesion"
+            android:icon="@mipmap/ic_logout"
+            android:title="@string/menu_cerrar_sesion" />
 
 </menu>

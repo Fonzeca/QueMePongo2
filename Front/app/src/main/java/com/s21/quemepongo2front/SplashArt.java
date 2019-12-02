@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.s21.quemepongo2front.creadoresDeFragments.Sesion.LoginActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashArt extends AppCompatActivity {
@@ -15,7 +17,7 @@ public class SplashArt extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
 
             public void run() {
-                Intent gologin = new Intent(SplashArt.this,LoginActivity.class);
+                Intent gologin = new Intent(SplashArt.this, LoginActivity.class);
                 startActivity(gologin);
                 finish();
             }

@@ -1,25 +1,19 @@
 package com.s21.quemepongo2front.creadoresDeFragments.ubicaciones;
 
-import android.animation.Animator;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.s21.quemepongo2front.Api;
+import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;

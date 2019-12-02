@@ -1,4 +1,4 @@
-package com.s21.quemepongo2front;
+package com.s21.quemepongo2front.objetosDeLaApi;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

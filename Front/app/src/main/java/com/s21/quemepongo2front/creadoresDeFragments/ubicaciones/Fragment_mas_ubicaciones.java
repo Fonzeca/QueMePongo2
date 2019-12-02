@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.s21.quemepongo2front.Api;
+import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
 import com.s21.quemepongo2front.RestClient;
