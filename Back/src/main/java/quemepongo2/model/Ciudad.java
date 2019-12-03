@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 04-nov-2019 2:58:03 by Hibernate Tools 4.3.5.Final
+// Generated 03-dic-2019 15:44:16 by Hibernate Tools 4.3.5.Final
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -8,9 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,7 +23,7 @@ public class Ciudad implements java.io.Serializable {
 	private String pais;
 	private BigDecimal latitud;
 	private BigDecimal longitud;
-	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+	private Set<CiudadUsuario> ciudadUsuarios = new HashSet<CiudadUsuario>(0);
 	private Set<ReporteDelClima> reporteDelClimas = new HashSet<ReporteDelClima>(0);
 
 	public Ciudad() {
@@ -38,14 +35,14 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	public Ciudad(int id, String nombre, String pais, BigDecimal latitud, BigDecimal longitud, Set<Usuario> usuarios,
-			Set<ReporteDelClima> reporteDelClimas) {
+	public Ciudad(int id, String nombre, String pais, BigDecimal latitud, BigDecimal longitud,
+			Set<CiudadUsuario> ciudadUsuarios, Set<ReporteDelClima> reporteDelClimas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
 		this.latitud = latitud;
 		this.longitud = longitud;
-		this.usuarios = usuarios;
+		this.ciudadUsuarios = ciudadUsuarios;
 		this.reporteDelClimas = reporteDelClimas;
 	}
 
@@ -96,16 +93,13 @@ public class Ciudad implements java.io.Serializable {
 		this.longitud = longitud;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
-			@JoinColumn(name = "CiudadId", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) })
-	public Set<Usuario> getUsuarios() {
-		return this.usuarios;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")
+	public Set<CiudadUsuario> getCiudadUsuarios() {
+		return this.ciudadUsuarios;
 	}
 
-	public void setUsuarios(Set<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setCiudadUsuarios(Set<CiudadUsuario> ciudadUsuarios) {
+		this.ciudadUsuarios = ciudadUsuarios;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")

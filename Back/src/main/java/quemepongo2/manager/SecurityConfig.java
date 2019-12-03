@@ -12,10 +12,16 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
 public class SecurityConfig {
+	
+	@Autowired
+	UsuarioRepository repoUsuario;
 
 	private SecretKeySpec secretKey;
 	private	long offset = 3600*1000;
@@ -65,6 +71,10 @@ public class SecurityConfig {
 				//Token vencido
 				log.error("Token vencido = " + token + "  UserId: " + userId);
 				throw new RuntimeException("Token vencido, por favor vuelva a inicar sesion.");
+			}
+			
+			if(!repoUsuario.existsById(userId)) {
+				throw new RuntimeException("Token invalido, por favor vuelva a inicar sesion.");
 			}
 			
 			return userId;

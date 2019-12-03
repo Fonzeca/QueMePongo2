@@ -13,8 +13,11 @@ import main.java.quemepongo2.api.requests.LoginRq;
 import main.java.quemepongo2.api.requests.UsuarioRq;
 import main.java.quemepongo2.api.responses.LoginRs;
 import main.java.quemepongo2.model.Ciudad;
+import main.java.quemepongo2.model.CiudadUsuario;
+import main.java.quemepongo2.model.CiudadUsuarioId;
 import main.java.quemepongo2.model.Usuario;
 import main.java.quemepongo2.persistence.CiudadRepository;
+import main.java.quemepongo2.persistence.CiudadUsuarioRepository;
 import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
@@ -25,6 +28,9 @@ public class UsuarioService {
 	
 	@Autowired
 	CiudadRepository repoCiudad;
+	
+	@Autowired
+	CiudadUsuarioRepository repoCiudadUsuario;
 	
 	@Autowired
 	SecurityConfig tokenGenerator;
@@ -46,6 +52,7 @@ public class UsuarioService {
 		Usuario usuario = new Usuario();
 		
 		usuario.setUsuario(userRq.getUsuario());
+		usuario.setGenero(userRq.getGenero());
 		
 		String cifrado = cifrarClave(userRq.getClave());
 		usuario.setClave(cifrado);
@@ -66,23 +73,23 @@ public class UsuarioService {
 		
 		Ciudad ciudad = repoCiudad.findById(ciudadId).get();
 
-		//Le agregamos la ciudad a la lista de ciudades del usuario
-		usuario.getCiudads().add(ciudad);
-		
-		//Se guarda el usuario con la nueva ciudad
-		repo.save(usuario);
+		//Agregamos una nueva entidad a la tabla many to many
+		CiudadUsuario ciudadUsuario = new CiudadUsuario();
+		ciudadUsuario.setId(new CiudadUsuarioId(ciudadId, userId));
+		repoCiudadUsuario.save(ciudadUsuario);
 	}
 	
+	@Transactional
 	public void deleteCiudad(int ciudadId, int userId) {
 		//Obtenemos el usuario a agregarle la ciudad
 		Usuario usuario = repo.findById(userId).get();
 		
-		for (Ciudad ciudad : usuario.getCiudads()) {
-			if(ciudad.getId() == ciudadId) {
-				usuario.getCiudads().remove(ciudad);
+		//Buscamos entre las CiudadesUsuario del usuario el que tenga el mismo ciudadId
+		for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
+			if(ciudadUsuario.getId().getCiudadId() == ciudadId) {
 				
-				//Se guarda el usuario sin la ciudad
-				repo.save(usuario);
+				//Al encontrarlo lo borramos de base de datos
+				repoCiudadUsuario.deleteById(new CiudadUsuarioId(ciudadId, userId));
 				return;
 			}
 		}

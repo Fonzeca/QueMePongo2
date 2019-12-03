@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import main.java.quemepongo2.api.responses.CiudadRs;
 import main.java.quemepongo2.model.Ciudad;
+import main.java.quemepongo2.model.CiudadUsuario;
 import main.java.quemepongo2.model.Usuario;
 import main.java.quemepongo2.persistence.CiudadRepository;
 import main.java.quemepongo2.persistence.UsuarioRepository;
@@ -52,8 +53,8 @@ public class CiudadService{
 		
 		List <CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
 		
-		for (Ciudad ciudad : usuario.getCiudads()) {
-			ciudadesRs.add(new CiudadRs(ciudad));
+		for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
+			ciudadesRs.add(new CiudadRs(ciudadUsuario.getCiudad()));
 		}
 		
 		//TODO: Hacer que se ordenen por quien se agrego primero al usuario.

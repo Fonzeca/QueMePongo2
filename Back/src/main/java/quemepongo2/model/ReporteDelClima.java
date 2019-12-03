@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 02-nov-2019 2:10:46 by Hibernate Tools 4.3.5.Final
+// Generated 03-dic-2019 15:44:16 by Hibernate Tools 4.3.5.Final
 
 import java.math.BigDecimal;
 import javax.persistence.Column;

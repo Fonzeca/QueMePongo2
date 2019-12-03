@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 04-nov-2019 2:58:03 by Hibernate Tools 4.3.5.Final
+// Generated 03-dic-2019 15:44:16 by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,9 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -25,20 +23,22 @@ public class Usuario implements java.io.Serializable {
 	private Integer id;
 	private String clave;
 	private String usuario;
+	private int genero;
 	private boolean tieneBufanda;
 	private boolean tieneLentes;
 	private boolean tieneParaguas;
 	private boolean tieneProtectorSolar;
 	private boolean tieneGorra;
-	private Set<Ciudad> ciudads = new HashSet<Ciudad>(0);
+	private Set<CiudadUsuario> ciudadUsuarios = new HashSet<CiudadUsuario>(0);
 
 	public Usuario() {
 	}
 
-	public Usuario(String clave, String usuario, boolean tieneBufanda, boolean tieneLentes, boolean tieneParaguas,
-			boolean tieneProtectorSolar, boolean tieneGorra) {
+	public Usuario(String clave, String usuario, int genero, boolean tieneBufanda, boolean tieneLentes,
+			boolean tieneParaguas, boolean tieneProtectorSolar, boolean tieneGorra) {
 		this.clave = clave;
 		this.usuario = usuario;
+		this.genero = genero;
 		this.tieneBufanda = tieneBufanda;
 		this.tieneLentes = tieneLentes;
 		this.tieneParaguas = tieneParaguas;
@@ -46,16 +46,17 @@ public class Usuario implements java.io.Serializable {
 		this.tieneGorra = tieneGorra;
 	}
 
-	public Usuario(String clave, String usuario, boolean tieneBufanda, boolean tieneLentes, boolean tieneParaguas,
-			boolean tieneProtectorSolar, boolean tieneGorra, Set<Ciudad> ciudads) {
+	public Usuario(String clave, String usuario, int genero, boolean tieneBufanda, boolean tieneLentes,
+			boolean tieneParaguas, boolean tieneProtectorSolar, boolean tieneGorra, Set<CiudadUsuario> ciudadUsuarios) {
 		this.clave = clave;
 		this.usuario = usuario;
+		this.genero = genero;
 		this.tieneBufanda = tieneBufanda;
 		this.tieneLentes = tieneLentes;
 		this.tieneParaguas = tieneParaguas;
 		this.tieneProtectorSolar = tieneProtectorSolar;
 		this.tieneGorra = tieneGorra;
-		this.ciudads = ciudads;
+		this.ciudadUsuarios = ciudadUsuarios;
 	}
 
 	@Id
@@ -86,6 +87,15 @@ public class Usuario implements java.io.Serializable {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	@Column(name = "Genero", nullable = false)
+	public int getGenero() {
+		return this.genero;
+	}
+
+	public void setGenero(int genero) {
+		this.genero = genero;
 	}
 
 	@Column(name = "TieneBufanda", nullable = false)
@@ -133,16 +143,13 @@ public class Usuario implements java.io.Serializable {
 		this.tieneGorra = tieneGorra;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "CiudadUsuario", schema = "dbo", catalog = "QueMePongo2", joinColumns = {
-			@JoinColumn(name = "UsuarioId", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "CiudadId", nullable = false, updatable = false) })
-	public Set<Ciudad> getCiudads() {
-		return this.ciudads;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+	public Set<CiudadUsuario> getCiudadUsuarios() {
+		return this.ciudadUsuarios;
 	}
 
-	public void setCiudads(Set<Ciudad> ciudads) {
-		this.ciudads = ciudads;
+	public void setCiudadUsuarios(Set<CiudadUsuario> ciudadUsuarios) {
+		this.ciudadUsuarios = ciudadUsuarios;
 	}
 
 }
