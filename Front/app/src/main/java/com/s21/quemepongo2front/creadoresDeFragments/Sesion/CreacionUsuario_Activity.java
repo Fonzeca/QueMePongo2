@@ -17,12 +17,15 @@ import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.LoginRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRq.UsuarioRq;
 
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.s21.quemepongo2front.R.id.boton_hombre;
 
 public class CreacionUsuario_Activity extends AppCompatActivity {
 	Button botonNuevoUsuario;
@@ -40,8 +43,12 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
 		botonH = findViewById(R.id.boton_hombre);
 		botonM = findViewById(R.id.boton_mujer);
 
-		setSupportActionBar(toolbar);
-	}
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_crearusuario);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        botonH = findViewById(boton_hombre);
+        botonM = findViewById(R.id.boton_mujer);
 
 	protected void onResume() {
 		super.onResume();
@@ -122,15 +129,8 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
 			resultado = false;
 		}
 
-		return resultado;
-	}
+    private void cambiarEstado(){
 
-	private void cambiarEstado() {
-		if (botonH.isPressed()) {
-			botonM.setEnabled(false);
-		} else if (botonM.isPressed()) {
-			botonH.setEnabled(false);
-		}
-	}
+    }
 }
 
