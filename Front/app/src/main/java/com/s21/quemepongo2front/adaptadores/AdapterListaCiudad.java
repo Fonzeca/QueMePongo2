@@ -14,54 +14,75 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterListaCiudad extends RecyclerView .Adapter<AdapterListaCiudad.ViewHolderciudades> implements View.OnClickListener {
+public class AdapterListaCiudad extends RecyclerView.Adapter<AdapterListaCiudad.ViewHolderCiudades> implements View.OnClickListener {
 
-    ArrayList<CiudadRs> listaCiudades;
-    private View.OnClickListener listener;
+	private ArrayList<CiudadRs> listaCiudades;
+	private TextView textViewSeleccionCiudad;
+	private RecyclerView recyclerView;
+	private int selectedPosition;
 
+	public AdapterListaCiudad(ArrayList<CiudadRs> listaCiudades, View view) {
+		this.listaCiudades = listaCiudades;
+		textViewSeleccionCiudad = view.findViewById(R.id.textView_seleccionCiudad);
+	}
 
-    public AdapterListaCiudad(ArrayList<CiudadRs> listaCiudades) {
-        this.listaCiudades = listaCiudades;
-    }
+	@Override
+	public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+		super.onAttachedToRecyclerView(recyclerView);
+		this.recyclerView = recyclerView;
+	}
 
+	public ViewHolderCiudades onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
+		view.setOnClickListener(this);
+		return new ViewHolderCiudades(view);
+	}
 
-    public ViewHolderciudades onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view,null,false);
-        view.setOnClickListener(this);
-        return new ViewHolderciudades(view);
-    }
+	public void onBindViewHolder(@NonNull ViewHolderCiudades holder, int position) {
+		if (listaCiudades != null && position < listaCiudades.size()) {
+			holder.asignarDatos(listaCiudades.get(position));
+		}
+	}
 
-    public void onBindViewHolder(@NonNull ViewHolderciudades holder, int position) {
-        holder.asignardatos(listaCiudades.get(position));
-    }
+	public int getItemCount() {
+		return listaCiudades.size();
+	}
 
-    public int getItemCount() {
-        return listaCiudades.size();
-    }
+	public void removeSelectedItem(){
+		if(selectedPosition < listaCiudades.size()){
+			listaCiudades.remove(selectedPosition);
+			selectedPosition = -1;
+			notifyDataSetChanged();
+		}
+	}
 
+	public CiudadRs getItemSelected(){
+		if(selectedPosition != -1){
+			return listaCiudades.get(selectedPosition);
+		}
+		return null;
+	}
 
-    public void setOnClickListener(View.OnClickListener listener ){
-        this.listener= listener;
-    }
+	@Override
+	public void onClick(View view) {
+		selectedPosition = recyclerView.getChildLayoutPosition(view);
+		CiudadRs ciudad = listaCiudades.get(selectedPosition);
+		textViewSeleccionCiudad.setText("Seleccionaste: " + ciudad.toString());
+	}
 
-    public void onClick(View v) {
+	//general la vista de cada uno de los renglones del edittext como un objeto del xml ciudadLista
+	class ViewHolderCiudades extends RecyclerView.ViewHolder  {
+		private TextView nombreciudad;
 
-        if(listener!=null){
-            listener.onClick(v);
-        }
-    }
-    //general la vista de cada uno de los renglones del edittext como un objeto del xml ciudadLista
-    public class ViewHolderciudades extends RecyclerView.ViewHolder {
+		public ViewHolderCiudades(@NonNull View itemView) {
+			super(itemView);
+			nombreciudad = itemView.findViewById(R.id.ciudadLista);
+		}
 
-        TextView nombreciudad;
-        public ViewHolderciudades(@NonNull View itemView) {
-            super(itemView);
-            nombreciudad= itemView.findViewById(R.id.ciudadLista);
-        }
-        //Asigna a cada renglon el nombre de la ciudad y el pais de donde viene.
-        public void asignardatos(CiudadRs ciudad) {
-            nombreciudad.setText(ciudad.getNombre()+", "+ciudad.getPais());
-        }
+		//Asigna a cada renglon el nombre de la ciudad y el pais de donde viene.
+		public void asignarDatos(CiudadRs ciudad) {
+			nombreciudad.setText(ciudad.getNombre() + ", " + ciudad.getPais());
+		}
 
-    }
+	}
 }

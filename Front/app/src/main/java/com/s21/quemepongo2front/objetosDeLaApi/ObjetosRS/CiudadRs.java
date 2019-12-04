@@ -7,40 +7,21 @@ public class CiudadRs {
 	private int id;
 	private String nombre;
 	private String pais;
-
-	public BigDecimal getLatitud() {
-		return latitud;
-	}
-
-	public void setLatitud(BigDecimal latitud) {
-		this.latitud = latitud;
-	}
-
 	private BigDecimal latitud;
-
-	public BigDecimal getLongitud() {
-		return longitud;
-	}
-
-	public void setLongitud(BigDecimal longitud) {
-		this.longitud = longitud;
-	}
-
 	private BigDecimal longitud;
-
-	public CiudadRs() {
-	}
-
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
-		id = id;
+		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -53,8 +34,19 @@ public class CiudadRs {
 		this.pais = pais;
 	}
 
+	public BigDecimal getLatitud() {
+		return latitud;
+	}
 
-	public String toString() {
-		return nombre + ", " + pais;
+	public void setLatitud(BigDecimal latitud) {
+		this.latitud = latitud;
+	}
+
+	public BigDecimal getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(BigDecimal longitud) {
+		this.longitud = longitud;
 	}
 }

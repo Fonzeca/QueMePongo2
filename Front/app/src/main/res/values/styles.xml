@@ -13,19 +13,15 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+
     <!-- Text Input -->
     <style name="QueMePongo2.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="hintTextAppearance">@style/TextAppearance.QueMePongo2.TextInputLayout.HintText</item>
         <item name="hintTextColor">@color/textColorPrimary</item>
         <item name="boxStrokeColor">@color/textInputOutlineColor</item>
         <item name="android:textColorHint">#bebebe</item>
     </style>
 
-    <style name="TextAppearance.QueMePongo2.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:textColor">@color/textColorPrimary</item>
-    </style>
-
-
+    <!-- Buttons -->
     <style name="QueMePongo2.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">#FFFFFF</item>
     </style>
@@ -33,6 +29,12 @@
     <style name="QueMePongo2.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <!-- CardView -->
+    <style name="QueMePongo2.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardBackgroundColor">@color/colorPrimary</item>
     </style>
 
 

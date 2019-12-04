@@ -12,7 +12,6 @@ import com.s21.quemepongo2front.adaptadores.AdaptadorTabView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 public class UbicacionesFragment extends Fragment {
@@ -35,7 +34,7 @@ public class UbicacionesFragment extends Fragment {
 
 	private void setViewPager(ViewPager viewPage) {
 		AdaptadorTabView adaptador = new AdaptadorTabView(getChildFragmentManager());
-		adaptador.addFragment(new fragment_ubicaciones_lista(), "Ubicaciones");
+		adaptador.addFragment(new Fragment_ubicaciones_lista(), "Ubicaciones");
 		adaptador.addFragment(new Fragment_mas_ubicaciones(), "Nueva ubicacion");
 		viewPage.setAdapter(adaptador);
 	}
