@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements HostNavigation, N
 		toggle.syncState();
 
 		if(savedInstanceState == null){
-			changeFragment(new HomeFragment(), true);
+			changeFragment(new HomeFragment(), false);
 			navigationView.setCheckedItem(R.id.nav_home);
 		}
 	}
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements HostNavigation, N
 			case R.id.nav_cerrar_sesion:
 				MainActivity.token = null;
 				Intent intent = new Intent(this, LoginActivity.class);
+				finish();
 				startActivity(intent);
 
 				break;
