@@ -17,13 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AdapterListaCiudad extends RecyclerView.Adapter<AdapterListaCiudad.ViewHolderCiudades> implements View.OnClickListener {
 
 	private ArrayList<CiudadRs> listaCiudades;
-	private TextView textViewSeleccionCiudad;
 	private RecyclerView recyclerView;
 	private int selectedPosition;
+	private RecyclerViewClickListener itemListener;
 
-	public AdapterListaCiudad(ArrayList<CiudadRs> listaCiudades, View view) {
+	public AdapterListaCiudad(ArrayList<CiudadRs> listaCiudades, RecyclerViewClickListener itemListener) {
 		this.listaCiudades = listaCiudades;
-		textViewSeleccionCiudad = view.findViewById(R.id.textView_seleccionCiudad);
+		this.itemListener = itemListener;
 	}
 
 	@Override
@@ -66,8 +66,7 @@ public class AdapterListaCiudad extends RecyclerView.Adapter<AdapterListaCiudad.
 	@Override
 	public void onClick(View view) {
 		selectedPosition = recyclerView.getChildLayoutPosition(view);
-		CiudadRs ciudad = listaCiudades.get(selectedPosition);
-		textViewSeleccionCiudad.setText("Seleccionaste: " + ciudad.toString());
+		itemListener.recyclerViewListClicked(view, selectedPosition);
 	}
 
 	//general la vista de cada uno de los renglones del edittext como un objeto del xml ciudadLista

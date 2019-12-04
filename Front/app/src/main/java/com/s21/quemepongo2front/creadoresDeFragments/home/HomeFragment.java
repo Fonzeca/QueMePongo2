@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
 
     private SugerenciaRs sugerencia;
     private String climaActual;
-    private TextView txtViewsugerencia,textViewDescripcion;
+    private TextView txtViewsugerencia;
     private ImageView clima;
     private ClimaActualRs data;
     private Spinner spinnerHome;

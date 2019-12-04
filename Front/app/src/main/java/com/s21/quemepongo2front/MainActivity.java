@@ -31,9 +31,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements HostNavigation, NavigationView.OnNavigationItemSelectedListener {
 
-	private AppBarConfiguration mAppBarConfiguration;
 	public static String token;
-	public static CiudadRs ciudadPredeterminada = new CiudadRs();
 	public static ArrayList<CiudadRs> ciudadesRsRecibe;
 
 	protected void onCreate(Bundle savedInstanceState) {

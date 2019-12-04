@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.s21.quemepongo2front.adaptadores.AdapterListaCiudad;
+import com.s21.quemepongo2front.adaptadores.RecyclerViewClickListener;
 import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
@@ -32,7 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Fragment_ubicaciones_lista extends Fragment {
+public class Fragment_ubicaciones_lista extends Fragment implements RecyclerViewClickListener {
 	private ArrayList<CiudadRs> ciudadesUsuario;
 	private RecyclerView recyclerViewMisCiudades;
 	private AdapterListaCiudad adapter;
@@ -53,27 +54,21 @@ public class Fragment_ubicaciones_lista extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		botonEliminar = getActivity().findViewById(R.id.buttonEliminar_miCiudad);
 		botonPredeterminar = getActivity().findViewById(R.id.buttonPredeterminar_miCiudad2);
-		botonSatelite = getActivity().findViewById(R.id.imageViewSatelite);
-		configView();
-
-		mostrarCiudadesDeUsuario();
-	}
-
-	private void configView() {
+		textViewSeleccionCiudad = getActivity().findViewById(R.id.textView_seleccionCiudad);
 
 		recyclerViewMisCiudades = getActivity().findViewById(R.id.recyclerViewCiudadesUsuario);
 		recyclerViewMisCiudades.setHasFixedSize(true);
 		recyclerViewMisCiudades.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-		textViewSeleccionCiudad = getActivity().findViewById(R.id.textView_seleccionCiudad);
-
+		botonEliminar = getActivity().findViewById(R.id.buttonEliminar_miCiudad);
 		botonEliminar.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				quitarCiudad(adapter.getItemSelected().getId());
 			}
 		});
+
+		botonSatelite = getActivity().findViewById(R.id.imageViewSatelite);
 		botonSatelite.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				CiudadRs ciudad = adapter.getItemSelected();
@@ -86,6 +81,8 @@ public class Fragment_ubicaciones_lista extends Fragment {
 				startActivity(webIntent);
 			}
 		});
+
+		mostrarCiudadesDeUsuario();
 	}
 
 	private void mostrarCiudadesDeUsuario() {
@@ -98,8 +95,7 @@ public class Fragment_ubicaciones_lista extends Fragment {
 				if (response.isSuccessful()) {
 					if (response.body() != null) {
 						ciudadesUsuario = response.body();
-
-						adapter = new AdapterListaCiudad(ciudadesUsuario, getView());
+						adapter = new AdapterListaCiudad(ciudadesUsuario, Fragment_ubicaciones_lista.this);
 						recyclerViewMisCiudades.setAdapter(adapter);
 					} else {
 						Toast.makeText(getContext(), "Ocurrio un error: No hay ciudades cargadas", Toast.LENGTH_SHORT).show();
@@ -133,10 +129,15 @@ public class Fragment_ubicaciones_lista extends Fragment {
 		});
 	}
 
+	public void recyclerViewListClicked(View v, int position) {
+		CiudadRs ciudad = adapter.getItemSelected();
+		String textoMostrar =  ciudad.getNombre() + ", " + ciudad.getPais();
+		textViewSeleccionCiudad.setText("Seleccionaste: " + textoMostrar);
+	}
+
 	private void predetermiarCiudad(int idCiudad, final int indexInAdapter) {
 		RestClient restClient = Api.getRetrofit().create(RestClient.class);
 		botonPredeterminar.setEnabled(false);
 	}
-
 }
 

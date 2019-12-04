@@ -1,6 +1,8 @@
 package com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS;
 
 
+import androidx.annotation.NonNull;
+
 import java.math.BigDecimal;
 
 public class CiudadRs {
@@ -48,5 +50,9 @@ public class CiudadRs {
 
 	public void setLongitud(BigDecimal longitud) {
 		this.longitud = longitud;
+	}
+
+	public String toString() {
+		return nombre + ", " + pais;
 	}
 }
