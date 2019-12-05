@@ -15,56 +15,57 @@
 		style="@style/Widget.AppCompat.Light.ListView.DropDown"
 		android:layout_width="412dp"
 		android:layout_height="342dp"
+		android:layout_marginTop="25dp"
 		android:layout_marginBottom="16dp" />
 
+	<TextView
+		android:id="@+id/textView_seleccionCiudad"
+		android:layout_width="match_parent"
+		android:layout_height="76dp"
+		android:fontFamily="@font/roboto_condensed_light"
+		android:text="Selecionaste: "
+		android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView_seleccionCiudad"
-        android:layout_width="409dp"
-        android:layout_height="76dp"
-        android:fontFamily="@font/roboto"
-        android:text="Selecionaste: "
-        android:textSize="24sp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-	    android:gravity="bottom"
-	    android:layout_marginBottom="72dp"
-	    android:layout_marginEnd="4dp">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonPredeterminar_miCiudad2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-	        android:layout_marginStart="4dp"
-	        android:layout_toStartOf="@+id/buttonEliminar_miCiudad"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:gravity="center"
-            android:text="@string/botonPredeterminar"
-            style="@style/QueMePongo2.Button" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonEliminar_miCiudad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-	        android:layout_marginStart="4dp"
-	        android:layout_toStartOf="@id/imageViewSatelite"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:text="@string/botonEliminar" />
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:layout_marginBottom="72dp"
+		android:gravity="bottom|center">
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/imageViewSatelite"
-            style="@style/Widget.MaterialComponents.Button.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-	        android:layout_alignParentEnd="true"
-	        android:layout_marginStart="4dp"
-            android:gravity="center"
-            app:icon="@mipmap/ic_satelite"
-            app:iconGravity="textEnd" />
-    </RelativeLayout>
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/buttonPredeterminar_miCiudad2"
+			style="@style/QueMePongo2.Button"
+			android:layout_width="135dp"
+			android:layout_height="49dp"
+			android:layout_marginStart="3dp"
+			android:layout_marginEnd="12dp"
+			android:layout_toStartOf="@+id/buttonEliminar_miCiudad"
+			android:fontFamily="@font/roboto_condensed_light"
+			android:text="@string/botonPredeterminar" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/buttonEliminar_miCiudad"
+			android:layout_width="133dp"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="12dp"
+			android:layout_toStartOf="@id/imageViewSatelite"
+			android:fontFamily="@font/roboto_condensed_light"
+			android:text="@string/botonEliminar" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/imageViewSatelite"
+			style="@style/Widget.MaterialComponents.Button.Icon"
+			android:layout_width="106dp"
+			android:layout_height="wrap_content"
+			android:layout_alignParentEnd="true"
+			android:layout_marginStart="4dp"
+			android:layout_marginEnd="5dp"
+			android:gravity="center"
+			app:icon="@mipmap/ic_satelite"
+			app:iconGravity="textEnd" />
+	</RelativeLayout>
 
 
 </LinearLayout>

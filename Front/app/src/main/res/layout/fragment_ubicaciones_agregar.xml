@@ -18,6 +18,7 @@
         android:fontFamily="@font/roboto_condensed_light"
         android:hint="@string/boton_buscar"
         android:inputType="textPersonName"
+        android:textColor="@color/negro"
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="6dp"
         tools:targetApi="o" />
