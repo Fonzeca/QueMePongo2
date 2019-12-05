@@ -46,8 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //TODO borrar hardocedo
-        txtusuario.setText("Alexis");
-        txtclave.setText("123456");
         botonRegistrase.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

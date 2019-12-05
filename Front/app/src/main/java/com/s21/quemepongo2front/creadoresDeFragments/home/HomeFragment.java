@@ -22,6 +22,7 @@ import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.ClimaActualRs;
 import com.s21.quemepongo2front.objetosDeLaApi.ObjetosRS.SugerenciaRs;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,7 @@ public class HomeFragment extends Fragment {
     private Spinner spinnerHome;
     private ArrayAdapter<CiudadRs> adapterSpinner;
     private View layouthome;
+
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,21 +102,58 @@ public class HomeFragment extends Fragment {
     public void mostrarIcono(String estado){
         clima= getActivity().findViewById(R.id.imageViewClima);
         layouthome = getActivity().findViewById(R.id.layout_home);
-        String c1="Clear", c2="Rain",c3="Clouds",c4="Thunderstorm";
-        if(c1.equals(estado)){
-            layouthome.setBackgroundResource(R.mipmap.wp_sun);
-            clima.setImageResource(R.mipmap.contrast);
-        }else if(c2.equals(estado)){
-            layouthome.setBackgroundResource(R.mipmap.wp_rain);
+        int code = Integer.parseInt(estado.substring(0,2));
+        boolean dia = estado.substring(2, 3).equals("d");
+        switch (code){
+            case 1:
+                if(dia==true){
+                layouthome.setBackgroundResource(R.mipmap.wp_sun);
+                clima.setImageResource(R.mipmap.contrast);
+            }else {
+                    layouthome.setBackgroundResource(R.mipmap.wp_clear_nigth);
+                    clima.setImageResource(R.mipmap.ic_moon);
+                }
+                break;
+            case 2:
+            case 3:
+            case 4:
+                if(dia==true){
+                    layouthome.setBackgroundResource(R.mipmap.wp_clouds);
+                    clima.setImageResource(R.mipmap.clouds);
+                }else {
+                    layouthome.setBackgroundResource(R.mipmap.wp_clouds_night);
+                    clima.setImageResource(R.mipmap.ic_cloud_night);
+                }
+                break;
+            case 9:
+            case 10:
+                if(dia==true){
+                    layouthome.setBackgroundResource(R.mipmap.wp_rain);
+                    clima.setImageResource(R.mipmap.rain);
+                }else {
+                    layouthome.setBackgroundResource(R.mipmap.wp_rain);
+                    clima.setImageResource(R.mipmap.rain);
+                }
+                break;
+            case 11:
+                if(dia==true){
+                    layouthome.setBackgroundResource(R.mipmap.wp_thunderstorm2);
+                    clima.setImageResource(R.mipmap.storm);
+                }else
+                    layouthome.setBackgroundResource(R.mipmap.wp_thunderstorm_night);
+                clima.setImageResource(R.mipmap.storm);
+                break;
+            case 13:
+                //TODO agregar nieve
+                layouthome.setBackgroundResource(R.mipmap.wp_thunderstorm2);
+                clima.setImageResource(R.mipmap.storm);
 
-            clima.setImageResource(R.mipmap.rain);
-        }else if (c3.equals(estado)){
-            layouthome.setBackgroundResource(R.mipmap.wp_clouds);
-
-            clima.setImageResource(R.mipmap.clouds);
-        }else if (c4.equals(estado)){
-            layouthome.setBackgroundResource(R.mipmap.wp_thunderstorm2);
-            clima.setImageResource(R.mipmap.storm);
+                break;
+            case 50:
+                //TODO agregar neblina
+                layouthome.setBackgroundResource(R.mipmap.wp_clouds);
+                clima.setImageResource(R.mipmap.clouds);
+                break;
         }
     }
 
@@ -153,7 +192,7 @@ public class HomeFragment extends Fragment {
 
                     TextView textHumedad= getView().findViewById(R.id.textHumedad);
                     textHumedad.setText("Humedad: "+data.getHumedad()+"%");
-                    climaActual = data.getNombreClima();
+                    climaActual = data.getIcono();
                     mostrarIcono(climaActual);
                 }else{
                     Toast.makeText(getActivity(), "error en el cargar pantalla", Toast.LENGTH_SHORT).show();
