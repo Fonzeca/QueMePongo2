@@ -37,6 +37,10 @@
         <item name="cardBackgroundColor">@color/colorPrimary</item>
     </style>
 
+    <style name="QueMePongo2.CardView.Home" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">5dp</item>
+        <item name="cardBackgroundColor">#C9ACB9F7</item>
+    </style>
 
 
 

@@ -1,203 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_home"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="380dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="16dp"
-        android:background="#C9ACB9F7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_margin="24dp">
 
-        <Spinner
-            android:id="@+id/spinnerhome"
-            style="@style/spinner_style"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/QueMePongo2.CardView.Home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="380dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="#C9ACB9F7"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewUbicacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/roboto_light"
-                android:text="@string/ubicacion"
-                android:textAlignment="viewStart"
-                android:textColor="@color/negro"
-                android:textSize="30sp"
-                android:textStyle="italic" />
-
-            <View
-                android:id="@+id/view2"
+            <Spinner
+                android:id="@+id/spinnerhome"
+                style="@style/spinner_style"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="1dp"
-                android:background="#000" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/QueMePongo2.CardView.Home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+    <!--        Ubicacion-->
+                <TextView
+                    android:id="@+id/textViewUbicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/ubicacion"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"/>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="#000" />
+        <!--        Temperatura-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/temperatura_actual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="60dp"
+                        android:text="40`C"
+                        android:fontFamily="@font/roboto_light"
+                        android:textAlignment="center"
+                        android:textColor="@color/negro"
+                        android:textSize="58sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageViewClima"
+                        android:layout_width="91dp"
+                        android:layout_height="77dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="30dp"
+                        android:contentDescription=""
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
 
-            <TextView
-                android:id="@+id/temperatura_actual"
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/QueMePongo2.CardView.Home"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="60dp"
-                android:fontFamily="@font/roboto_light"
-                android:textAlignment="center"
-                android:textColor="@color/negro"
-                android:textSize="58sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="18dp">
 
-            <ImageView
-                android:id="@+id/imageViewClima"
-                android:layout_width="91dp"
-                android:layout_height="77dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:contentDescription=""
-                tools:ignore="ContentDescription" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp">
+
+            <!--        Sugerencia title-->
+                    <TextView
+                        android:id="@+id/txtViewSugerencia2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="@string/txtViewSugerencia"
+                        android:textColor="@color/negro"
+                        android:textSize="24sp" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="#000" />
+
+            <!--        Sugerencia-->
+                    <TextView
+                        android:id="@+id/txtViewSugerencia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Remera manga corta y pantalón corto / Vestido mangas largas grueso"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/negro"
+                        android:textSize="24sp"
+                        android:typeface="normal" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/QueMePongo2.CardView.Home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp">
+            <!--        Detalles title-->
+                    <TextView
+                        android:id="@+id/textViewDetalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="@string/textViewDetalles"
+                        android:textColor="@color/negro"
+                        android:textSize="24sp"/>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="#000" />
+
+            <!--        Viento-->
+                    <TextView
+                        android:id="@+id/textViento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="@string/textViewViento"
+                        android:textColor="@color/negro"
+                        android:textSize="24sp" />
+
+            <!--        Humedad-->
+                    <TextView
+                        android:id="@+id/textHumedad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="@string/textViewHumedad"
+                        android:textColor="@color/negro"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="380dp"
-        android:layout_height="138dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="#C9ACB9F7"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:id="@+id/txtViewSugerencia2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/txtViewSugerencia"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/negro"
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
-            android:typeface="normal" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:background="#000" />
-
-        <TextView
-            android:id="@+id/txtViewSugerencia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/roboto_light"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/negro"
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
-            android:typeface="normal" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="380dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="#C9ACB9F7"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-        <TextView
-            android:id="@+id/textViewDetalles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/textViewDetalles"
-            android:textColor="@color/negro"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+<!--    <LinearLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/linearLayout5"-->
+<!--        android:layout_width="380dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:background="#C9ACB9F7"-->
+<!--        android:orientation="vertical">-->
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="1dp"
-            android:background="#000" />
 
-        <TextView
-            android:id="@+id/textViento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/textViewViento"
-            android:textColor="@color/negro"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+<!--    </LinearLayout>-->
 
-        <TextView
-            android:id="@+id/textHumedad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="@string/textViewHumedad"
-            android:textColor="@color/negro"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="380dp"-->
+<!--        android:layout_height="160dp"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:background="#C9ACB9F7"-->
+<!--        android:orientation="vertical">-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/linearLayout4"-->
+<!--        android:layout_width="380dp"-->
+<!--        android:layout_height="138dp"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:background="#C9ACB9F7"-->
+<!--        android:orientation="vertical">-->
+
+<!--        -->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/linearLayout3"-->
+<!--        android:layout_width="380dp"-->
+<!--        android:layout_height="130dp"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:background="#C9ACB9F7"-->
+<!--        android:orientation="vertical">-->
+
+<!--        -->
+<!--    </LinearLayout>-->
+
+</RelativeLayout>
