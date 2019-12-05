@@ -58,7 +58,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggle_button_group"
+            android:id="@+id/group_toggle_botones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
