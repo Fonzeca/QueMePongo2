@@ -16,21 +16,21 @@ import main.java.quemepongo2.persistence.CiudadUsuarioRepository;
 import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
-public class CiudadService{
+public class CiudadService {
 
 	@Autowired
 	CiudadRepository repo;
-	
+
 	@Autowired
 	CiudadUsuarioRepository repoCiudadUsuario;
-	
+
 	@Autowired
 	UsuarioRepository repoUsuario;
 
 	public List<CiudadRs> findAll() {
-		List <CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
-		List <Ciudad> ciudades=repo.findAll();
-		for (Ciudad ciudad:ciudades) {
+		List<CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
+		List<Ciudad> ciudades = repo.findAll();
+		for (Ciudad ciudad : ciudades) {
 			ciudadesRs.add(new CiudadRs(ciudad));
 		}
 		return ciudadesRs;
@@ -39,19 +39,19 @@ public class CiudadService{
 	public Ciudad getById(int id) {
 		return repo.getOne(id);
 	}
-	
-	public List<CiudadRs> getByLikeNombre(String q){
+
+	public List<CiudadRs> getByLikeNombre(String q) {
 		List<CiudadRs> ciudadesRs = new ArrayList<>();
-		
-		List<Ciudad> ciudades = repo.searchCiudadLikeName(q); 
-		
+
+		List<Ciudad> ciudades = repo.searchCiudadLikeName(q);
+
 		for (Ciudad ciudad : ciudades) {
 			ciudadesRs.add(new CiudadRs(ciudad));
 		}
-		
+
 		return ciudadesRs;
 	}
-	
+
 	public List<CiudadRs> getAllByUsuario(int userId){
 		Usuario usuario = repoUsuario.findById(userId).get();
 		
@@ -61,13 +61,17 @@ public class CiudadService{
 		
 		ciudadUsuarioOrdeanada.sort(new Comparator<CiudadUsuario>() {
 			public int compare(CiudadUsuario o1, CiudadUsuario o2) {
-				if(!o1.isPredeterminado()) {
-					return o1.getIndiceOrdenado() < o2.getIndiceOrdenado() ? -1 : 1;
-				}else {
-					return -1;
-				}
+				return o1.getIndiceOrdenado() - o2.getIndiceOrdenado();
 			}
 		});
+		
+		for (CiudadUsuario ciudadUsuario : ciudadUsuarioOrdeanada) {
+			if(ciudadUsuario.isPredeterminado()) {
+				ciudadUsuarioOrdeanada.remove(ciudadUsuario);
+				ciudadUsuarioOrdeanada.add(0, ciudadUsuario);
+				break;
+			}
+		}
 		
 		for (CiudadUsuario ciudadUsuario : ciudadUsuarioOrdeanada) {
 			ciudadesRs.add(new CiudadRs(ciudadUsuario.getCiudad()));
@@ -75,27 +79,27 @@ public class CiudadService{
 		
 		return ciudadesRs;
 	}
-	
+
 	public void setCiudadPredeterminada(int ciudadId, int userId) {
 		Usuario usuario = repoUsuario.findById(userId).get();
 		boolean existe = false;
-		
+
 		for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
-			if(ciudadUsuario.getId().getCiudadId() == ciudadId) {
+			if (ciudadUsuario.getId().getCiudadId() == ciudadId) {
 				existe = true;
 			}
 		}
-		
-		if(existe) {
+
+		if (existe) {
 			for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
 				ciudadUsuario.setPredeterminado(false);
-				if(ciudadUsuario.getId().getCiudadId() == ciudadId) {
+				if (ciudadUsuario.getId().getCiudadId() == ciudadId) {
 					ciudadUsuario.setPredeterminado(true);
 				}
 			}
 		}
-		
+
 		repoUsuario.flush();
 	}
-	
+
 }
