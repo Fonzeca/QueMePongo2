@@ -1,5 +1,5 @@
 package main.java.quemepongo2.model;
-// Generated 03-dic-2019 15:44:16 by Hibernate Tools 4.3.5.Final
+// Generated 05-dic-2019 11:36:49 by Hibernate Tools 4.3.5.Final
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -21,8 +21,8 @@ public class Ciudad implements java.io.Serializable {
 	private int id;
 	private String nombre;
 	private String pais;
-	private BigDecimal latitud;
 	private BigDecimal longitud;
+	private BigDecimal latitud;
 	private Set<CiudadUsuario> ciudadUsuarios = new HashSet<CiudadUsuario>(0);
 	private Set<ReporteDelClima> reporteDelClimas = new HashSet<ReporteDelClima>(0);
 
@@ -35,13 +35,13 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	public Ciudad(int id, String nombre, String pais, BigDecimal latitud, BigDecimal longitud,
+	public Ciudad(int id, String nombre, String pais, BigDecimal longitud, BigDecimal latitud,
 			Set<CiudadUsuario> ciudadUsuarios, Set<ReporteDelClima> reporteDelClimas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
-		this.latitud = latitud;
 		this.longitud = longitud;
+		this.latitud = latitud;
 		this.ciudadUsuarios = ciudadUsuarios;
 		this.reporteDelClimas = reporteDelClimas;
 	}
@@ -75,15 +75,6 @@ public class Ciudad implements java.io.Serializable {
 		this.pais = pais;
 	}
 
-	@Column(name = "Latitud", precision = 9, scale = 6)
-	public BigDecimal getLatitud() {
-		return this.latitud;
-	}
-
-	public void setLatitud(BigDecimal latitud) {
-		this.latitud = latitud;
-	}
-
 	@Column(name = "Longitud", precision = 9, scale = 6)
 	public BigDecimal getLongitud() {
 		return this.longitud;
@@ -91,6 +82,15 @@ public class Ciudad implements java.io.Serializable {
 
 	public void setLongitud(BigDecimal longitud) {
 		this.longitud = longitud;
+	}
+
+	@Column(name = "Latitud", precision = 9, scale = 6)
+	public BigDecimal getLatitud() {
+		return this.latitud;
+	}
+
+	public void setLatitud(BigDecimal latitud) {
+		this.latitud = latitud;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ciudad")

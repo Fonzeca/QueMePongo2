@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,6 +62,13 @@ public class CiudadController {
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
 		
 		return service.getAllByUsuario(userId);
+	}
+	
+	@PostMapping("/PredeterminarCiudad")
+	public void setCiudadPredeterminada(@RequestParam int ciudadId, @RequestParam String token) {
+		int userId = tokenGenerator.validarToken(token);
+		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId);
+		service.setCiudadPredeterminada(ciudadId, userId);
 	}
 
 	

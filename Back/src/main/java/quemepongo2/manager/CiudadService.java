@@ -12,6 +12,7 @@ import main.java.quemepongo2.model.Ciudad;
 import main.java.quemepongo2.model.CiudadUsuario;
 import main.java.quemepongo2.model.Usuario;
 import main.java.quemepongo2.persistence.CiudadRepository;
+import main.java.quemepongo2.persistence.CiudadUsuarioRepository;
 import main.java.quemepongo2.persistence.UsuarioRepository;
 
 @Service
@@ -19,6 +20,9 @@ public class CiudadService{
 
 	@Autowired
 	CiudadRepository repo;
+	
+	@Autowired
+	CiudadUsuarioRepository repoCiudadUsuario;
 	
 	@Autowired
 	UsuarioRepository repoUsuario;
@@ -53,17 +57,45 @@ public class CiudadService{
 		
 		List <CiudadRs> ciudadesRs = new ArrayList<CiudadRs>();
 		
-		for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
-			ciudadesRs.add(new CiudadRs(ciudadUsuario.getCiudad()));
-		}
+		List<CiudadUsuario> ciudadUsuarioOrdeanada = new ArrayList<>(usuario.getCiudadUsuarios());
 		
-		//TODO: Hacer que se ordenen por quien se agrego primero al usuario.
-		ciudadesRs.sort(new Comparator<CiudadRs>() {
-			public int compare(CiudadRs o1, CiudadRs o2) {
-				return o1.getId() - o2.getId();
+		ciudadUsuarioOrdeanada.sort(new Comparator<CiudadUsuario>() {
+			public int compare(CiudadUsuario o1, CiudadUsuario o2) {
+				if(!o1.isPredeterminado()) {
+					return o1.getIndiceOrdenado() < o2.getIndiceOrdenado() ? -1 : 1;
+				}else {
+					return -1;
+				}
 			}
 		});
 		
+		for (CiudadUsuario ciudadUsuario : ciudadUsuarioOrdeanada) {
+			ciudadesRs.add(new CiudadRs(ciudadUsuario.getCiudad()));
+		}
+		
 		return ciudadesRs;
 	}
+	
+	public void setCiudadPredeterminada(int ciudadId, int userId) {
+		Usuario usuario = repoUsuario.findById(userId).get();
+		boolean existe = false;
+		
+		for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
+			if(ciudadUsuario.getId().getCiudadId() == ciudadId) {
+				existe = true;
+			}
+		}
+		
+		if(existe) {
+			for (CiudadUsuario ciudadUsuario : usuario.getCiudadUsuarios()) {
+				ciudadUsuario.setPredeterminado(false);
+				if(ciudadUsuario.getId().getCiudadId() == ciudadId) {
+					ciudadUsuario.setPredeterminado(true);
+				}
+			}
+		}
+		
+		repoUsuario.flush();
+	}
+	
 }
