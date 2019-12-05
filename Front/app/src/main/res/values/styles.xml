@@ -42,6 +42,10 @@
         <item name="cardBackgroundColor">#C9ACB9F7</item>
     </style>
 
+    <style name="QueMePongo2.CardView.Home.TextAparence" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/roboto_condensed_light</item>
+    </style>
+
 
 
 </resources>

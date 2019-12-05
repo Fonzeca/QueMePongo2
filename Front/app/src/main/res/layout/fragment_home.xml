@@ -42,6 +42,7 @@
 
     <!--        Ubicacion-->
                 <TextView
+                    style="@style/QueMePongo2.CardView.Home.TextAparence"
                     android:id="@+id/textViewUbicacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,6 +64,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        style="@style/QueMePongo2.CardView.Home.TextAparence"
                         android:id="@+id/temperatura_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -111,6 +113,7 @@
 
             <!--        Sugerencia title-->
                     <TextView
+                        style="@style/QueMePongo2.CardView.Home.TextAparence"
                         android:id="@+id/txtViewSugerencia2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,6 +131,7 @@
 
             <!--        Sugerencia-->
                     <TextView
+                        style="@style/QueMePongo2.CardView.Home.TextAparence"
                         android:id="@+id/txtViewSugerencia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -156,6 +160,7 @@
                     android:paddingEnd="5dp">
             <!--        Detalles title-->
                     <TextView
+                        style="@style/QueMePongo2.CardView.Home.TextAparence"
                         android:id="@+id/textViewDetalles"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -172,6 +177,7 @@
 
             <!--        Viento-->
                     <TextView
+                        style="@style/QueMePongo2.CardView.Home.TextAparence"
                         android:id="@+id/textViento"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -183,6 +189,7 @@
 
             <!--        Humedad-->
                     <TextView
+                        style="@style/QueMePongo2.CardView.Home.TextAparence"
                         android:id="@+id/textHumedad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
