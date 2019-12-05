@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.s21.quemepongo2front.HostNavigation;
 import com.s21.quemepongo2front.objetosDeLaApi.Api;
 import com.s21.quemepongo2front.MainActivity;
 import com.s21.quemepongo2front.R;
@@ -26,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.FragmentTransaction;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,6 +57,7 @@ public class Fragment_mas_ubicaciones extends Fragment {
 		spinner = getActivity().findViewById(R.id.spinner);
 		editBuscador = getActivity().findViewById(R.id.ediTextBuscador);
 		botonGuardar = getActivity().findViewById(R.id.botonGuardarCiudad);
+		botonGuardar.setEnabled(false);
 		editBuscador.addTextChangedListener(new TextWatcher() {
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
@@ -74,7 +77,8 @@ public class Fragment_mas_ubicaciones extends Fragment {
 				agregarCiudadaMisCiudades(listaCiudadesRecibe.get(posicion));
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(editBuscador.getWindowToken(), 0);
-			}
+
+					}
 		});
 
 	}
@@ -122,7 +126,8 @@ public class Fragment_mas_ubicaciones extends Fragment {
 		agregarciudad.enqueue(new Callback<Void>() {
 			public void onResponse(Call<Void> call, Response<Void> response) {
 				if (response.isSuccessful()) {
-
+					//Recarga el fragment  de ubicaciones  llamando al metodo de change fragmentr del main activity;
+					((HostNavigation) getActivity()).changeFragment(new UbicacionesFragment(), false);
 					Toast.makeText(getContext(), "Se agrego la ciudad: " + ciudad.getNombre(), Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(getContext(), "Se produjo un error en agregar la ciudad", Toast.LENGTH_SHORT).show();

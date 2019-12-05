@@ -12,6 +12,7 @@ import com.s21.quemepongo2front.adaptadores.AdaptadorTabView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 public class UbicacionesFragment extends Fragment {
@@ -22,9 +23,8 @@ public class UbicacionesFragment extends Fragment {
 
 		ViewPager mViewPager = v.findViewById(R.id.viewPagerUbicaciones);
 		setViewPager(mViewPager);
-
 		TabLayout tabLayout = v.findViewById(R.id.tabLayout);
-		tabLayout.setupWithViewPager(mViewPager);
+		tabLayout.setupWithViewPager(mViewPager,true);
 		return v;
 	}
 
@@ -38,5 +38,4 @@ public class UbicacionesFragment extends Fragment {
 		adaptador.addFragment(new Fragment_mas_ubicaciones(), "Nueva ubicacion");
 		viewPage.setAdapter(adaptador);
 	}
-
 }
