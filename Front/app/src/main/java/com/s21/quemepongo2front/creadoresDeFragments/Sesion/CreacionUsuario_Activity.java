@@ -34,7 +34,7 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
 	String usuario, clave, token;
 	Button botonH, botonM;
 	MaterialButtonToggleGroup group;
-	int genero= 0 ;
+	int genero = 2 ;
 
 
     protected void onCreate(Bundle savedInstanceState) {

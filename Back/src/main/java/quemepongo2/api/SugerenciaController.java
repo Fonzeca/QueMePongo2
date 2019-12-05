@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import main.java.quemepongo2.api.responses.SugerenciaRs;
 import main.java.quemepongo2.manager.SecurityConfig;
 import main.java.quemepongo2.manager.SugerenciaService;
+import main.java.quemepongo2.manager.UsuarioService;
 
 @RestController
 public class SugerenciaController {
 
 	@Autowired
 	private SugerenciaService service;
+	
+	@Autowired
+	private UsuarioService serviceUsuario;
 	
 	@Autowired
 	private SecurityConfig tokenGenerator;
@@ -26,8 +30,9 @@ public class SugerenciaController {
 	public SugerenciaRs obtenerSugerencia(@RequestParam int ciudadId, @RequestParam String token) {
 		int userId = tokenGenerator.validarToken(token);
 		log.info("API, " + Thread.currentThread().getStackTrace()[1].getMethodName() + ", userId: " + userId + ", ciudadId: " + ciudadId);
+		int genero = serviceUsuario.getGenero(userId);
+		return service.obtenerClo(ciudadId,genero);
 		
-		return service.obtenerClo(ciudadId);
+		
 	}
-	
 }

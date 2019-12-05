@@ -97,6 +97,13 @@ public class UsuarioService {
 		throw new RuntimeException("No se encontro la ciudad que se quiere remover del usuario : "+ userId);
 	}
 	
+	public int getGenero(int userId) {
+		int genero;
+		Usuario usuario = repo.findById(userId).get();
+		genero = usuario.getGenero();
+		return genero;
+	}
+	
 	private String cifrarClave(String clave) {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -108,4 +115,6 @@ public class UsuarioService {
 		}
 		return null;
 	}
+	
+	
 }
