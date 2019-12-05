@@ -56,6 +56,6 @@ import retrofit2.http.Query;
     Call<Void> borrarciudad(@Query("ciudadId")int idCiudad,@Query("token")String token);
 
     @POST("PredeterminarCiudad")
-    Call<Void>predeterminar(@Query("token")String token,@Query("ciudadId")int idCiudad);
+    Call<Void> predeterminar(@Query("token")String token,@Query("ciudadId")int idCiudad);
 
 }
