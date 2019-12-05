@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.s21.quemepongo2front.adaptadores.AdapterListaCiudad;
 import com.s21.quemepongo2front.adaptadores.RecyclerViewClickListener;
 import com.s21.quemepongo2front.objetosDeLaApi.Api;
@@ -43,6 +44,7 @@ public class Fragment_ubicaciones_lista extends Fragment implements RecyclerView
 
 
 	public Fragment_ubicaciones_lista() {
+
 	}
 
 	@Override
@@ -71,6 +73,43 @@ public class Fragment_ubicaciones_lista extends Fragment implements RecyclerView
 		botonSatelite = getActivity().findViewById(R.id.imageViewSatelite);
 		botonSatelite.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+
+				CiudadRs ciudad = adapter.getItemSelected();
+				BigDecimal lat = ciudad.getLatitud();
+				BigDecimal lon = ciudad.getLongitud();
+
+				Uri webpage = Uri.parse("https://openweathermap.org/weathermap?basemap=map&cities=true&layer=precipitation&lat=" +
+						lat + "&lon=" + lon + "zoom=10");
+
+				Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+				startActivity(webIntent);
+			}
+		});
+
+		mostrarCiudadesDeUsuario();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		botonPredeterminar = getActivity().findViewById(R.id.buttonPredeterminar_miCiudad2);
+		textViewSeleccionCiudad = getActivity().findViewById(R.id.textView_seleccionCiudad);
+
+		recyclerViewMisCiudades = getActivity().findViewById(R.id.recyclerViewCiudadesUsuario);
+		recyclerViewMisCiudades.setHasFixedSize(true);
+		recyclerViewMisCiudades.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+		botonEliminar = getActivity().findViewById(R.id.buttonEliminar_miCiudad);
+		botonEliminar.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				quitarCiudad(adapter.getItemSelected().getId());
+			}
+		});
+
+		botonSatelite = getActivity().findViewById(R.id.imageViewSatelite);
+
+		botonSatelite.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
 				CiudadRs ciudad = adapter.getItemSelected();
 				BigDecimal lat = ciudad.getLatitud();
 				BigDecimal lon = ciudad.getLongitud();
@@ -84,6 +123,7 @@ public class Fragment_ubicaciones_lista extends Fragment implements RecyclerView
 
 		mostrarCiudadesDeUsuario();
 	}
+
 
 	private void mostrarCiudadesDeUsuario() {
 		RestClient restClient = Api.getRetrofit().create(RestClient.class);
@@ -138,6 +178,7 @@ public class Fragment_ubicaciones_lista extends Fragment implements RecyclerView
 	private void predetermiarCiudad(int idCiudad, final int indexInAdapter) {
 		RestClient restClient = Api.getRetrofit().create(RestClient.class);
 		botonPredeterminar.setEnabled(false);
+
 	}
 }
 

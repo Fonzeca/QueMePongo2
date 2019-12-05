@@ -124,6 +124,9 @@ public class CreacionUsuario_Activity extends AppCompatActivity {
 			}
 		private void guardarGenero (){
 			genero = group.getCheckedButtonId();
+			if (genero==-1){
+				genero= 2;
+			}
 		}
 
 }
