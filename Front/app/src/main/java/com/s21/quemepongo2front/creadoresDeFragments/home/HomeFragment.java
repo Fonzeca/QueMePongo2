@@ -122,7 +122,7 @@ public class HomeFragment extends Fragment {
                     clima.setImageResource(R.mipmap.clouds);
                 }else {
                     layouthome.setBackgroundResource(R.mipmap.wp_clouds_night);
-                    clima.setImageResource(R.mipmap.clouds);
+                    clima.setImageResource(R.mipmap.ic_cloud_night);
                 }
                 break;
             case 9:
