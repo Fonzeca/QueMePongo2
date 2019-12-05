@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/linearLayout2"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
 	android:orientation="vertical"
-    tools:context=".creadoresDeFragments.ubicaciones.Fragment_ubicaciones_lista">
+	tools:context=".creadoresDeFragments.ubicaciones.Fragment_ubicaciones_lista">
 
 
 	<androidx.recyclerview.widget.RecyclerView
@@ -26,7 +25,7 @@
 		android:text="Selecionaste: "
 		android:textSize="24sp" />
 
-	<RelativeLayout
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
@@ -36,12 +35,10 @@
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/buttonPredeterminar_miCiudad2"
-			style="@style/QueMePongo2.Button"
 			android:layout_width="135dp"
 			android:layout_height="49dp"
 			android:layout_marginStart="3dp"
 			android:layout_marginEnd="12dp"
-			android:layout_toStartOf="@+id/buttonEliminar_miCiudad"
 			android:fontFamily="@font/roboto_condensed_light"
 			android:text="@string/botonPredeterminar" />
 
@@ -50,22 +47,19 @@
 			android:layout_width="133dp"
 			android:layout_height="wrap_content"
 			android:layout_marginEnd="12dp"
-			android:layout_toStartOf="@id/imageViewSatelite"
 			android:fontFamily="@font/roboto_condensed_light"
 			android:text="@string/botonEliminar" />
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/imageViewSatelite"
-			style="@style/Widget.MaterialComponents.Button.Icon"
 			android:layout_width="106dp"
 			android:layout_height="wrap_content"
-			android:layout_alignParentEnd="true"
 			android:layout_marginStart="4dp"
 			android:layout_marginEnd="5dp"
 			android:gravity="center"
 			app:icon="@mipmap/ic_satelite"
 			app:iconGravity="textEnd" />
-	</RelativeLayout>
+	</LinearLayout>
 
 
 </LinearLayout>
