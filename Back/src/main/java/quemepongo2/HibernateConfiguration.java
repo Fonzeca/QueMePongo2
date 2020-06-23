@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = { "classpath:main/java/quemepongo2/application.properties" })
+@PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration extends SQLServerDialect {
 	
 	public HibernateConfiguration() {
